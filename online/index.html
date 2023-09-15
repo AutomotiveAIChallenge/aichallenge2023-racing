@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Online Environment </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Online Environment ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/documentation/docfx_project/online/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+  </head>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="online-environment">Online Environment</h1>
+
+<br>
+<!-- > [!REGISTER]
+> こちらから参加登録!
+> [https://www.jsae.or.jp/jaaic/en/index.php](https://www.jsae.or.jp/jaaic/en/index.php)
+
+<br> -->
+<p> 本大会での採点は、シミュレータ・自動採点機能を備えたオンライン環境で行われます。<br>
+ 下記手順を参考に、作成していただいたパッケージ群をオンライン環境にアップロードしてください。アップロード完了後、オンライン環境にてシミュレーションが開始され、結果が提示されます。</p>
+<h2 id="upload-procedure-to-online-environment">Upload Procedure to Online Environment</h2>
+<ol>
+<li><p>動作確認</p>
+<p> <code>aichallenge_submit</code>のみアップロード可能なオンライン環境での動作を模した動作確認をお願いします。</p>
+<ol>
+<li>事前準備（<code>aichallenge_submit</code>の圧縮や結果出力用フォルダの生成）</li>
+</ol>
+<pre><code> #aichallenge2023-simディレクトリで
+ cd docker/evaluation
+ bash advance_preparations.sh
+</code></pre>
+<ol start="2">
+<li>dockerイメージのビルド</li>
+</ol>
+<pre><code> #aichallenge2023-sim/docker/evaluationディレクトリで
+ bash build_docker.sh
+</code></pre>
+<ol start="3">
+<li>AWSIMの起動</li>
+<li>dockerコンテナの起動（起動後、自動でautowareが立ち上がり、自動運転が開始されます）</li>
+</ol>
+<pre><code> #aichallenge2023-sim/docker/evaluationディレクトリで
+ bash run_container.sh
+</code></pre>
+<ol start="5">
+<li>result.jsonの確認<br>
+評価完了後、outputフォルダにresult.jsonが格納されます。</li>
+</ol>
+</li>
+<li><p>オンライン環境にアップロード<br>
+<img src="../images/online/siteImage.png" width="100%"><br>
+ <a href="https://aichallenge.synesthesias.jp">オンライン環境</a>にアクセスし、手順1で作成した<code>aichallenge_submit.tar.gz</code>を「ファイルを選択」からアップロードしてください。アップロードが完了すると、ソースコードのビルド・シミュレーションの順番で実施されます。</p>
+<ul>
+<li>正常に終了した場合は、採点完了と表示され、result.jsonがダウンロードできるようになり、距離点・タイムがランキングに掲示されます。</li>
+<li>シナリオ実行が終了しても、launchに失敗した等でスコアが出力されていない場合は「結果無し」となり、最終的なタイムとしては使われません。ローカルでは正常に動いているのにも関わらず「結果無し」と表示されてしまう場合サーバーサイドで内部エラーが生じている可能性があるため再度アップロードお願いします。繰り返し表示されてしまう場合はお問合せください。</li>
+<li>ビルドに失敗した場合はビルド失敗が表示されます。再度、手順の確認をお願いします。</li>
+<li>採点プロセスは一度の提出で3回実行され、最高点が結果として使用されます。また、ランキングはそれまでの採点における最高点が適用されます。</li>
+<li>採点実行中は新たなソースのアップロードはできません。</li>
+<li>アップロードできるのは1日3回までで、日本時間0時に回数はリセットされます。</li>
+</ul>
+</li>
+<li><p>結果を確認<br>
+ オンライン環境にて評価が終わると、result.jsonがダウンロード可能になります。result.jsonをダウンロードし、結果を確認してください。</p>
+</li>
+<li><p>結果なしの場合</p>
+<ol>
+<li>packageの依存関係に問題がないか確認
+pythonで実装している場合はpackage.xmlに依存関係の漏れがないか,setup.pyまたはCMakeLists.txtが正しく記載されているかどうか、cppで実装している場合はpackage.xml, CMakeLists.txtが正しく記載されているかどうかご確認ください.</li>
+<li>dockerの確認
+<code>docker run -it aichallenge-eval:latest  /bin/bash</code>で確認できます。
+以下のディレクトリのaichallenge_wsに正しくinstall、buildされているか確認してください。
+<pre><code> /aichallenge/aichallenge_ws/*
+ /autoware/install/*
+</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/documentation/docfx_project/online/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
