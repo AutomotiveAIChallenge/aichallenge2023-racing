@@ -220,6 +220,6 @@ This concludes the preparation necessary for launching Autoware-Mini. You can no
 ```
 # Inside the Rocker container
 cd /aichallenge
-bash build.sh
+bash build_autowares.sh
 bash run.sh
 ```

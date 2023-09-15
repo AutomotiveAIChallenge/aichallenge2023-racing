@@ -23,7 +23,7 @@
 	2. Build the Docker image
 	```
 	# In the aichallenge2023-sim/docker/evaluation directory
-	bash build.sh
+	bash build_docker.sh
 	```	
 	3. Launch AWSIM
 	4. Start the Docker container (After launch, autoware will start automatically, and autonomous driving will begin)

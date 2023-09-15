@@ -23,7 +23,7 @@
 	2. dockerイメージのビルド
 	```
 	#aichallenge2023-sim/docker/evaluationディレクトリで
-	bash build.sh
+	bash build_docker.sh
 	```	
 	3. AWSIMの起動
 	4. dockerコンテナの起動（起動後、自動でautowareが立ち上がり、自動運転が開始されます）

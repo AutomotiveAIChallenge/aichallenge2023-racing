@@ -4,7 +4,7 @@ export PATH="$PATH:/root/.local/bin"
 export PATH="/usr/local/cuda/bin:$PATH"
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export XDG_RUNTIME_DIR=/tmp/xdg
-export ROS_LOCALHOST_ONLY=0
+export ROS_LOCALHOST_ONLY=1
 
 cd /output
 

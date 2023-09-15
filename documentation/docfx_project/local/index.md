@@ -30,7 +30,7 @@
 ```
 #aichallenge2023-simディレクトリで
 cd docker
-bash build.sh
+bash build_docker.sh
 ```
 
 2. Docker Container Run
@@ -44,7 +44,7 @@ bash run_container.sh
 ```
 # Rockerコンテナ内で
 cd /aichallenge
-bash build.sh
+bash build_autoware.sh
 ```
 4. AWSIMの起動  
 [Setupページ](../setup/index.html)を参考に起動。
@@ -53,7 +53,7 @@ bash build.sh
 ```
 # Rockerコンテナ内で
 cd /aichallenge
-bash run.sh
+bash run_autoware.sh
 ```
  &emsp;セットアップが正常に行われていれば、rvizには点群地図が表示され、自動運転が開始されます。
  

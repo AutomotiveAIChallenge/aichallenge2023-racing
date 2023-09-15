@@ -229,6 +229,6 @@ launch_speed_bump: false
 ```
 # Rockerコンテナ内で
 cd /aichallenge
-bash build.sh
+bash build_autoware.sh
 bash run.sh
 ```

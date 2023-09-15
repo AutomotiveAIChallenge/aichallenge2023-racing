@@ -40,7 +40,7 @@
 ```
 #In the aichallenge2023-sim directory
 cd docker
-bash build.sh
+bash build_docker.sh
 ```
 
 2. Docker Container Run
@@ -54,7 +54,7 @@ bash run_container.sh
 ```
 # In the Rocker container
 cd /aichallenge
-bash build.sh
+bash build_autoware.sh
  ```
  4. Start AWSIM  
 Start AWSIM by referring to [Setup page](../setup/index.html).

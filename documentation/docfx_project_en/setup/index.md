@@ -102,7 +102,7 @@ Please install the following.
     3. build docker image for competition
     ```
     cd ./aichallenge2023-sim/docker
-    bash build.sh
+    bash build_docker.sh
     ```
     4. start rocker
     ```
@@ -165,7 +165,7 @@ aichallenge2023-sim
    # In the Rocker container
    sudo ip link set multicast on lo
    cd /aichallenge
-   bash build.sh
+   bash build_autoware.sh
    source aichallenge_ws/install/setup.bash
    ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=golfcart sensor_model:=awsim_sensor_kit map_path:=/aichallenge/mapfile
    ```
