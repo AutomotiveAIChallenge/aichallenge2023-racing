@@ -100,21 +100,21 @@
 <ol>
 <li>Preparations (Compression of aichallenge_submit and generation of the output folder for results)</li>
 </ol>
-<pre><code> # In the aichallenge2023-sim directory
+<pre><code> # In the aichallenge2023-racing directory
  cd docker/evaluation
  bash advance_preparations.sh
 </code></pre>
 <ol start="2">
 <li>Build the Docker image</li>
 </ol>
-<pre><code> # In the aichallenge2023-sim/docker/evaluation directory
+<pre><code> # In the aichallenge2023-racing/docker/evaluation directory
  bash build_docker.sh
 </code></pre>
 <ol start="3">
 <li>Launch AWSIM</li>
 <li>Start the Docker container (After launch, autoware will start automatically, and autonomous driving will begin)</li>
 </ol>
-<pre><code> #In the aichallenge2023-sim/docker/evaluation directory
+<pre><code> #In the aichallenge2023-racing/docker/evaluation directory
  bash run_container.sh
 </code></pre>
 <ol start="5">

@@ -111,8 +111,8 @@
 <p>localでテストする際、すべてのterminalで <code>ROS_LOCALHOST_ONLY=1</code> に設定すると通信速度が向上します。
 今回の大会では、PC2台構成のWindows+Linux、Linux+Linux、PC1台でLinuxのみの構成も考慮しています。以下の設定を参照してください。</p>
 <ul>
-<li>評価環境の<a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/evaluation/main.bash">こちら</a>のファイルで <code>ROS_LOCALHOST_ONLY=0</code></li>
-<li>コンテナ側の<a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/Dockerfile">こちら</a>のファイルで <code>ROS_LOCALHOST_ONLY=0</code></li>
+<li>評価環境の<a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/evaluation/main.bash">こちら</a>のファイルで <code>ROS_LOCALHOST_ONLY=0</code></li>
+<li>コンテナ側の<a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/Dockerfile">こちら</a>のファイルで <code>ROS_LOCALHOST_ONLY=0</code></li>
 </ul>
 <p>マシンの性能や通信速度が十分でない場合、以下のようにlocalhostのみでの実行に変更することもできます。</p>
 <ul>
@@ -137,14 +137,14 @@ fi
 <br>
 <h3 id="launched-autoware-is-not-stable">Launched Autoware is not stable</h3>
 <p>Autowareが起動するまでの待機時間を設定してみてください。</p>
-<p><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/31">https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/31</a></p>
+<p><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/issues/31">https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/issues/31</a></p>
 <pre><code>&lt;timer period=&quot;150.0&quot;&gt;
      &lt;include file=&quot;$(find-pkg-share self_driving_controller)/launch/self_driving_controller.launch.xml&quot; /&gt;
 &lt;/timer&gt;
 </code></pre>
 <br>
 <h3 id="unable-to-launch-rocker">Unable to Launch Rocker</h3>
-<p><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/21#issuecomment-1637851299">https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/21#issuecomment-1637851299</a></p>
+<p><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/issues/21#issuecomment-1637851299">https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/issues/21#issuecomment-1637851299</a></p>
 <br>
 <h2 id="setup-faq">Setup FAQ</h2>
 <br>

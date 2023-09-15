@@ -100,21 +100,21 @@
 <ol>
 <li>事前準備（<code>aichallenge_submit</code>の圧縮や結果出力用フォルダの生成）</li>
 </ol>
-<pre><code> #aichallenge2023-simディレクトリで
+<pre><code> #aichallenge2023-racingディレクトリで
  cd docker/evaluation
  bash advance_preparations.sh
 </code></pre>
 <ol start="2">
 <li>dockerイメージのビルド</li>
 </ol>
-<pre><code> #aichallenge2023-sim/docker/evaluationディレクトリで
+<pre><code> #aichallenge2023-racing/docker/evaluationディレクトリで
  bash build_docker.sh
 </code></pre>
 <ol start="3">
 <li>AWSIMの起動</li>
 <li>dockerコンテナの起動（起動後、自動でautowareが立ち上がり、自動運転が開始されます）</li>
 </ol>
-<pre><code> #aichallenge2023-sim/docker/evaluationディレクトリで
+<pre><code> #aichallenge2023-racing/docker/evaluationディレクトリで
  bash run_container.sh
 </code></pre>
 <ol start="5">

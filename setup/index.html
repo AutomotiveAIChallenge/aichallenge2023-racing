@@ -190,7 +190,7 @@
 <ol>
 <li>Dockerイメージを入手</li>
 </ol>
-<pre><code>docker pull ghcr.io/automotiveaichallenge/aichallenge2023-sim/autoware-universe-cuda:v1
+<pre><code>docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-cuda:v1
 </code></pre>
 <p>※上記の方法では長時間かかってしまう方・タイムアウトしてしまう方↓<br>
 <a href="https://drive.google.com/file/d/1mOEpiN36UPe70NqiibloDcd_ewgMr_5P/view?usp=sharing">こちら</a>に、イメージをtarにまとめたものを置きましたので、下記コマンドよりご利用ください</p>
@@ -200,12 +200,12 @@
 <li>大会用データのダウンロード</li>
 </ol>
 <pre><code>sudo apt install -y git-lfs
-git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-sim
+git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
 </code></pre>
 <ol start="3">
 <li>大会用dockerイメージのビルド</li>
 </ol>
-<pre><code>cd ./aichallenge2023-sim/docker
+<pre><code>cd ./aichallenge2023-racing/docker
 bash build_docker.sh
 </code></pre>
 <ol start="4">
@@ -218,14 +218,14 @@ bash build_docker.sh
 <h4 id="dockerコンテナ内でのawsim起動">Dockerコンテナ内でのAWSIM起動</h4>
 <p>DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの準備手順(前述)に従ってDockerイメージを導入した後、以下の手順で行ってください。</p>
 <ol>
-<li><code>aichallenge2023-sim/docker/aichallenge</code>内に大会用AWSIM実行ファイルを展開(以下、<code>aichallenge2023-sim/docker/aichallenge/AWSIM/AWSIM.x86_64</code>に配置されているものとします。)</li>
+<li><code>aichallenge2023-racing/docker/aichallenge</code>内に大会用AWSIM実行ファイルを展開(以下、<code>aichallenge2023-racing/docker/aichallenge/AWSIM/AWSIM.x86_64</code>に配置されているものとします。)</li>
 <li>rockerを起動
 新たにterminalを開いて<code>docker image ls</code>で以下のようなimageが存在していることを確認してください。</li>
 </ol>
 <pre><code>aichallenge-train        latest                            f5f05f758f55   2 weeks ago      14.9GB
 </code></pre>
 <p>確認ができたら以下のコマンドでrockerを起動してください。</p>
-<pre><code> cd ./aichallenge2023-sim/docker
+<pre><code> cd ./aichallenge2023-racing/docker
  bash run_container.sh
 </code></pre>
 <p>新たに開いたterminalで<code>docker container ls</code> で以下のようにdocker が存在していることを確認してください。</p>
@@ -248,8 +248,8 @@ fdbe7cb05782   1f3d763bc501   &quot;/bin/bash&quot;   15 minutes ago   Up 15 min
 </ol>
 <h3 id="地図データpcd-osmのコピー">地図データ(pcd, osm)のコピー</h3>
 <p><img src="../images/setup/mapfiles.png" alt="mapfiles"></p>
-<p>地図データはAWSIMの圧縮ファイル内に格納されています。<code>AWSIM_Data/StreamingAssets/kashiwanoha2023_integ</code>に配置されているosmファイルとpcdファイルを<code>aichallenge2023-sim/docker/aichallenge/mapfile</code>にコピーして、ファイル構成が以下になるように配置してください。</p>
-<pre><code>aichallenge2023-sim
+<p>地図データはAWSIMの圧縮ファイル内に格納されています。<code>AWSIM_Data/StreamingAssets/kashiwanoha2023_integ</code>に配置されているosmファイルとpcdファイルを<code>aichallenge2023-racing/docker/aichallenge/mapfile</code>にコピーして、ファイル構成が以下になるように配置してください。</p>
+<pre><code>aichallenge2023-racing
 └ docker
  └ aichallenge
   └ mapfile

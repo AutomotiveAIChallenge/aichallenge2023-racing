@@ -111,8 +111,8 @@ please refer to <a href="https://zenn.dev/tasada038/articles/5d8ba66aa34b85#setu
 <h3 id="awsim-and-autoware-network-is-unstable">AWSIM and Autoware network is unstable</h3>
 <p>When testing locally, setting <code>ROS_LOCALHOST_ONLY=1</code> in all terminals can improve communication speed. For this competition, configurations of two PCs (Windows+Linux, Linux+Linux) and a single PC (only Linux) are considered. Please refer to the following settings:</p>
 <ul>
-<li>In the evaluation environment, set <code>ROS_LOCALHOST_ONLY=0</code> in <a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/evaluation/main.bash">this file</a>.</li>
-<li>On the container side, set <code>ROS_LOCALHOST_ONLY=0</code> in <a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/Dockerfile">this file</a>.</li>
+<li>In the evaluation environment, set <code>ROS_LOCALHOST_ONLY=0</code> in <a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/evaluation/main.bash">this file</a>.</li>
+<li>On the container side, set <code>ROS_LOCALHOST_ONLY=0</code> in <a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/Dockerfile">this file</a>.</li>
 </ul>
 <p>If you feel that machine performance or communication speed is insufficient, you can change the execution to be localhost-only as follows:</p>
 <ul>
@@ -132,14 +132,14 @@ fi
 <br>
 <h3 id="launched-autoware-is-not-stable">Launched Autoware is not stable</h3>
 <p>Consider setting a wait time for Autoware to start.</p>
-<p><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/31">Refer here</a></p>
+<p><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/issues/31">Refer here</a></p>
 <pre><code>&lt;timer period=&quot;150.0&quot;&gt;
      &lt;include file=&quot;$(find-pkg-share self_driving_controller)/launch/self_driving_controller.launch.xml&quot; /&gt;
 &lt;/timer&gt;
 </code></pre>
 <br>
 <h3 id="unable-to-launch-rocker">Unable to Launch Rocker</h3>
-<p><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/21#issuecomment-1637851299">Refer here</a></p>
+<p><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/issues/21#issuecomment-1637851299">Refer here</a></p>
 <br>
 <h2 id="setup-faq">Setup FAQ</h2>
 <br>

@@ -111,7 +111,7 @@
 <p><img src="../images/customize/autoware-node-diagram.png" alt="node-diagram"></p>
 <p>自動運転に関わる各コンポーネントで多種多様な機能を揃えており、難易度の高い走行環境にも対応できるように作られています．</p>
 <p>一方、その複雑な構成を理解し、各パラメータの意味や調整の仕方、モジュールの切り替え・入れ替えなどを行うことが必ずしも容易ではなくなっています．</p>
-<p>そのため、今回は、デフォルトのAutowareから機能を絞り、ノード数を減らした<a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml">最小構成のAutoware「Autoware-Mini」を起動できるLaunchファイル</a>を用意しました．</p>
+<p>そのため、今回は、デフォルトのAutowareから機能を絞り、ノード数を減らした<a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml">最小構成のAutoware「Autoware-Mini」を起動できるLaunchファイル</a>を用意しました．</p>
 <p>Autoware-Miniのノード図を以下に示します．ノード数が格段と減り、基本的な自動走行を可能とする機能のみが揃っていることが分かります．</p>
 <p><img src="../images/customize/autoware-mini-node-diagram.png" alt="mini-node-diagram"></p>
 <p>Autoware-Miniの特徴としては、以下が挙げられます．</p>
@@ -130,11 +130,11 @@
 <h3 id="using-autoware-mini">Using Autoware-Mini</h3>
 <p>Autoware-Miniのセットアップと使い方を説明します．</p>
 <h4 id="pulling-newest-changes-from-github">Pulling newest changes from GitHub</h4>
-<p>既に<code>aichallenge2023-sim</code>をセットアップしていた方は、以下を実行し、最新のソースをmainブランチからPullしてください．</p>
-<pre><code>cd aichallenge2023-sim/
+<p>既に<code>aichallenge2023-racing</code>をセットアップしていた方は、以下を実行し、最新のソースをmainブランチからPullしてください．</p>
+<pre><code>cd aichallenge2023-racing/
 git pull
 </code></pre>
-<p>Autoware-MiniのLaunchファイルは<code>aichallenge2023-sim/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml</code> (<a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml">GitHubリンク</a>) にあります．</p>
+<p>Autoware-MiniのLaunchファイルは<code>aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml</code> (<a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml">GitHubリンク</a>) にあります．</p>
 <h4 id="updating-aichallenge_submitlaunchxml">Updating aichallenge_submit.launch.xml</h4>
 <p><code>autoware_mini_awsim.launch.xml</code>を起動するためには、<code>aichallenge_submit.launch.xml</code>をまず修正する必要があります．</p>
 <p>このファイルのコメントアウトしている箇所を有効にし、上の<code>e2e_simulator.launch.xml</code>を起動している箇所をコメントアウトしてください．</p>
@@ -192,8 +192,8 @@ git pull
 <h4 id="updating-behavior_path_plannerparamyaml">Updating behavior_path_planner.param.yaml</h4>
 <p>次に、Planningコンポーネントの<code>behavior_path_planner</code>と<code>behavior_velocity_planner</code>においては、設定を以下のコンフィグファイルで行う必要があります．</p>
 <ul>
-<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml">behavior_path_planner.param.yaml</a></li>
-<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml">behavior_velocity_planner.param.yaml</a></li>
+<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml">behavior_path_planner.param.yaml</a></li>
+<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml">behavior_velocity_planner.param.yaml</a></li>
 </ul>
 <p>デフォルトのAutowareでは、<code>behavior_path_planner</code>ノードでは、以下のモジュールを有効化しています．</p>
 <ul>
@@ -240,8 +240,8 @@ avoidance:
 <h4 id="updating-behavior_velocity_plannerparamyaml">Updating behavior_velocity_planner.param.yaml</h4>
 <p>次に、Planningコンポーネントの<code>behavior_path_planner</code>と<code>behavior_velocity_planner</code>においては、設定を以下のコンフィグファイルで行う必要があります．</p>
 <ul>
-<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml">behavior_path_planner.param.yaml</a></li>
-<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml">behavior_velocity_planner.param.yaml</a></li>
+<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml">behavior_path_planner.param.yaml</a></li>
+<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml">behavior_velocity_planner.param.yaml</a></li>
 </ul>
 <p>デフォルトのAutowareでは、<code>behavior_velocity_planner</code>ノードでは、以下のモジュールを有効化しています．</p>
 <pre><code>...

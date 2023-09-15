@@ -122,11 +122,11 @@
 <h3 id="using-autoware-mini">Using Autoware-Mini</h3>
 <p>Here we describe how to set up Autoware-Mini and use it.</p>
 <h4 id="pulling-newest-changes-from-github">Pulling newest changes from GitHub</h4>
-<p>For participants who have already set up <code>aichallenge2023-sim</code>, run the below to pull the newest changes from GitHub.</p>
-<pre><code>cd aichallenge2023-sim/
+<p>For participants who have already set up <code>aichallenge2023-racing</code>, run the below to pull the newest changes from GitHub.</p>
+<pre><code>cd aichallenge2023-racing/
 git pull
 </code></pre>
-<p>The launch file for Autoware-Mini is placed in <code>aichallenge2023-sim/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml</code> (<a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml">GitHub Link</a>)</p>
+<p>The launch file for Autoware-Mini is placed in <code>aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml</code> (<a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml">GitHub Link</a>)</p>
 <h4 id="updating-aichallenge_submitlaunchxml">Updating aichallenge_submit.launch.xml</h4>
 <p>In order to launch <code>autoware_mini_awsim.launch.xml</code>, <code>aichallenge_submit.launch.xml</code> must first be edited.</p>
 <p>Uncomment the sections in this file that are commented out, and comment out the section that launches <code>e2e_simulator.launch.xml</code>.</p>
@@ -184,8 +184,8 @@ git pull
 <h4 id="updating-behavior_path_plannerparamyaml">Updating behavior_path_planner.param.yaml</h4>
 <p>Next, for the <code>behavior_path_planner</code> node and <code>behavior_velocity_planner</code> node in the Planning Component, the following config files must be edited to change what modules are launched within each planner.</p>
 <ul>
-<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml">behavior_path_planner.param.yaml</a></li>
-<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml">behavior_velocity_planner.param.yaml</a></li>
+<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml">behavior_path_planner.param.yaml</a></li>
+<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml">behavior_velocity_planner.param.yaml</a></li>
 </ul>
 <p>In the original Autoware, the following modules are enabled in the <code>behavior_path_planner</code> node.</p>
 <ul>
@@ -232,8 +232,8 @@ avoidance:
 <h4 id="updating-behavior_velocity_plannerparamyaml">Updating behavior_velocity_planner.param.yaml</h4>
 <p>Next, for the <code>behavior_path_planner</code> node and <code>behavior_velocity_planner</code> node in the Planning Component, the following config files must be edited to change what modules are launched within each planner.</p>
 <ul>
-<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml">behavior_path_planner.param.yaml</a></li>
-<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml">behavior_velocity_planner.param.yaml</a></li>
+<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml">behavior_path_planner.param.yaml</a></li>
+<li><a href="https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml">behavior_velocity_planner.param.yaml</a></li>
 </ul>
 <p>In the original Autoware, the following modules are enabled in the <code>behavior_velocity_planner</code> node.</p>
 <pre><code>...
