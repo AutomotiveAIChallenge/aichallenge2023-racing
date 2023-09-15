@@ -16,19 +16,19 @@
    
    	1.  事前準備（`aichallenge_submit`の圧縮や結果出力用フォルダの生成）   	
    	```
-	#aichallenge2023-simディレクトリで
+	#aichallenge2023-racingディレクトリで
 	cd docker/evaluation
 	bash advance_preparations.sh
 	```
 	2. dockerイメージのビルド
 	```
-	#aichallenge2023-sim/docker/evaluationディレクトリで
+	#aichallenge2023-racing/docker/evaluationディレクトリで
 	bash build_docker.sh
 	```	
 	3. AWSIMの起動
 	4. dockerコンテナの起動（起動後、自動でautowareが立ち上がり、自動運転が開始されます）
 	```
-	#aichallenge2023-sim/docker/evaluationディレクトリで
+	#aichallenge2023-racing/docker/evaluationディレクトリで
 	bash run_container.sh
 	```	
 	5. result.jsonの確認  

@@ -8,11 +8,11 @@
 
 <br> -->
 
- &emsp; Participants will be asked to create a ROS2 package to carry out the scenario, and the following ROS2 package is provided in aichallenge2023-sim/docker/aichallenge/aichallenge_ws/src as sample code to serve as a base for this in this repository The following ROS2 package is provided.  
+ &emsp; Participants will be asked to create a ROS2 package to carry out the scenario, and the following ROS2 package is provided in aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src as sample code to serve as a base for this in this repository The following ROS2 package is provided.  
  &emsp; Please place the ROS2 package you created under aichallenge_ws/src/aichallenge_submit and follow the steps below to build and run it.
   
 ## Sample Code
- The following is a partial configuration under &emsp;aichallenge2023-sim/docker/aichallenge/aichallenge_ws/src.
+ The following is a partial configuration under &emsp;aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src.
 * aichallenge_launch
     * Contains the main launch file aichallenge.launch.xml. All ROS2 nodes are launched from this launch file.
 * aichallenge_scoring
@@ -38,14 +38,14 @@
 
 1. Docker Image Build
 ```
-#In the aichallenge2023-sim directory
+#In the aichallenge2023-racing directory
 cd docker
 bash build_docker.sh
 ```
 
 2. Docker Container Run
 ```
-#In the aichallenge2023-sim directory
+#In the aichallenge2023-racing directory
 cd docker
 bash run_container.sh
 ```

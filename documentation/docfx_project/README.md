@@ -1,1 +1,1 @@
-# aichallenge2023-sim
+# aichallenge2023-racing

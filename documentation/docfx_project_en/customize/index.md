@@ -45,14 +45,14 @@ Here we describe how to set up Autoware-Mini and use it.
 
 #### Pulling newest changes from GitHub
 
-For participants who have already set up `aichallenge2023-sim`, run the below to pull the newest changes from GitHub.
+For participants who have already set up `aichallenge2023-racing`, run the below to pull the newest changes from GitHub.
 
 ```
-cd aichallenge2023-sim/
+cd aichallenge2023-racing/
 git pull
 ```
 
-The launch file for Autoware-Mini is placed in `aichallenge2023-sim/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml` ([GitHub Link](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml))
+The launch file for Autoware-Mini is placed in `aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml` ([GitHub Link](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml))
 
 
 #### Updating aichallenge_submit.launch.xml
@@ -123,8 +123,8 @@ Change `aichallenge.launch.xml` like the following.
 
 Next, for the `behavior_path_planner` node and `behavior_velocity_planner` node in the Planning Component, the following config files must be edited to change what modules are launched within each planner.
 
-- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
-- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
+- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
+- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
 
 In the original Autoware, the following modules are enabled in the `behavior_path_planner` node.
 
@@ -175,8 +175,8 @@ avoidance:
 
 Next, for the `behavior_path_planner` node and `behavior_velocity_planner` node in the Planning Component, the following config files must be edited to change what modules are launched within each planner.
 
-- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
-- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
+- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
+- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
 
 In the original Autoware, the following modules are enabled in the `behavior_velocity_planner` node.
 

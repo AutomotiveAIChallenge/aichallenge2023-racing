@@ -1,4 +1,4 @@
-FROM ghcr.io/automotiveaichallenge/aichallenge2023-sim/autoware-universe-cuda:v1
+FROM ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-cuda:v1
 
 RUN rm -rf /autoware/install/tier4_*_launch
 

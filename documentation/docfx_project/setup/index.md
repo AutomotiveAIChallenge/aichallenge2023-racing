@@ -88,7 +88,7 @@
 * Dockerイメージの準備・起動 〜 Autowareの準備
    1. Dockerイメージを入手
     ```
-   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-sim/autoware-universe-cuda:v1
+   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-cuda:v1
     ```
     ※上記の方法では長時間かかってしまう方・タイムアウトしてしまう方↓  
 　[こちら](https://drive.google.com/file/d/1mOEpiN36UPe70NqiibloDcd_ewgMr_5P/view?usp=sharing)に、イメージをtarにまとめたものを置きましたので、下記コマンドよりご利用ください
@@ -98,11 +98,11 @@
     2. 大会用データのダウンロード
     ```
     sudo apt install -y git-lfs
-    git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-sim
+    git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
     ```
     3. 大会用dockerイメージのビルド
     ```
-    cd ./aichallenge2023-sim/docker
+    cd ./aichallenge2023-racing/docker
     bash build_docker.sh
     ```
     4. 大会用dockerコンテナの起動
@@ -112,7 +112,7 @@
 
 #### Dockerコンテナ内でのAWSIM起動
 DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの準備手順(前述)に従ってDockerイメージを導入した後、以下の手順で行ってください。
-  1. `aichallenge2023-sim/docker/aichallenge`内に大会用AWSIM実行ファイルを展開(以下、`aichallenge2023-sim/docker/aichallenge/AWSIM/AWSIM.x86_64`に配置されているものとします。)
+  1. `aichallenge2023-racing/docker/aichallenge`内に大会用AWSIM実行ファイルを展開(以下、`aichallenge2023-racing/docker/aichallenge/AWSIM/AWSIM.x86_64`に配置されているものとします。)
   2. rockerを起動
    新たにterminalを開いて`docker image ls`で以下のようなimageが存在していることを確認してください。
    ```
@@ -120,7 +120,7 @@ DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの
    ```
    確認ができたら以下のコマンドでrockerを起動してください。
    ```
-    cd ./aichallenge2023-sim/docker
+    cd ./aichallenge2023-racing/docker
     bash run_container.sh
    ```
    新たに開いたterminalで`docker container ls` で以下のようにdocker が存在していることを確認してください。
@@ -145,9 +145,9 @@ DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの
 
 ![mapfiles](../images/setup/mapfiles.png)
 
-地図データはAWSIMの圧縮ファイル内に格納されています。`AWSIM_Data/StreamingAssets/kashiwanoha2023_integ`に配置されているosmファイルとpcdファイルを`aichallenge2023-sim/docker/aichallenge/mapfile`にコピーして、ファイル構成が以下になるように配置してください。
+地図データはAWSIMの圧縮ファイル内に格納されています。`AWSIM_Data/StreamingAssets/kashiwanoha2023_integ`に配置されているosmファイルとpcdファイルを`aichallenge2023-racing/docker/aichallenge/mapfile`にコピーして、ファイル構成が以下になるように配置してください。
 ```
-aichallenge2023-sim
+aichallenge2023-racing
 └ docker
  └ aichallenge
   └ mapfile

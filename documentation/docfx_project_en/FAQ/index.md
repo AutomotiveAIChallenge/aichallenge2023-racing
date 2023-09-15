@@ -29,8 +29,8 @@ please refer to [this link](https://zenn.dev/tasada038/articles/5d8ba66aa34b85#s
 
 ### AWSIM and Autoware network is unstable
 When testing locally, setting `ROS_LOCALHOST_ONLY=1` in all terminals can improve communication speed. For this competition, configurations of two PCs (Windows+Linux, Linux+Linux) and a single PC (only Linux) are considered. Please refer to the following settings:
-- In the evaluation environment, set `ROS_LOCALHOST_ONLY=0` in [this file](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/evaluation/main.bash).
-- On the container side, set `ROS_LOCALHOST_ONLY=0` in [this file](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/Dockerfile).
+- In the evaluation environment, set `ROS_LOCALHOST_ONLY=0` in [this file](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/evaluation/main.bash).
+- On the container side, set `ROS_LOCALHOST_ONLY=0` in [this file](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/Dockerfile).
 
 If you feel that machine performance or communication speed is insufficient, you can change the execution to be localhost-only as follows:
 - Set ROS to be localhost-only. Add the following lines to your `.bashrc`. Note: After OS startup, the password will be prompted at terminal startup, and `sudo ip link set lo multicast on` is required for the first time.
@@ -52,7 +52,7 @@ Note: If you forget to modify as written in `.bashrc`, it will always be applied
 
 Consider setting a wait time for Autoware to start.
 
-[Refer here](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/31)
+[Refer here](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/issues/31)
 
 ```
 <timer period="150.0">
@@ -64,7 +64,7 @@ Consider setting a wait time for Autoware to start.
 
 ### Unable to Launch Rocker
 
-[Refer here](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/21#issuecomment-1637851299)
+[Refer here](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/issues/21#issuecomment-1637851299)
 
 <br>
 

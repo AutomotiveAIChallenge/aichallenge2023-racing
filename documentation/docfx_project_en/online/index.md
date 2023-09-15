@@ -16,19 +16,19 @@
    &emsp; Please perform a functionality check simulating the behavior in the online environment, using only aichallenge_submit for the upload.
    	1.  Preparations (Compression of aichallenge_submit and generation of the output folder for results)
    	```
-	# In the aichallenge2023-sim directory
+	# In the aichallenge2023-racing directory
 	cd docker/evaluation
 	bash advance_preparations.sh
 	```
 	2. Build the Docker image
 	```
-	# In the aichallenge2023-sim/docker/evaluation directory
+	# In the aichallenge2023-racing/docker/evaluation directory
 	bash build_docker.sh
 	```	
 	3. Launch AWSIM
 	4. Start the Docker container (After launch, autoware will start automatically, and autonomous driving will begin)
 	```
-	#In the aichallenge2023-sim/docker/evaluation directory
+	#In the aichallenge2023-racing/docker/evaluation directory
 	bash run_container.sh
 	```	
 	5. Verify result.json  

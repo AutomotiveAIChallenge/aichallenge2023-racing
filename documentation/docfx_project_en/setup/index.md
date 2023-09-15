@@ -87,7 +87,7 @@ Please install the following.
 * Prepare and launch Docker image - Prepare Autoware
    1. get a Docker image
     ```
-   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-sim/autoware-universe-cuda:v1
+   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-cuda:v1
     ```
     If the above method takes a long time or times out, you can use the following method.  
 　We have placed a tarball of the image at [here](https://drive.google.com/file/d/1mOEpiN36UPe70NqiibloDcd_ewgMr_5P/view?usp=sharing). Please use the following command
@@ -97,11 +97,11 @@ Please install the following.
     2. download the data for the competition
     ```
     sudo apt install -y git-lfs
-    git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-sim
+    git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
     ```
     3. build docker image for competition
     ```
-    cd ./aichallenge2023-sim/docker
+    cd ./aichallenge2023-racing/docker
     bash build_docker.sh
     ```
     4. start rocker
@@ -112,7 +112,7 @@ Please install the following.
         
 #### Starting AWSIM in a Docker container
 If you want to start AWSIM from a Docker container, please follow the steps below after installing a Docker image according to the Docker image preparation procedure (see below).
-  1. extract the executable file for the convention in `aichallenge2023-sim/docker/aichallenge` (Hereinafter, it is assumed to be located in `aichallenge2023-sim/docer/aichallenge/AWSIM/AWSIM.x86_64`)
+  1. extract the executable file for the convention in `aichallenge2023-racing/docker/aichallenge` (Hereinafter, it is assumed to be located in `aichallenge2023-racing/docer/aichallenge/AWSIM/AWSIM.x86_64`)
   2. launch the Docker container (please verify with `docker container ls` that container exists)
    Please confirm the existence of the following docker image using other terminal by using the `docker image ls` command. below is an example.
    ```
@@ -120,7 +120,7 @@ If you want to start AWSIM from a Docker container, please follow the steps belo
    ```
    Once confirmed, launch rocker with the following command.
    ```
-    cd ./aichallenge2023-sim/docker
+    cd ./aichallenge2023-racing/docker
     bash run_container.sh
    ```
    Open a new terminal and confirm the existence of the docker container by using the `docker container ls` command. below is an example.
@@ -145,9 +145,9 @@ If you want to start AWSIM from a Docker container, please follow the steps belo
 
 ![mapfiles](../../images/setup/mapfiles.png)
 
-Map data is stored in AWSIM compressed files. Copy the osm and pcd files located in `AWSIM_Data/StreamingAssets/kashiwanoha2023_integ` to `aichallenge2023-sim/docker/aichallenge/mapfile` and arrange them so that the file structure is as follows:
+Map data is stored in AWSIM compressed files. Copy the osm and pcd files located in `AWSIM_Data/StreamingAssets/kashiwanoha2023_integ` to `aichallenge2023-racing/docker/aichallenge/mapfile` and arrange them so that the file structure is as follows:
 ```
-aichallenge2023-sim
+aichallenge2023-racing
 └ docker
  └ aichallenge
   └ mapfile

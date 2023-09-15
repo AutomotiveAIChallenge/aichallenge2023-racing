@@ -29,7 +29,7 @@ Autowareの公式ドキュメンテーションでは、[Autowareを構成する
 
 一方、その複雑な構成を理解し、各パラメータの意味や調整の仕方、モジュールの切り替え・入れ替えなどを行うことが必ずしも容易ではなくなっています．
 
-そのため、今回は、デフォルトのAutowareから機能を絞り、ノード数を減らした[最小構成のAutoware「Autoware-Mini」を起動できるLaunchファイル](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml)を用意しました．
+そのため、今回は、デフォルトのAutowareから機能を絞り、ノード数を減らした[最小構成のAutoware「Autoware-Mini」を起動できるLaunchファイル](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml)を用意しました．
 
 Autoware-Miniのノード図を以下に示します．ノード数が格段と減り、基本的な自動走行を可能とする機能のみが揃っていることが分かります．
 
@@ -54,14 +54,14 @@ Autoware-Miniのセットアップと使い方を説明します．
 
 #### Pulling newest changes from GitHub
 
-既に`aichallenge2023-sim`をセットアップしていた方は、以下を実行し、最新のソースをmainブランチからPullしてください．
+既に`aichallenge2023-racing`をセットアップしていた方は、以下を実行し、最新のソースをmainブランチからPullしてください．
 
 ```
-cd aichallenge2023-sim/
+cd aichallenge2023-racing/
 git pull
 ```
 
-Autoware-MiniのLaunchファイルは`aichallenge2023-sim/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml` ([GitHubリンク](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml)) にあります．
+Autoware-MiniのLaunchファイルは`aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml` ([GitHubリンク](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml)) にあります．
 
 
 #### Updating aichallenge_submit.launch.xml
@@ -132,8 +132,8 @@ Autoware-MiniのLaunchファイルは`aichallenge2023-sim/docker/aichallenge/aic
 
 次に、Planningコンポーネントの`behavior_path_planner`と`behavior_velocity_planner`においては、設定を以下のコンフィグファイルで行う必要があります．
 
-- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
-- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
+- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
+- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
 
 デフォルトのAutowareでは、`behavior_path_planner`ノードでは、以下のモジュールを有効化しています．
 
@@ -184,8 +184,8 @@ avoidance:
 
 次に、Planningコンポーネントの`behavior_path_planner`と`behavior_velocity_planner`においては、設定を以下のコンフィグファイルで行う必要があります．
 
-- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
-- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
+- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
+- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
 
 デフォルトのAutowareでは、`behavior_velocity_planner`ノードでは、以下のモジュールを有効化しています．
 

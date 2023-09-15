@@ -29,8 +29,8 @@
 ### AWSIM and Autoware network is unstable
 localでテストする際、すべてのterminalで `ROS_LOCALHOST_ONLY=1` に設定すると通信速度が向上します。
 今回の大会では、PC2台構成のWindows+Linux、Linux+Linux、PC1台でLinuxのみの構成も考慮しています。以下の設定を参照してください。
-- 評価環境の[こちら](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/evaluation/main.bash)のファイルで `ROS_LOCALHOST_ONLY=0`
-- コンテナ側の[こちら](https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/blob/main/docker/Dockerfile)のファイルで `ROS_LOCALHOST_ONLY=0`
+- 評価環境の[こちら](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/evaluation/main.bash)のファイルで `ROS_LOCALHOST_ONLY=0`
+- コンテナ側の[こちら](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/Dockerfile)のファイルで `ROS_LOCALHOST_ONLY=0`
 
 マシンの性能や通信速度が十分でない場合、以下のようにlocalhostのみでの実行に変更することもできます。
 - ROSをlocalhost-onlyに設定します。`.bashrc` に以下の行を追加してください。注意: OSの起動後、ターミナルの起動時にパスワードが要求され、初回には `sudo ip link set lo multicast on` が必要です。
@@ -55,7 +55,7 @@ localでテストする際、すべてのterminalで `ROS_LOCALHOST_ONLY=1` に�
 
 Autowareが起動するまでの待機時間を設定してみてください。
 
-https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/31
+https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/issues/31
 
 ```
 <timer period="150.0">
@@ -67,7 +67,7 @@ https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/31
 
 ### Unable to Launch Rocker
 
-https://github.com/AutomotiveAIChallenge/aichallenge2023-sim/issues/21#issuecomment-1637851299
+https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/issues/21#issuecomment-1637851299
 
 
 <br>

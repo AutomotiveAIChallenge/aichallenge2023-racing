@@ -1,9 +1,9 @@
 # Local Environment
- &emsp;参加者の皆様にはシナリオを遂行するROS2パッケージを作成していただきますが、本リポジトリ内でそのベースとなるサンプルコードとしてaichallenge2023-sim/docker/aichallenge/aichallenge_ws/srcに以下のROS2パッケージを提供しております。  
+ &emsp;参加者の皆様にはシナリオを遂行するROS2パッケージを作成していただきますが、本リポジトリ内でそのベースとなるサンプルコードとしてaichallenge2023-racing/docker/aichallenge/aichallenge_ws/srcに以下のROS2パッケージを提供しております。  
  &emsp;作成していただいたROS2パッケージは、aichallenge_ws/src/aichallenge_submit以下に配置していただき、下記手順でビルド・実行できるようにしてください。
   
 ## Sample Code
- &emsp;aichallenge2023-sim/docker/aichallenge/aichallenge_ws/src配下の構成を一部示します。
+ &emsp;aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src配下の構成を一部示します。
 * aichallenge_launch
   * 大元のlaunchファイルaichallenge.launch.xmlを含んでいます。すべてのROS2ノードはこのlaunchファイルから起動されます。
 * aichallenge_scoring
@@ -28,14 +28,14 @@
 ### Steps for Execution
 1. Docker Image Build
 ```
-#aichallenge2023-simディレクトリで
+#aichallenge2023-racingディレクトリで
 cd docker
 bash build_docker.sh
 ```
 
 2. Docker Container Run
 ```
-#aichallenge2023-simディレクトリで
+#aichallenge2023-racingディレクトリで
 cd docker
 bash run_container.sh
 ```
