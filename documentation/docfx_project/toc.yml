@@ -13,15 +13,6 @@
     href: local/index.html
   - name: OnlineEnvironment
     href: online/index.html
-- name: Finals
-  dropdown: true
-  items:
-  - name: About the Finals
-    href: finals/index.html
-  - name: Rules and Scoring
-    href: finals/rules.html
-  - name: Operation
-    href: finals/operation.html
 - name: Teams
   href: teams/index.html
 - name: Customizing Autoware
