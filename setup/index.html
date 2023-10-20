@@ -197,6 +197,8 @@
 </ol>
 <pre><code>sudo apt install -y git-lfs
 git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
+cd aichallenge2023-racing
+git submodule update --init --recursive
 </code></pre>
 <ol start="3">
 <li>大会用dockerイメージのビルド</li>
@@ -231,10 +233,17 @@ fdbe7cb05782   1f3d763bc501   &quot;/bin/bash&quot;   15 minutes ago   Up 15 min
 <ol start="3">
 <li>コンテナ内で以下を実行</li>
 </ol>
-<pre><code> sudo ip link set multicast on lo
- source /autoware/install/setup.bash
- /aichallenge/AWSIM/AWSIM.x86_64
+<pre><code> cd /aichallenge
+ bash run_awsim.sh 
 </code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>AWSIMからpublish・subscribeされているトピックのメッセージは，一部<code>/aichallenge/aichallenge_ws/src/sim-msgs</code>で定義されています．これらのメッセージを扱うには，以下のコマンドを実行してください．</p>
+<pre><code>cd /aichallenge
+bash build_autoware.sh
+source /aichallenge/aichallenge_ws/install/setup.bash 
+</code></pre>
+</div>
 <h3 id="awsimwindows">AWSIM(Windows)</h3>
 <ol>
 <li><a href="https://drive.google.com/drive/folders/1p-_rZLDVncssgYTwjBmLKMyGQxOKHV5Q?usp=sharing">GoogleDrive</a>から最新の<code>AWSIM_AIChallenge_Windows_v*.*.zip</code>をダウンロードし解凍</li>

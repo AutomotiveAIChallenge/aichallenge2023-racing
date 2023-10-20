@@ -192,6 +192,8 @@ We have placed a tarball of the image at <a href="https://drive.google.com/file/
 </ol>
 <pre><code>sudo apt install -y git-lfs
 git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
+cd aichallenge2023-racing
+git submodule update --init --recursive
 </code></pre>
 <ol start="3">
 <li>build docker image for competition</li>
@@ -226,10 +228,17 @@ fdbe7cb05782   1f3d763bc501   &quot;/bin/bash&quot;   15 minutes ago   Up 15 min
 <ol start="3">
 <li>execute the following in the container</li>
 </ol>
-<pre><code> sudo ip link set multicast on lo
- source /autoware/install/setup.bash
- /aichallenge/AWSIM/AWSIM.x86_64
+<pre><code> cd /aichallenge
+ bash run_awsim.sh 
 </code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>The messages for the topics that are being published and subscribed to from AWSIM are partially defined in <code>/aichallenge/aichallenge_ws/src/sim-msgs</code>. To handle these messages, please execute the following commands:</p>
+<pre><code>cd /aichallenge
+bash build_autoware.sh
+source /aichallenge/aichallenge_ws/install/setup.bash 
+</code></pre>
+</div>
 <h3 id="awsimwindows">AWSIM(Windows)</h3>
 <ol>
 <li>Download latest <code>AWSIM_AIChallenge_Windows_v*.*.zip</code> from <a href="https://drive.google.com/drive/folders/1p-_rZLDVncssgYTwjBmLKMyGQxOKHV5Q?usp=sharing">GoogleDrive</a> and unzip it.</li>
