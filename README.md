@@ -2,17 +2,18 @@
 
 [![.github/workflows/document.yml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/actions/workflows/document.yml/badge.svg?branch=feature%2Fen)](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/actions/workflows/document.yml)
 
-![aichallenge2023](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/assets/113989589/9b56b775-0628-4e26-af86-331a5c13a6bb)　　
-　　
-  
-&emsp; 本リポジトリでは、2023年度の7月から10月にかけて実施される自動運転AIチャレンジ2023インテグレーション大会予選でご利用いただくドキュメント・ファイルを提供しています。　　　　
+&emsp; 本リポジトリでは、2023年度の11月から1月にかけて実施される自動運転AIチャレンジRacing大会(仮称)でご利用いただくドキュメント・ファイルを提供しています。
 
-&emsp; 参加者の皆様には、Autoware.Universe をベースとした、自動運転ソフトウェアを開発していただきます。開発したソフトウェアをインテグレーションした自動運転車で、テーマに基づいた3つの課題をクリアし、 短い時間でコースを完走することが目標です。  
-&emsp;本大会は予選と本戦に分かれています。予選ではデジタルツインの自動運転シミュレーター AWSIM上で自動運転車を走行させ、本選では実際の車両で取得したデータをもとに、車両のチューニング、開発を行った後、リアルな環境に用意された予選と同様のコースに挑みます。
+&emsp; 参加者の皆様には、Autoware.Universe をベースとした自動運転ソフトウェアを開発し、End to Endシミュレーション空間を走行するレーシングカーにインテグレートしていただきます。開発した自動運転ソフトウェアで、安全に走行しながらレースに勝利することが目標です。
 
-![schedule_2023](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/assets/113989589/58e75a25-b823-4b20-9282-885a21527af8)
+&emsp; This repository provides document files for use in the Automated AI Challenge Racing Competition (tentative name), which will be held from November 2023 to January 2024.
 
-## ドキュメント
-&emsp; 下記ページに本大会における予選大会の詳細や環境構築方法などがまとめられています。ご参照の上、大会へご参加ください。
+&emsp; Participants will develop autonomous driving software based on Autoware.Universe and integrate it into a racing car driving in the End to End simulation pace. The goal is to win the race while driving safely with the developed autonomous driving software.
+
+## ドキュメントページ/Documentation
+&emsp; 今後下記ページにて、本大会に関する情報(ルールの詳細や環境構築方法)を提供する予定です。ご確認の上、奮って大会へご参加ください。
+
+&emsp; Toward the competition, we will update the following pages to provide information such as rules and how to set up your dev environment. Please follow them. We are looking forward your participation!
+
 - [日本語ページ](https://automotiveaichallenge.github.io/aichallenge2023-racing/index.html)
 - [English Page](https://automotiveaichallenge.github.io/aichallenge2023-racing/en/index.html)

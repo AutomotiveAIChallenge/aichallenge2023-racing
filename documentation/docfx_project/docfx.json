@@ -58,14 +58,6 @@
       },
       {
         "files": [
-          "finals/toc.yml",
-          "finals/index.md",
-          "finals/rules.md",
-          "finals/operation.md"
-        ]
-      },
-      {
-        "files": [
           "teams/toc.yml",
           "teams/index.md"
         ]
