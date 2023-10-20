@@ -98,6 +98,8 @@ Please install the following.
     ```
     sudo apt install -y git-lfs
     git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
+    cd aichallenge2023-racing
+    git submodule update --init --recursive
     ```
     3. build docker image for competition
     ```
@@ -130,10 +132,17 @@ If you want to start AWSIM from a Docker container, please follow the steps belo
    ```
   3. execute the following in the container
    ```
-    sudo ip link set multicast on lo
-    source /autoware/install/setup.bash
-    /aichallenge/AWSIM/AWSIM.x86_64
+    cd /aichallenge
+    bash run_awsim.sh 
    ```
+
+> [!NOTE]
+> The messages for the topics that are being published and subscribed to from AWSIM are partially defined in `/aichallenge/aichallenge_ws/src/sim-msgs`. To handle these messages, please execute the following commands:
+> ```
+> cd /aichallenge
+> bash build_autoware.sh
+> source /aichallenge/aichallenge_ws/install/setup.bash 
+> ```
 
 ### AWSIM(Windows)
   1. Download latest `AWSIM_AIChallenge_Windows_v*.*.zip` from [GoogleDrive](https://drive.google.com/drive/folders/1p-_rZLDVncssgYTwjBmLKMyGQxOKHV5Q?usp=sharing) and unzip it.   

@@ -1,0 +1,3 @@
+[submodule "docker/aichallenge/aichallenge_ws/src/sim-msgs"]
+	path = docker/aichallenge/aichallenge_ws/src/sim-msgs
+	url = https://github.com/autonomalabs/sim-msgs.git
