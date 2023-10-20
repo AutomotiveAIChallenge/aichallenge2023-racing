@@ -29,11 +29,7 @@
       <meta name="loc:copy" content="Copy">
   </head>
 
-  <script type="module">
-    import options from './../public/main.js'
-    import { init } from './../public/docfx.min.js'
-    init(options)
-  </script>
+  <script type="module" src="./../public/docfx.min.js"></script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -185,7 +181,7 @@ Please install the following.</p>
 <ol>
 <li>get a Docker image</li>
 </ol>
-<pre><code>docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-cuda:v1
+<pre><code>docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda:latest
 </code></pre>
 <p>If the above method takes a long time or times out, you can use the following method.<br>
 We have placed a tarball of the image at <a href="https://drive.google.com/file/d/1mOEpiN36UPe70NqiibloDcd_ewgMr_5P/view?usp=sharing">here</a>. Please use the following command</p>
@@ -200,7 +196,7 @@ git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
 <ol start="3">
 <li>build docker image for competition</li>
 </ol>
-<pre><code>cd ./aichallenge2023-racing/docker
+<pre><code>cd ./aichallenge2023-racing/docker/train
 bash build_docker.sh
 </code></pre>
 <ol start="4">
@@ -220,7 +216,7 @@ Please confirm the existence of the following docker image using other terminal 
 <pre><code>aichallenge-train        latest                            f5f05f758f55   2 weeks ago      14.9GB
 </code></pre>
 <p>Once confirmed, launch rocker with the following command.</p>
-<pre><code> cd ./aichallenge2023-racing/docker
+<pre><code> cd ./aichallenge2023-racing/docker/train
  bash run_container.sh
 </code></pre>
 <p>Open a new terminal and confirm the existence of the docker container by using the <code>docker container ls</code> command. below is an example.</p>
@@ -283,6 +279,7 @@ ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=golfcart sen
 </ol>
 </li>
 </ul>
+
 </article>
 
         <div class="contribution d-print-none">
@@ -290,7 +287,7 @@ ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=golfcart sen
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
-        
+
       </div>
 
       <div class="affix">
