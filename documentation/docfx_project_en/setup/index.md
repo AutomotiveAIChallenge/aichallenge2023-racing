@@ -130,10 +130,17 @@ If you want to start AWSIM from a Docker container, please follow the steps belo
    ```
   3. execute the following in the container
    ```
-    sudo ip link set multicast on lo
-    source /autoware/install/setup.bash
-    /aichallenge/AWSIM/AWSIM.x86_64
+    cd /aichallenge
+    bash run_awsim.sh 
    ```
+
+> [!NOTE]
+> The messages for the topics that are being published and subscribed to from AWSIM are partially defined in `/aichallenge/aichallenge_ws/src/sim-msgs`. To handle these messages, please execute the following commands:
+> ```
+> cd /aichallenge
+> bash build_autoware.sh
+> source /aichallenge/aichallenge_ws/install/setup.bash 
+> ```
 
 ### AWSIM(Windows)
   1. Download latest `AWSIM_AIChallenge_Windows_v*.*.zip` from [GoogleDrive](https://drive.google.com/drive/folders/1p-_rZLDVncssgYTwjBmLKMyGQxOKHV5Q?usp=sharing) and unzip it.   
