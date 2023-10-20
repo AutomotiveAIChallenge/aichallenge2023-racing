@@ -7,7 +7,7 @@ We recommend the following PC operating environment for this tournament.
 
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (8 cores) or higher
-* GPU: NVIDIA Geforce RTX 3080 (VRAM 12 GB) or higher
+* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
 * Memory: 32 GB or more
 * Storage: SSD 30 GB or higher
 
@@ -26,7 +26,7 @@ If you are unable to prepare a PC that meets the above specifications, please re
 #### AWSIM PC
 * OS: Ubuntu 22.04 or Windows 10/11
 * CPU: Intel Corei7 (6 cores and 12 threads) or higher
-* GPU: NVIDIA Geforce RTX 2080 Ti or higher
+* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
 * For more information [click here](https://tier4.github.io/AWSIM/)
 
 
