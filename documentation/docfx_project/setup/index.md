@@ -30,7 +30,7 @@
 #### AWSIM PC
 * OS: Ubuntu 22.04 or Windows 10/11
 * CPU: Intel Corei7 (6 cores and 12 threads) or higher
-* GPU: NVIDIA Geforce RTX 2080 Ti or higher
+* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
 * 詳細は[こちら](https://tier4.github.io/AWSIM/)
 
 ※Autoware動作PCとAWSIM動作PCは、同じネットワーク内に配置してください。
