@@ -13,7 +13,7 @@
 
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (8 cores) or higher
-* GPU: NVIDIA Geforce RTX 3080 (VRAM 12 GB) or higher
+* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
 * Memory: 32 GB or more
 * Storage: SSD 30 GB or higher
 
