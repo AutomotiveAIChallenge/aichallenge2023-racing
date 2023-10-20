@@ -29,14 +29,14 @@
 1. Docker Image Build
 ```
 #aichallenge2023-racingディレクトリで
-cd docker
+cd docker/train
 bash build_docker.sh
 ```
 
 2. Docker Container Run
 ```
 #aichallenge2023-racingディレクトリで
-cd docker
+cd docker/train
 bash run_container.sh
 ```
 

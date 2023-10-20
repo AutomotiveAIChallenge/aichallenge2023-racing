@@ -87,7 +87,7 @@ Please install the following.
 * Prepare and launch Docker image - Prepare Autoware
    1. get a Docker image
     ```
-   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-cuda:v1
+   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda:latest
     ```
     If the above method takes a long time or times out, you can use the following method.  
 　We have placed a tarball of the image at [here](https://drive.google.com/file/d/1mOEpiN36UPe70NqiibloDcd_ewgMr_5P/view?usp=sharing). Please use the following command
@@ -101,7 +101,7 @@ Please install the following.
     ```
     3. build docker image for competition
     ```
-    cd ./aichallenge2023-racing/docker
+    cd ./aichallenge2023-racing/docker/train
     bash build_docker.sh
     ```
     4. start rocker
@@ -120,7 +120,7 @@ If you want to start AWSIM from a Docker container, please follow the steps belo
    ```
    Once confirmed, launch rocker with the following command.
    ```
-    cd ./aichallenge2023-racing/docker
+    cd ./aichallenge2023-racing/docker/train
     bash run_container.sh
    ```
    Open a new terminal and confirm the existence of the docker container by using the `docker container ls` command. below is an example.
