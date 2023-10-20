@@ -88,7 +88,7 @@
 * Dockerイメージの準備・起動 〜 Autowareの準備
    1. Dockerイメージを入手
     ```
-   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-cuda:v1
+   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda:latest
     ```
     ※上記の方法では長時間かかってしまう方・タイムアウトしてしまう方↓  
 　[こちら](https://drive.google.com/file/d/1mOEpiN36UPe70NqiibloDcd_ewgMr_5P/view?usp=sharing)に、イメージをtarにまとめたものを置きましたので、下記コマンドよりご利用ください
@@ -102,7 +102,7 @@
     ```
     3. 大会用dockerイメージのビルド
     ```
-    cd ./aichallenge2023-racing/docker
+    cd ./aichallenge2023-racing/docker/train
     bash build_docker.sh
     ```
     4. 大会用dockerコンテナの起動
@@ -120,7 +120,7 @@ DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの
    ```
    確認ができたら以下のコマンドでrockerを起動してください。
    ```
-    cd ./aichallenge2023-racing/docker
+    cd ./aichallenge2023-racing/docker/train
     bash run_container.sh
    ```
    新たに開いたterminalで`docker container ls` で以下のようにdocker が存在していることを確認してください。
