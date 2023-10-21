@@ -1,34 +1,8 @@
-## 自動運転AIチャレンジ2023 インテグレーション大会
+## 自動運転AIチャレンジ2023 (シミュレーション)
 
-<br>
+![AIchallenge2023-Simulation](./images/top/aichallenge-racing-top.jpeg)
 
-<!-- > [!REGISTER]
-> こちらから参加登録!
-> [https://www.jsae.or.jp/jaaic/en/index.php](https://www.jsae.or.jp/jaaic/en/index.php)
-
-<br> -->
-
-![AIchallenge2023](./images/top/aichallenge2023.png) 
-
-<br>
-
-本ページは、2023年度の7月から10月にかけて実施される自動運転AIチャレンジ2023インテグレーション大会に関するページになります。
-
-<br>
-
-> [!Video https://www.youtube.com/embed/jfCjuWChvpo]
-
-<br>
-  
-&emsp; 参加者の皆様には、Autoware.Universe をベースとした、自動運転ソフトウェアを開発していただきます。開発したソフトウェアをインテグレーションした自動運転車で、テーマに基づいた3つの課題をクリアし、 短い時間でコースを完走することが目標です。 
-
-&emsp; 本大会は予選と本戦に分かれています。予選ではデジタルツインの自動運転シミュレーター AWSIM上で自動運転車を走行させ、本選では実際の車両で取得したデータをもとに、車両のチューニング、開発を行った後、リアルな環境に用意された予選と同様のコースに挑みます。  
-
-<br>
-
-<img src="./images/top/schedule_2023.png"  >
-
-<br><br>
+モータスポーツをテーマにした自動運転ソフトウェア開発コンペティション、自動運転AIチャレンジ2023 (シミュレーション) を開催いたします。参加者の皆様には、[Autoware.Universe](https://github.com/autowarefoundation/autoware.universe)をベースとした自動運転ソフトウェアを開発し、End to Endシミュレーション空間(AWSIM)を走行するレーシングカーにインテグレートしていただきます。開発した自動運転ソフトウェアで、安全に走行しながらレースに勝利することが目標です。
 
 ## 大会コンセプト
 
@@ -36,58 +10,53 @@ CASEと呼ばれる新たな技術領域が自動車業界の競争の中心と�
 今後の自動車業界を牽引する技術者の発掘育成の為の新たな取り組みとして、自動運転におけるAI技術 を競う国際的な競技を開催します。
 産官学が協力して行うこの競技を起点に、自動車産業のさらなる発展に寄与する枠組みの構築を目指します。
 
-<br>
+## 自動運転AIチャレンジ2023 (シミュレーション) 概要
 
-## チャレンジテーマ
+![Start](./images/top/aichallenge-racing-start.jpeg)
 
-工場内自動搬送で用いられる自動運転システムには、車両価格の低さと高いタスク処理能力の両立を求めら れます。それゆえに、限られたコンピューティングリソースとシンプルなセンサ構成の制約下で、安全性、 可用性、走破性をバランス良く達成することが課題です。  
+End to End(E2E)シミュレーション環境におけるレースをテーマに、安全かつ高速に走行するための自動運転技術の開発への貢献を目標としています。
 
-<br>
-<img src="./images/top/challenge_thema.png"  width="70%">
+レースでの自動運転には、横滑り、空気抵抗、車両の応答特性を考慮した制御技術、他車両の追跡や行動予測など、多様な技術要素が関わっています。本大会は参加者に、これらの要素を取り入れた、戦略的な走行計画と高度な車両制御機能を備えた自動運転ソフトウェア開発に取り組み、知見を共有する機会を提供します。このChallengeを通じて新しい技術を身に着けた技術者たちが、自動車業界の技術革新に寄与することを期待しています。
 
-<br><br>
-  
-### 安全性
+## 自動運転AIチャレンジ2023 (シミュレーション) - 3つのチャレンジ
+### Challenge 1: Robust Perception
 
-人とロボットが協働する環境では、設備の影から現れる作業員との出会い頭の事故を防止すること、無作為 に通路上に置かれた残置物を発見し、確実かつ安全に停止することが求められます。  
+![Challenge 1: Robust Perception](./images/top/aichallenge-racing-perception.jpeg)
 
-<br>
-<img src="./images/top/safety.png"  width="70%">
+自動運転車には高い安全性が求められます。衝突を回避するための第1歩は、センサーデータから360度取り囲む他の車を認識し、その動きを予測することです。第1のチャレンジは、高速かつロバストな認識機能の開発です。
 
-<br><br>
+### Challenge 2: Strategic Route Planning
 
-### 可用性
+![Challenge 2: Strategic Route Planning](./images/top/aichallenge-racing-planning.jpeg)
 
-石油化学プラントなどでは、地面近くに設置されたパイプから放出される蒸気が、センサーの視野を遮るこ とがあります。多様な環境下での走行には、蒸気、煙の存在する環境でも走行可能な認知システムが求められます。  
+第2のチャレンジは戦略的な経路計画です。他車より速く走行するためには、認識結果を用いて刻々と変わる周辺環境を処理し、常に最適なルートを追求する必要があります。
 
-<br>
-<img src="./images/top/availability.png"  width="70%">
+### Challenge 3: Control in High- Speed Driving
 
-<br><br>
+![Challenge 3: Control in High-Speed Driving](./images/top/aichallenge-racing-control.jpeg)
 
-### 走破性
+レースで勝利を収めるためには、最適な経路計画を実現する制御技術が必要不可欠です。第3のチャレンジは、戦略的で複雑な経路に沿った走行を可能にする、高速域に対応した制御モジュールの開発です。
 
-工場や倉庫の室内空間には、フォークリフトがぎりぎり通過できる程度の細い道や、設備機械や棚などの間 を縫う様に走る通路があります。そのため、複雑な細い道をスムーズに走行できる機能を開発する必要があります。  
+## 競技説明
 
-<br>
-<img src="./images/top/accomplish.png"  width="70%">
+参加者の皆様には、[Autoware.Universe](https://github.com/autowarefoundation/autoware.universe)をベースとした自動運転ソフトウェアを開発し、End to Endシミュレーション空間([AWSIM](https://github.com/tier4/AWSIM))を走行するレーシングカーにインテグレートしていただきます。開発した自動運転ソフトウェアで、安全に走行しながらレースに勝利することが目標です。
 
-<br><br>
+### 走行コースとライバル
 
-> [!REGISTER]
-> こちらから参加登録!
-> [https://www.jsae.or.jp/jaaic/en/index.php](https://www.jsae.or.jp/jaaic/en/index.php)
+![Start/Finish Straight](./images/top/aichallenge-racing-course.jpeg)
 
-<br>
+本大会の走行コースは全長 約5.8kmで、ロングストレートやヘアピンカーブを含む複雑な形状をしております。このサーキットをテーマとしたコースを、複数台のライバル車とともに走行します。ライバル車はあなたの自動運転車に合わせて加減速やコース変更をするため、戦略的な経路計画が求められます。
 
-## 本サイトについて
-&emsp;本サイトには、インテグレーション大会の予選大会に関するルールや環境構築、参加方法などが記されております。
-各ページをご確認のうえ、ご参加ください。  
- * [Introduction](./intro/index.html)  予選大会について
- * [Setup](./setup/index.html)  環境構築手順について
- * [Rule](./rule/index.html)  大会ルールについて
- * [LocalEnvrionment](./local/index.html)  ローカル環境について
- * [OnlineEnvrionment](./online/index.html)  オンライン環境について
- * [Customizing Autoware](./customize/index.html)  Autowareのカスタマイズについて
- * [FAQ](./FAQ/) About Frequently Asked Questions.
- * [Other](./other/index.html)  問い合わせ方法などについて
+### 評価基準について
+
+本大会では、速く、安全にゴールにたどり着くことを目標にしています。そのため、参加者の自動運転ソフトウェアによる走行は以下の3つの観点で評価されます。スコアリングとルールの詳細は、後日公開するこのドキュメンテーションで公開予定です。
+
+1. 走行距離 – コースのゴールにたどり着くこと
+2. 安全性 – 衝突や経路逸脱なく走行すること
+3. スピード – 短いタイムでゴールまで走行すること
+
+### 開発環境について
+
+- 開発環境としてUbuntu 22.04 が動作するパソコンを参加者様でご準備いただく必要があります。
+- 開発したレポジトリを提出していただき、クラウド環境で採点を行います。
+- 競技用のレポジトリや競技内容の詳細は、11月初旬の公開を予定しております。
