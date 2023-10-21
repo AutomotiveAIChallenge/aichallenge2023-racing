@@ -13,7 +13,7 @@
 
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (8 cores) or higher
-* GPU: NVIDIA Geforce RTX 3080 (VRAM 12 GB) or higher
+* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
 * Memory: 32 GB or more
 * Storage: SSD 30 GB or higher
 
@@ -30,7 +30,7 @@
 #### AWSIM PC
 * OS: Ubuntu 22.04 or Windows 10/11
 * CPU: Intel Corei7 (6 cores and 12 threads) or higher
-* GPU: NVIDIA Geforce RTX 2080 Ti or higher
+* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
 * 詳細は[こちら](https://tier4.github.io/AWSIM/)
 
 ※Autoware動作PCとAWSIM動作PCは、同じネットワーク内に配置してください。
@@ -88,7 +88,7 @@
 * Dockerイメージの準備・起動 〜 Autowareの準備
    1. Dockerイメージを入手
     ```
-   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-cuda:v1
+   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda:latest
     ```
     ※上記の方法では長時間かかってしまう方・タイムアウトしてしまう方↓  
 　[こちら](https://drive.google.com/file/d/1mOEpiN36UPe70NqiibloDcd_ewgMr_5P/view?usp=sharing)に、イメージをtarにまとめたものを置きましたので、下記コマンドよりご利用ください
@@ -99,10 +99,12 @@
     ```
     sudo apt install -y git-lfs
     git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
+    cd aichallenge2023-racing
+    git submodule update --init --recursive
     ```
     3. 大会用dockerイメージのビルド
     ```
-    cd ./aichallenge2023-racing/docker
+    cd ./aichallenge2023-racing/docker/train
     bash build_docker.sh
     ```
     4. 大会用dockerコンテナの起動
@@ -120,7 +122,7 @@ DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの
    ```
    確認ができたら以下のコマンドでrockerを起動してください。
    ```
-    cd ./aichallenge2023-racing/docker
+    cd ./aichallenge2023-racing/docker/train
     bash run_container.sh
    ```
    新たに開いたterminalで`docker container ls` で以下のようにdocker が存在していることを確認してください。
@@ -130,10 +132,17 @@ DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの
    ```
   3. コンテナ内で以下を実行
    ```
-    sudo ip link set multicast on lo
-    source /autoware/install/setup.bash
-    /aichallenge/AWSIM/AWSIM.x86_64
+    cd /aichallenge
+    bash run_awsim.sh 
    ```
+
+> [!NOTE]
+> AWSIMからpublish・subscribeされているトピックのメッセージは，一部`/aichallenge/aichallenge_ws/src/sim-msgs`で定義されています．これらのメッセージを扱うには，以下のコマンドを実行してください．
+> ```
+> cd /aichallenge
+> bash build_autoware.sh
+> source /aichallenge/aichallenge_ws/install/setup.bash 
+> ```
 
 ### AWSIM(Windows)
   1. [GoogleDrive](https://drive.google.com/drive/folders/1p-_rZLDVncssgYTwjBmLKMyGQxOKHV5Q?usp=sharing)から最新の`AWSIM_AIChallenge_Windows_v*.*.zip`をダウンロードし解凍

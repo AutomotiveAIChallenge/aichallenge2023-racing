@@ -1,4 +1,4 @@
-FROM ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-cuda:v1
+FROM ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda:latest
 
 RUN rm -rf /autoware/install/tier4_*_launch
 

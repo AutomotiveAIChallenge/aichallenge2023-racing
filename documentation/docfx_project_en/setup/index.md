@@ -7,7 +7,7 @@ We recommend the following PC operating environment for this tournament.
 
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (8 cores) or higher
-* GPU: NVIDIA Geforce RTX 3080 (VRAM 12 GB) or higher
+* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
 * Memory: 32 GB or more
 * Storage: SSD 30 GB or higher
 
@@ -26,7 +26,7 @@ If you are unable to prepare a PC that meets the above specifications, please re
 #### AWSIM PC
 * OS: Ubuntu 22.04 or Windows 10/11
 * CPU: Intel Corei7 (6 cores and 12 threads) or higher
-* GPU: NVIDIA Geforce RTX 2080 Ti or higher
+* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
 * For more information [click here](https://tier4.github.io/AWSIM/)
 
 
@@ -87,7 +87,7 @@ Please install the following.
 * Prepare and launch Docker image - Prepare Autoware
    1. get a Docker image
     ```
-   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-cuda:v1
+   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda:latest
     ```
     If the above method takes a long time or times out, you can use the following method.  
 　We have placed a tarball of the image at [here](https://drive.google.com/file/d/1mOEpiN36UPe70NqiibloDcd_ewgMr_5P/view?usp=sharing). Please use the following command
@@ -98,10 +98,12 @@ Please install the following.
     ```
     sudo apt install -y git-lfs
     git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
+    cd aichallenge2023-racing
+    git submodule update --init --recursive
     ```
     3. build docker image for competition
     ```
-    cd ./aichallenge2023-racing/docker
+    cd ./aichallenge2023-racing/docker/train
     bash build_docker.sh
     ```
     4. start rocker
@@ -120,7 +122,7 @@ If you want to start AWSIM from a Docker container, please follow the steps belo
    ```
    Once confirmed, launch rocker with the following command.
    ```
-    cd ./aichallenge2023-racing/docker
+    cd ./aichallenge2023-racing/docker/train
     bash run_container.sh
    ```
    Open a new terminal and confirm the existence of the docker container by using the `docker container ls` command. below is an example.
@@ -130,10 +132,17 @@ If you want to start AWSIM from a Docker container, please follow the steps belo
    ```
   3. execute the following in the container
    ```
-    sudo ip link set multicast on lo
-    source /autoware/install/setup.bash
-    /aichallenge/AWSIM/AWSIM.x86_64
+    cd /aichallenge
+    bash run_awsim.sh 
    ```
+
+> [!NOTE]
+> The messages for the topics that are being published and subscribed to from AWSIM are partially defined in `/aichallenge/aichallenge_ws/src/sim-msgs`. To handle these messages, please execute the following commands:
+> ```
+> cd /aichallenge
+> bash build_autoware.sh
+> source /aichallenge/aichallenge_ws/install/setup.bash 
+> ```
 
 ### AWSIM(Windows)
   1. Download latest `AWSIM_AIChallenge_Windows_v*.*.zip` from [GoogleDrive](https://drive.google.com/drive/folders/1p-_rZLDVncssgYTwjBmLKMyGQxOKHV5Q?usp=sharing) and unzip it.   
