@@ -310,78 +310,65 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/top/accomplish.png",
+      "source_relative_path": "images/top/aichallenge-racing-control.jpeg",
       "output": {
         "resource": {
-          "relative_path": "images/top/accomplish.png"
+          "relative_path": "images/top/aichallenge-racing-control.jpeg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/top/aichallenge2023.png",
+      "source_relative_path": "images/top/aichallenge-racing-course.jpeg",
       "output": {
         "resource": {
-          "relative_path": "images/top/aichallenge2023.png"
+          "relative_path": "images/top/aichallenge-racing-course.jpeg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/top/availability.png",
+      "source_relative_path": "images/top/aichallenge-racing-perception.jpeg",
       "output": {
         "resource": {
-          "relative_path": "images/top/availability.png"
+          "relative_path": "images/top/aichallenge-racing-perception.jpeg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/top/challenge_thema.png",
+      "source_relative_path": "images/top/aichallenge-racing-planning.jpeg",
       "output": {
         "resource": {
-          "relative_path": "images/top/challenge_thema.png"
+          "relative_path": "images/top/aichallenge-racing-planning.jpeg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/top/safety.png",
+      "source_relative_path": "images/top/aichallenge-racing-start.jpeg",
       "output": {
         "resource": {
-          "relative_path": "images/top/safety.png"
+          "relative_path": "images/top/aichallenge-racing-start.jpeg"
         }
       },
       "version": ""
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/top/schedule_2023.png",
+      "source_relative_path": "images/top/aichallenge-racing-top.jpeg",
       "output": {
         "resource": {
-          "relative_path": "images/top/schedule_2023.png"
+          "relative_path": "images/top/aichallenge-racing-top.jpeg"
         }
       },
       "version": ""
     },
     {
-      "type": "Resource",
-      "source_relative_path": "images/top/schedule_2023_en.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/top/schedule_2023_en.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
@@ -392,9 +379,6 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Conceptual",
       "source_relative_path": "intro/index.md",
       "output": {
