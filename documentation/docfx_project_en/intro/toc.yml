@@ -1,5 +1,5 @@
-- name: Introduction
-  href:  index.html#introduction
+- name: About Competition
+  href:  index.html#about-competition
 - name: About Autoware
   href:  index.html#about-autoware
 - name: About AWSIM
