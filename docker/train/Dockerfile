@@ -1,6 +1,9 @@
 FROM ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda:latest
 
+# To build full autoware repositories
 RUN rm -rf /autoware/install/tier4_*_launch
+RUN rm -rf /autoware/install/autoware_launch
+# -----------------------------------
 
 ENV ROS_LOCALHOST_ONLY 1
 ENV RMW_IMPLEMENTATION rmw_cyclonedds_cpp

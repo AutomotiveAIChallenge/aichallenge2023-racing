@@ -1,7 +1,12 @@
 FROM ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda:latest
 
 # Advance Preparation (Create working files and download various files from Github)
+
+# To build full autoware repositories
 RUN rm -rf /autoware/install/tier4_*_launch
+RUN rm -rf /autoware/install/autoware_launch
+# -----------------------------------
+
 RUN mkdir /ws
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 RUN sudo apt install -y git-lfs
