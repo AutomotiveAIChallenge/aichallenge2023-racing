@@ -66,10 +66,8 @@ namespace aichallenge_scoring {
   , stop_watch_ptr_(std::make_unique<StopWatch>(get_clock())) {
     using std::placeholders::_1;
 
-    task3_start_distance_ = declare_parameter<double>("task3_start_distance");
-    task3_end_distance_ = declare_parameter<double>("task3_end_distance");
-    task1_start_distance_ = declare_parameter<double>("task1_start_distance");
-    task1_end_distance_ = declare_parameter<double>("task1_end_distance");
+    start_distance_ = declare_parameter<double>("start_distance");
+    end_distance_ = declare_parameter<double>("end_distance");
 
     // Subscribers
     sub_odom_ = create_subscription<Odometry>("/localization/kinematic_state", rclcpp::QoS(1), std::bind(&AIChallengeScoringNode::onOdom, this, _1));
@@ -81,15 +79,18 @@ namespace aichallenge_scoring {
 
     // Timer
     using std::chrono_literals::operator""ms;
-    timer_ = rclcpp::create_timer(this, get_clock(), 200ms, std::bind(&AIChallengeScoringNode::onTimer, this));
+    timer_ = rclcpp::create_timer(this, get_clock(), 1000ms, std::bind(&AIChallengeScoringNode::onTimer, this));
 
-    task3_duration_ = 0.0;
-    has_finished_task1_ = false;
-    has_finished_task2_ = false;
-    has_finished_task3_ = false;
-    is_doing_task3_ = false;
+    distance_score_= 0.0;
+    duration_ = 0.0;
+    total_duration_ = 0.0;
+    num_outside_lane_= 0;
+    num_collision_ = 0;
+    has_finished_ = false;
+    is_lap_completed_ = false;
+    is_doing_ = false;
     odometry_ = nullptr;
-    stop_watch_ptr_->tic("task3_duration");
+    stop_watch_ptr_->tic("duration");
   }
 
   void AIChallengeScoringNode::onOdom(const Odometry::SharedPtr msg) {
@@ -136,23 +137,12 @@ namespace aichallenge_scoring {
     lanelet::BasicPoint2d vehicle_pos(odometry_->pose.pose.position.x, odometry_->pose.pose.position.y);
     const auto arc_coordinates = lanelet::geometry::toArcCoordinates(lanelet::utils::to2D(closest_lanelet_.centerline().basicLineString()), vehicle_pos);
 
-    auto isStopped = [](const double odom, const double stop_speed) -> bool { 
-      if (std::abs(odom) < stop_speed)
-        return true;
-      else
-        return false;
-    };
-
     // Retrieve distance_score
-    const auto distance_score = arc_coordinates.length;
-    const auto linear_twist = odometry_->twist.twist.linear.x;
-    const double stop_speed = 0.01;
-    const bool is_stopped = isStopped(linear_twist, stop_speed);
+    distance_score_ = arc_coordinates.length;
 
     // Check start of self-driving
-    if (!is_stopped && !has_started_driving_) {
+    if (!has_started_driving_) {
       RCLCPP_INFO(this->get_logger(), "Self-driving started");
-
       has_started_driving_ = true;
       stop_watch_ptr_->tic(total_duration_timer_name);
     }
@@ -162,66 +152,50 @@ namespace aichallenge_scoring {
     if (has_started_driving_) {
       total_duration = stop_watch_ptr_->toc(total_duration_timer_name, false);
     }
-    const auto timeout_time = 5.0 * 60.0;
+    const auto timeout_time = 10.0 * 60.0;
     auto is_timeout = total_duration > timeout_time;
 
-    // Check speed limit
-    const auto speed_limit = 7.0 * 1000.0 / 60.0 / 60.0;
-    if (linear_twist > speed_limit && !has_exceeded_speed_limit_) {
-      RCLCPP_INFO(this->get_logger(), "Vehicle speed exceeds the speed limit");
-
-      has_exceeded_speed_limit_ = true;
+    // Start of Racing: Start timer
+    if (distance_score_ >= start_distance_ && distance_score_ <= end_distance_ && !is_doing_) {
+      RCLCPP_INFO(this->get_logger(), "started racing");
+      duration_ = stop_watch_ptr_->toc("duration", true);
+      is_doing_ = true;
     }
 
-    // task1 completed or not 
-     if (distance_score >= task1_start_distance_ && distance_score <= task1_end_distance_) {
-        if (is_stopped) {
-          has_finished_task1_ = true;
-        }
-    }
-    
-    // Skip task2
-
-    // Start of Task 3: Start timer
-    if (distance_score >= task3_start_distance_ && distance_score <= task3_end_distance_ && !is_doing_task3_) {
-      RCLCPP_INFO(this->get_logger(), "Task3 started");
-
-      task3_duration_ = stop_watch_ptr_->toc("task3_duration", true);
-      is_doing_task3_ = true;
-    }
-
-    // End of Task 3: Stop timer
-    if (distance_score > task3_end_distance_ && is_stopped && is_doing_task3_) {
-      task3_duration_ = stop_watch_ptr_->toc("task3_duration", false);
-      is_doing_task3_ = false;
-      has_finished_task3_ = true;
+    // End Racing: Stop timer
+    if (distance_score_ > end_distance_ && is_doing_) {
+      duration_ = stop_watch_ptr_->toc("duration", false);
+      is_doing_ = false;
+      has_finished_ = true;
     }
 
     // Prepare message to publish
     aichallenge_scoring_msgs::msg::Score score_msg;
-    score_msg.distance_score = std::min(distance_score, task3_end_distance_);
-    if (is_doing_task3_) {
-      score_msg.task3_duration = stop_watch_ptr_->toc("task3_duration", false);
-    } else if (has_finished_task3_) {
-      score_msg.task3_duration = task3_duration_;
-    } else {
-      score_msg.task3_duration = 0.0;
+    score_msg.distance_score = std::min(distance_score_, end_distance_);
+    if (is_doing_) {
+      score_msg.lap_time = stop_watch_ptr_->toc("duration", false);
+    } else if (has_finished_) {
+      score_msg.lap_time = duration_;
     }
-    score_msg.is_distance_score_maxed_out = distance_score >= task3_end_distance_;
-    score_msg.is_stopped = is_stopped;
-    score_msg.is_doing_task3 = is_doing_task3_;
-    score_msg.has_finished_task1 = has_finished_task1_;
-    score_msg.has_finished_task2 = true;
-    score_msg.has_finished_task3 = has_finished_task3_;
-    score_msg.total_duration = total_duration;
+    score_msg.is_lap_completed = distance_score_ >= end_distance_;
+    score_msg.raw_lap_time = total_duration;
     score_msg.is_timeout = is_timeout;
-    score_msg.has_exceeded_speed_limit = has_exceeded_speed_limit_;
 
     // Check if vehicle is inside lane
     createVehicleFootprint(vehicle_info_);
     const auto is_outside_lane = isOutsideLaneFromVehicleFootprint(closest_lanelet_);
+    if(is_outside_lane){
+      num_outside_lane_++;
+    }
+
+    // TODO add implementation of collision
+
+    if(score_msg.num_outside_lane > 10 && score_msg.num_collision > 10){
+      score_msg.should_terminate_simulation = true;
+    } else{
+      score_msg.should_terminate_simulation = false;
+    }
     visualizeVehicleFootprint(is_outside_lane);
-    score_msg.is_outside_lane = is_outside_lane;
 
     pub_score_->publish(score_msg);
   }

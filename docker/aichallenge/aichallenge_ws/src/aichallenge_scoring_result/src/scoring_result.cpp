@@ -26,8 +26,7 @@ private:
       return;
     
     const auto has_finished =
-      msg.is_outside_lane || msg.is_timeout ||
-      msg.has_exceeded_speed_limit || msg.has_finished_task3 ||
+      msg.is_timeout || msg.is_lap_completed || msg.should_terminate_simulation ||
       has_collided_;
     if (!has_finished)
       return;
@@ -45,39 +44,20 @@ private:
   }
 
   float calculateDistanceScore(const aichallenge_scoring_msgs::msg::Score& score_msg) {
-    if (score_msg.has_exceeded_speed_limit)
-      return 0.0f;
-
-    constexpr auto speed_limit_mps = 7.0 * 1000.0 / 60.0 / 60.0; 
-
-    if (score_msg.distance_score / score_msg.total_duration > speed_limit_mps)
-      return 0.0f;
-
-    auto penalty_ratio = 1.0f;
-
-    if (!score_msg.has_finished_task1)
-      penalty_ratio -= 0.05f;
-
-    // Add penalty if the vehicle goes out of lane or collides after it runs course totally.
-    if (score_msg.is_distance_score_maxed_out && (score_msg.is_outside_lane || has_collided_))
-      penalty_ratio -= 0.05f;
-
-    return score_msg.distance_score * penalty_ratio;
+    return score_msg.distance_score;
   }
 
   void writeResultJson(const aichallenge_scoring_msgs::msg::Score& score_msg) {
     std::ofstream ofs("/aichallenge/result.json");
+    const double lap_time = score_msg.lap_time + static_cast<double>(score_msg.num_outside_lane) * 10.0 + static_cast<double>(score_msg.num_collision) * 10.0;
     ofs << "{" << std::endl;
-    ofs << "  \"rawDistanceScore\": " << score_msg.distance_score << "," << std::endl;
+    ofs << "  \"rawLapTime\": " << score_msg.raw_lap_time << "," << std::endl;
     ofs << "  \"distanceScore\": " << calculateDistanceScore(score_msg) << "," << std::endl;
-    ofs << "  \"task3Duration\": " << score_msg.task3_duration << "," << std::endl;
-    ofs << std::boolalpha << "  \"isOutsideLane\": " << score_msg.is_outside_lane << "," << std::endl;
+    ofs << "  \"Duration\": " << lap_time << "," << std::endl;
+    ofs << std::boolalpha << "  \"isLapCompleted\": " << score_msg.is_lap_completed << "," << std::endl;
     ofs << std::boolalpha << "  \"isTimeout\": " << score_msg.is_timeout << "," << std::endl;
-    ofs << std::boolalpha << "  \"hasCollided\": " << has_collided_ << "," << std::endl;
-    ofs << std::boolalpha << "  \"hasExceededSpeedLimit\": " << score_msg.has_exceeded_speed_limit << "," << std::endl;
-    ofs << std::boolalpha << "  \"hasFinishedTask1\": " << score_msg.has_finished_task1 << "," << std::endl;
-    ofs << std::boolalpha << "  \"hasFinishedTask2\": " << score_msg.has_finished_task2 << "," << std::endl;
-    ofs << std::boolalpha << "  \"hasFinishedTask3\": " << score_msg.has_finished_task3 << std::endl;
+    ofs << std::boolalpha << "  \"numOutsideLane\": " << score_msg.num_outside_lane << "," << std::endl;
+    ofs << std::boolalpha << "  \"numCollision\": " << score_msg.num_collision << "," << std::endl;
     ofs << "}" << std::endl;
     ofs.close();
   }

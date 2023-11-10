@@ -8,4 +8,4 @@ ament_auto_add_executable(self_driving_controller
   src/self_driving_controller.cpp
 )
 
-ament_auto_package(INSTALL_TO_SHARE launch)
+ament_auto_package(INSTALL_TO_SHARE launch config)

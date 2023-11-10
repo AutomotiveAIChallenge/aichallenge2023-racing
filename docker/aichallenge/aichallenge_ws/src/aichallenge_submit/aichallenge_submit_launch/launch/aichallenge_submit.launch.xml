@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
     <!-- Autoware -->
-    <include file="$(find-pkg-share autoware_launch)/launch/e2e_simulator.launch.xml">
-        <arg name="vehicle_model" value="golfcart"/>
-        <arg name="sensor_model" value="awsim_sensor_kit"/>
-        <arg name="map_path" value="/aichallenge/mapfile"/>
-        <arg name="rviz" value="false"/>
-    </include>
-
-    <!-- Uncomment the following lines to try Autoware-Mini -->
-    <!-- <include file="$(find-pkg-share aichallenge_submit_launch)/launch/autoware_mini_awsim.launch.xml" >
-      <arg name="vehicle_model" value="golfcart"/>
+    <include file="$(find-pkg-share dallara_launch)/launch/autoware_micro_awsim.launch.xml" >
+      <!--arg name="vehicle_model" value="golfcart"/>
       <arg name="sensor_model" value="awsim_sensor_kit"/>
-      <arg name="map_path" value="/aichallenge/mapfile"/>
-      <arg name="rviz" value="false"/>
-    </include> -->
-
-    <include file="$(find-pkg-share initialpose_publisher)/launch/initialpose_publisher.launch.xml" />
+      <arg name="map_path" value="/aichallenge/mapfile"/-->
+      <arg name="rviz" value="true"/>
+    </include>
 
     <include file="$(find-pkg-share self_driving_controller)/launch/self_driving_controller.launch.xml" />
 </launch>

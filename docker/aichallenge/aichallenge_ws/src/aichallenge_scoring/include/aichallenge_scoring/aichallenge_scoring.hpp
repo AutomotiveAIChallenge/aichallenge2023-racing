@@ -55,18 +55,18 @@ namespace aichallenge_scoring {
 
       vehicle_info_util::VehicleInfo vehicle_info_{};
 
-      double task1_start_distance_;
-      double task1_end_distance_;
-      double task3_start_distance_;
-      double task3_end_distance_;
-      double task3_duration_;
+      bool is_lap_completed_;
+      double distance_score_;
+      double start_distance_;
+      double end_distance_;
+      double duration_;
       double total_duration_;
       bool has_started_driving_;
       bool has_exceeded_speed_limit_;
-      bool is_doing_task3_;
-      bool has_finished_task1_;
-      bool has_finished_task2_;
-      bool has_finished_task3_;
+      bool is_doing_;
+      bool has_finished_;
+      int num_outside_lane_;
+      int num_collision_;
 
       rclcpp::TimerBase::SharedPtr timer_;
       Odometry::ConstSharedPtr odometry_;
