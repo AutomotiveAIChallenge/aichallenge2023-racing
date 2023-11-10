@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
+  <arg name="initialgoal_publisher_param" default="$(find-pkg-share self_driving_controller)/config/initialgoal_publisher.param.yaml"/>
   <node pkg="self_driving_controller" exec="self_driving_controller" name="self_driving_controller">
+    <param from="$(var initialgoal_publisher_param)"/>
     <remap from="input/state" to="/autoware/state" />
-    <remap from="output/engage" to="/autoware/engage" />
     <remap from="output/goal" to="/planning/mission_planning/goal" />
   </node>
 </launch>

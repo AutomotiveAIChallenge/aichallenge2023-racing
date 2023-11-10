@@ -7,6 +7,7 @@
 #include "autoware_auto_vehicle_msgs/msg/engage.hpp"
 
 #include <std_msgs/msg/string.hpp>
+#include <geometry_msgs/msg/pose.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <geometry_msgs/msg/pose_with_covariance_stamped.hpp>
 
@@ -19,13 +20,14 @@ public:
 
 private:
   using AutowareState = autoware_auto_system_msgs::msg::AutowareState;
-  using Engage = autoware_auto_vehicle_msgs::msg::Engage;
   using PoseStamped = geometry_msgs::msg::PoseStamped;
+  using Pose = geometry_msgs::msg::Pose;
 
   void stateCallback(const AutowareState& msg);
 
+  PoseStamped createGoalPoseMessage();
+
   // Publishers
-  rclcpp::Publisher<Engage>::SharedPtr engage_publisher;
   rclcpp::Publisher<PoseStamped>::SharedPtr goal_pos_publisher;
 
   // Subscribers
@@ -33,6 +35,7 @@ private:
 
   // Internal states
   int step_counter_;
+  Pose goal_pose_;
 };
 
 #endif // SELF_DRIVING_CONTROLLER__SELF_DRIVING_CONTROLLER_HPP_
