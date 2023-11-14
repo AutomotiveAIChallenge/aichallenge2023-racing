@@ -1,4 +1,4 @@
 /**:
   ros__parameters:
-    start_distance: 28.8  # Distance of the start line for Task 3
-    end_distance: 5000.0    # Distance of the end line for Task 3
+    start_distance: 70.8  # Distance of the start line for Task 3
+    end_distance: 5520.0    # Distance of the end line for Task 3
