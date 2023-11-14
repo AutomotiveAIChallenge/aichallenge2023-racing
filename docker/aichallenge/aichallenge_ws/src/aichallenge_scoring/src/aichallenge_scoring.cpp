@@ -252,12 +252,11 @@ namespace aichallenge_scoring {
       }
       local_vehicle_footprint.push_back(tier4_autoware_utils::Point2d{points[0].x, points[0].y});
       // Check if footprint intersects npc
-      if (!boost::geometry::within(vehicle_footprint_, local_vehicle_footprint)) {
-        // Vehicle is not completely within the lane
+      if (!boost::geometry::disjoint(vehicle_footprint_, local_vehicle_footprint)) {
+        // has collision
         return true;
       }
     }
-    // Vehicle is completely within the lane
     return false;
   }
 
