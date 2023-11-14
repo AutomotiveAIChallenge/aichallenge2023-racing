@@ -71,6 +71,7 @@ namespace aichallenge_scoring {
 
     // Subscribers
     sub_odom_ = create_subscription<Odometry>("/localization/kinematic_state", rclcpp::QoS(1), std::bind(&AIChallengeScoringNode::onOdom, this, _1));
+    sub_objects_ = create_subscription<PredictedObjects>("/perception/obejcts_recognition/objects", rclcpp::QoS(1), std::bind(&AIChallengeScoringNode::onObjects, this, _1));
     sub_map_ = create_subscription<HADMapBin>("/map/vector_map", rclcpp::QoS{1}.transient_local(), std::bind(&AIChallengeScoringNode::onMap, this, _1));
 
     // Publishers
@@ -97,6 +98,10 @@ namespace aichallenge_scoring {
     odometry_ = msg;
   }
 
+  void AIChallengeScoringNode::onObjects(const PredictedObjects::SharedPtr msg) {
+    objcts_ = msg;
+  }
+
   void AIChallengeScoringNode::onMap(const HADMapBin::ConstSharedPtr msg) {
     RCLCPP_INFO(this->get_logger(), "[AIChallengeScoringNode]: Start loading lanelet");
     lanelet_map_ptr_ = std::make_shared<lanelet::LaneletMap>();
@@ -115,6 +120,10 @@ namespace aichallenge_scoring {
       return false;
     }
 
+    if(!objcts_){
+      RCLCPP_WARN(get_logger(), "Objects not received yet");
+      return false;
+    }
     return true;
   }
 
@@ -187,7 +196,10 @@ namespace aichallenge_scoring {
     if(is_outside_lane){
       num_outside_lane_++;
     }
-
+    const bool is_collision = isColliedWithNPC();
+    if(is_collision){
+      num_collision_++;
+    }
     // TODO add implementation of collision
 
     if(score_msg.num_outside_lane > 10 && score_msg.num_collision > 10){
@@ -196,7 +208,6 @@ namespace aichallenge_scoring {
       score_msg.should_terminate_simulation = false;
     }
     visualizeVehicleFootprint(is_outside_lane);
-
     pub_score_->publish(score_msg);
   }
 
@@ -225,6 +236,25 @@ namespace aichallenge_scoring {
       return true;
     }
 
+    // Vehicle is completely within the lane
+    return false;
+  }
+
+  bool AIChallengeScoringNode::isColliedWithNPC(){
+    for (const auto &obj : objcts_->objects)
+    {
+      tier4_autoware_utils::LinearRing2d local_vehicle_footprint;
+      const auto & points = obj.shape.footprint.points;
+      for (const auto & point : points) {
+        local_vehicle_footprint.push_back(tier4_autoware_utils::Point2d{point.x, point.y});
+      }
+      local_vehicle_footprint.push_back(tier4_autoware_utils::Point2d{points[0].x, points[0].y});
+      // Check if footprint intersects npc
+      if (!boost::geometry::within(vehicle_footprint_, local_vehicle_footprint)) {
+        // Vehicle is not completely within the lane
+        return true;
+      }
+    }
     // Vehicle is completely within the lane
     return false;
   }
