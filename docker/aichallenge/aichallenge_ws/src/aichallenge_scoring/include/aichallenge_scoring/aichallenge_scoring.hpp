@@ -19,7 +19,7 @@
 #include <lanelet2_extension/utility/query.hpp>
 #include <lanelet2_extension/utility/message_conversion.hpp>
 #include <autoware_auto_mapping_msgs/msg/had_map_bin.hpp>
-#include <autoware_auto_perception_msgs/msg/predicted_objects.hpp>
+#include <autoware_auto_perception_msgs/msg/detected_objects.hpp>
 #include <nav_msgs/msg/odometry.hpp>
 #include <tier4_autoware_utils/system/stop_watch.hpp>
 #include <vehicle_info_util/vehicle_info_util.hpp>
@@ -30,7 +30,7 @@ namespace aichallenge_scoring {
 
   using nav_msgs::msg::Odometry;
   using HADMapBin = autoware_auto_mapping_msgs::msg::HADMapBin;
-  using autoware_auto_perception_msgs::msg::PredictedObjects;
+  using autoware_auto_perception_msgs::msg::DetectedObjects;
 
   class AIChallengeScoringNode : public rclcpp::Node {
     public:
@@ -39,7 +39,7 @@ namespace aichallenge_scoring {
       bool isDataReady();
       void onTimer();
       void onOdom(const Odometry::SharedPtr msg);
-      void onObjects(const PredictedObjects::SharedPtr msg);
+      void onObjects(const DetectedObjects::SharedPtr msg);
       void onMap(const HADMapBin::ConstSharedPtr msg);
       void createVehicleFootprint(const vehicle_info_util::VehicleInfo & vehicle_info);
       bool isOutsideLaneFromVehicleFootprint(const lanelet::ConstLanelet & lanelet);
@@ -53,7 +53,7 @@ namespace aichallenge_scoring {
       // Subscribers
       rclcpp::Subscription<Odometry>::SharedPtr sub_odom_;
       rclcpp::Subscription<HADMapBin>::SharedPtr sub_map_;
-      rclcpp::Subscription<PredictedObjects>::SharedPtr sub_objects_;
+      rclcpp::Subscription<DetectedObjects>::SharedPtr sub_objects_;
 
       // Publishers
       rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr pub_footprint_marker_;
@@ -76,7 +76,7 @@ namespace aichallenge_scoring {
 
       rclcpp::TimerBase::SharedPtr timer_;
       Odometry::ConstSharedPtr odometry_;
-      PredictedObjects::ConstSharedPtr objcts_;
+      DetectedObjects::ConstSharedPtr objcts_;
       lanelet::ConstLanelet closest_lanelet_;
       lanelet::LaneletMapPtr lanelet_map_ptr_;
       std::unique_ptr<StopWatch> stop_watch_ptr_;

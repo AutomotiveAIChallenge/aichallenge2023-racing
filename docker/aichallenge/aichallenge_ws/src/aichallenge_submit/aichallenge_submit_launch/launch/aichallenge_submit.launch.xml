@@ -8,5 +8,5 @@
       <arg name="rviz" value="true"/>
     </include>
 
-    <include file="$(find-pkg-share self_driving_controller)/launch/self_driving_controller.launch.xml" />
+    <!--include file="$(find-pkg-share self_driving_controller)/launch/self_driving_controller.launch.xml" /-->
 </launch>

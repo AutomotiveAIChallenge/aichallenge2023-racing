@@ -71,7 +71,7 @@ namespace aichallenge_scoring {
 
     // Subscribers
     sub_odom_ = create_subscription<Odometry>("/localization/kinematic_state", rclcpp::QoS(1), std::bind(&AIChallengeScoringNode::onOdom, this, _1));
-    sub_objects_ = create_subscription<PredictedObjects>("/perception/obejcts_recognition/objects", rclcpp::QoS(1), std::bind(&AIChallengeScoringNode::onObjects, this, _1));
+    sub_objects_ = create_subscription<DetectedObjects>("/perception/object_recognition/detection/objects", rclcpp::QoS(1), std::bind(&AIChallengeScoringNode::onObjects, this, _1));    sub_odom_ = create_subscription<Odometry>("/localization/kinematic_state", rclcpp::QoS(1), std::bind(&AIChallengeScoringNode::onOdom, this, _1));
     sub_map_ = create_subscription<HADMapBin>("/map/vector_map", rclcpp::QoS{1}.transient_local(), std::bind(&AIChallengeScoringNode::onMap, this, _1));
 
     // Publishers
@@ -98,7 +98,7 @@ namespace aichallenge_scoring {
     odometry_ = msg;
   }
 
-  void AIChallengeScoringNode::onObjects(const PredictedObjects::SharedPtr msg) {
+  void AIChallengeScoringNode::onObjects(const DetectedObjects::SharedPtr msg) {
     objcts_ = msg;
   }
 
@@ -195,14 +195,16 @@ namespace aichallenge_scoring {
     const auto is_outside_lane = isOutsideLaneFromVehicleFootprint(closest_lanelet_);
     if(is_outside_lane){
       num_outside_lane_++;
+      score_msg.num_outside_lane = num_outside_lane_;
     }
     const bool is_collision = isColliedWithNPC();
     if(is_collision){
       num_collision_++;
+      score_msg.num_collision = num_collision_;
     }
     // TODO add implementation of collision
 
-    if(score_msg.num_outside_lane > 10 && score_msg.num_collision > 10){
+    if(score_msg.num_outside_lane > 50 || score_msg.num_collision > 10){
       score_msg.should_terminate_simulation = true;
     } else{
       score_msg.should_terminate_simulation = false;
