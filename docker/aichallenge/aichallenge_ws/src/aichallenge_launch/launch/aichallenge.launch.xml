@@ -11,11 +11,11 @@
     <include file="$(find-pkg-share aichallenge_submit_launch)/launch/aichallenge_submit.launch.xml" />
 
     <!-- Scoring -->
-    <include file="$(find-pkg-share aichallenge_scoring)/launch/aichallenge_scoring.launch.xml">
+    <!-- <include file="$(find-pkg-share aichallenge_scoring)/launch/aichallenge_scoring.launch.xml">
         <arg name="result_score_topic" value="/aichallenge/score" />
     </include>
 
-    <node pkg="aichallenge_scoring_result" exec="scoring_result" name="scoring_result" output="screen" />
+    <node pkg="aichallenge_scoring_result" exec="scoring_result" name="scoring_result" output="screen" /> -->
 
     <!-- RViz -->
     <group>

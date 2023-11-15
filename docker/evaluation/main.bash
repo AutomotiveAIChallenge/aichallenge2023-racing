@@ -8,7 +8,8 @@ export ROS_LOCALHOST_ONLY=1
 
 # Launch AWSIM
 echo "Launch AWSIM"
-/aichallenge/run_awsim.sh &
+source /aichallenge/aichallenge_ws/install/setup.bash
+/aichallenge/AWSIM/AWSIM.x86_64 &
 
 sleep 10
 
