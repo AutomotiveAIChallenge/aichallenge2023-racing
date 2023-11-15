@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t aichallenge-eval .
+docker build --no-cache -t aichallenge-eval .

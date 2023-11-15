@@ -36,5 +36,5 @@ RUN bash -c ' \
   rosdep install -y -r -i --from-paths src --ignore-src --rosdistro $ROS_DISTRO; \
   colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release'
 
-#ENTRYPOINT []
-#CMD ["bash", "/ws/main.bash"]
+ENTRYPOINT []
+CMD ["bash", "/ws/main.bash"]
