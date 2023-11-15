@@ -6,8 +6,15 @@ export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export XDG_RUNTIME_DIR=/tmp/xdg
 export ROS_LOCALHOST_ONLY=1
 
+# Launch AWSIM
+echo "Launch AWSIM"
+/aichallenge/run_awsim.sh &
+
+sleep 10
+
 cd /output
 
+echo "Launch user code"
 source /aichallenge/aichallenge_ws/install/setup.bash
 ros2 launch aichallenge_launch aichallenge.launch.xml &
 
