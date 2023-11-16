@@ -13,7 +13,7 @@
 
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (8 cores) or higher
-* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
+* GPU: NVIDIA Geforce RTX 1050 or higher
 * Memory: 32 GB or more
 * Storage: SSD 30 GB or higher
 
@@ -21,27 +21,16 @@
 #### 2台のPCを使用する方向け
 #### Autoware PC
 * OS: Ubuntu 22.04
-* CPU: Intel Corei7 (8 cores) or higher
-* GPU: NVIDIA Geforce GTX 1080 or higher
+* CPU: Intel Corei7 (4 cores) or higher
+* GPU: NVIDIA Geforce GTX 1050 or higher
 * Memory: 16 GB or higher
 * Storage: SSD 10 GB or higher
 * 詳細は[こちら](https://autowarefoundation.github.io/autoware-documentation/main/installation/)
 
-
-## Minimum Hardware Requirements (Experimental)
-本大会で使用していただくPCの動作環境としてサポートを十分に提供できない可能性がありますが、試験的に以下の構成も可能にしてく予定です。
-
-* OS: Ubuntu 22.04
-* CPU: Intel Corei7 (4 cores) or higher
-* GPU: Intel HD Graphics (CPU only and no NVIDIA GPUs)
-* Memory: 16 GB or more
-* Storage: SSD 30 GB or higher
-
 #### AWSIM PC
-* OS: Ubuntu 22.04 or Windows 10/11
-* CPU: Intel Corei7 (6 cores and 12 threads) or higher
-* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
-* 詳細は[こちら](https://tier4.github.io/AWSIM/)
+* OS: Ubuntu 22.04
+* CPU: Intel Corei7 (4 cores and 8 threads) or higher
+* GPU: NVIDIA Geforce RTX 1050 or higher
 
 ※Autoware動作PCとAWSIM動作PCは、同じネットワーク内に配置してください。
 配置できていれば、基本的には追加設定をすることなく、PC間のトピック通信は可能です。万が一、トピック通信ができなかった場合はファイアーウォールの解除、もしくはルールの見直しをお願いします。
