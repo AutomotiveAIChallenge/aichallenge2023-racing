@@ -28,28 +28,28 @@ bash build_docker.sh
 ```
 
 2. Docker Container Run
+GPU環境がある方は
 ```
 #aichallenge2023-racingディレクトリで
 cd docker/train
 bash run_container.sh
 ```
-
-3. Code Build
+CPUのみの環境の方は
+```
+#aichallenge2023-racingディレクトリで
+cd docker/train
+bash run_container_cpu.sh
+```
+1. Code Build
 ```
 # Rockerコンテナ内で
 cd /aichallenge
 bash build_autoware.sh
 ```
-4. AWSIMの起動  
+1. AWSIMとAutowareの起動  
 [Setupページ](../setup/index.html)を参考に起動。
 
-5. Sample Code Run
-```
-# Rockerコンテナ内で
-cd /aichallenge
-bash run_autoware.sh
-```
- &emsp;セットアップが正常に行われていれば、rvizには点群地図が表示され、自動運転が開始されます。
+ &emsp;セットアップが正常に行われていれば、rvizには地図が表示され、自動運転が開始されます。
  
  ### Customizing Autoware
 

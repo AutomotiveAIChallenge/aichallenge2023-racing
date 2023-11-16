@@ -13,7 +13,7 @@
 
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (8 cores) or higher
-* GPU: NVIDIA Geforce RTX 1050 or higher
+* GPU: NVIDIA Geforce RTX 1060 or higher
 * Memory: 32 GB or more
 * Storage: SSD 30 GB or higher
 
@@ -22,7 +22,7 @@
 #### Autoware PC
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (4 cores) or higher
-* GPU: NVIDIA Geforce GTX 1050 or higher
+* GPU: NVIDIA Geforce GTX 1060 or higher
 * Memory: 16 GB or higher
 * Storage: SSD 10 GB or higher
 * 詳細は[こちら](https://autowarefoundation.github.io/autoware-documentation/main/installation/)
@@ -30,14 +30,14 @@
 #### AWSIM PC
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (4 cores and 8 threads) or higher
-* GPU: NVIDIA Geforce RTX 1050 or higher
+* GPU: NVIDIA Geforce RTX 1060 or higher
 
 ※Autoware動作PCとAWSIM動作PCは、同じネットワーク内に配置してください。
 配置できていれば、基本的には追加設定をすることなく、PC間のトピック通信は可能です。万が一、トピック通信ができなかった場合はファイアーウォールの解除、もしくはルールの見直しをお願いします。
   
 
 ## Minimum Hardware Requirements (Experimental)
-本大会で使用していただくPCの動作環境としてサポートを十分に提供できない可能性がありますが、試験的に以下の構成も可能にしてく予定です。
+本大会で使用していただくPCの動作環境としてサポートを十分に提供できない可能性がありますが、試験的に以下の構成のPCのみでも参加可能にしてく予定です。
 
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (4 cores) or higher
@@ -115,11 +115,11 @@
     ```
     4. 大会用dockerコンテナの起動
     
-    GPUありの方は以下
+    GPU環境の方は以下
     ```
     bash run_container.sh
     ```
-    CPU onlyの方は以下
+    CPUのみの環境の方は以下
     ```
     bash run_container_cpu.sh
     ```

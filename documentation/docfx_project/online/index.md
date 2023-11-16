@@ -33,7 +33,7 @@
 	#aichallenge2023-racing/docker/evaluationディレクトリで
 	bash run_container.sh
 	```	
-	GPU版のAWSIMを使っている方は
+	CPU版のAWSIMを使っている方は
 	```
 	#aichallenge2023-racing/docker/evaluationディレクトリで
 	bash run_container_cpu.sh
