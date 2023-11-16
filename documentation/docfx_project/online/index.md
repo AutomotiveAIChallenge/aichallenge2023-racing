@@ -27,10 +27,18 @@
 	```	
 	3. AWSIMの起動
 	4. dockerコンテナの起動（起動後、自動でautowareが立ち上がり、自動運転が開始されます）
+
+	GPU版のAWSIMを使っている方は
 	```
 	#aichallenge2023-racing/docker/evaluationディレクトリで
 	bash run_container.sh
 	```	
+	GPU版のAWSIMを使っている方は
+	```
+	#aichallenge2023-racing/docker/evaluationディレクトリで
+	bash run_container_cpu.sh
+	```	
+
 	5. result.jsonの確認  
 		評価完了後、outputフォルダにresult.jsonが格納されます。
 2.  オンライン環境にアップロード    
@@ -43,10 +51,10 @@
 	* 採点実行中は新たなソースのアップロードはできません。
 	* アップロードできるのは1日3回までで、日本時間0時に回数はリセットされます。
    
-4.  結果を確認  
+3.  結果を確認  
 	&emsp;オンライン環境にて評価が終わると、result.jsonがダウンロード可能になります。result.jsonをダウンロードし、結果を確認してください。
 
-5.  結果なしの場合  
+4.  結果なしの場合  
 	1. packageの依存関係に問題がないか確認
 	pythonで実装している場合はpackage.xmlに依存関係の漏れがないか,setup.pyまたはCMakeLists.txtが正しく記載されているかどうか、cppで実装している場合はpackage.xml, CMakeLists.txtが正しく記載されているかどうかご確認ください.
 	2. dockerの確認
