@@ -29,6 +29,7 @@ RUN cp -r /ws/mapfile /aichallenge
 
 # Build
 RUN apt-get update
+RUN apt-get -y install libgl1-mesa-glx libgl1-mesa-dri
 RUN bash -c ' \
   source /autoware/install/setup.bash; \
   cd /aichallenge/aichallenge_ws; \

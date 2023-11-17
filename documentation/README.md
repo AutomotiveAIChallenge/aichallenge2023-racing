@@ -14,7 +14,7 @@ dotnet tool install -g docfx
 Add to ~/.bashrc
 
 ```
-export PATH="$PATH:/home/<USERNAME>/.dotnet/tools"
+export PATH="$PATH:/home/$USER/.dotnet/tools"
 ```
 
 Generate the documentation locally. This will create the HTML files under `documentation/docfx_project/_site`, and a server will start on `http://localhost:8080`.
