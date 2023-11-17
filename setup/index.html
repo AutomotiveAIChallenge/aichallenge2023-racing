@@ -325,6 +325,12 @@ bash build_autoware.sh
 </code></pre>
 </li>
 </ol>
+<h3 id="画面録画の方法">画面録画の方法</h3>
+<p>デフォルトのrockerではディスプレイドライバを自分のPCに設定できていないため以下のオプションを追加する必要があります。</p>
+<pre><code>#!/bin/bash
+rocker --device /dev/dri --x11 --user ... # CPU版
+rocker --device /dev/dri --nvidia --x11 --user ... # GPU版
+</code></pre>
 
 </article>
 
