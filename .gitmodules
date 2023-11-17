@@ -1,6 +1,0 @@
-[submodule "docker/aichallenge/aichallenge_ws/src/aichallenge_submit/sim-msgs"]
-	path = docker/aichallenge/aichallenge_ws/src/aichallenge_submit/sim-msgs
-	url = https://github.com/autonomalabs/sim-msgs.git
-[submodule "docker/aichallenge/aichallenge_ws/src/aichallenge_submit/dallara_interface"]
-	path = docker/aichallenge/aichallenge_ws/src/aichallenge_submit/dallara_interface
-	url = https://github.com/tier4/dallara_interface.git
