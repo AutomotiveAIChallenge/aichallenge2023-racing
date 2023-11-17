@@ -82,89 +82,113 @@
         <article data-uid="">
 <h1 id="rule">Rule</h1>
 
-<br>
-<!-- > [!REGISTER]
-> Register from here!
-> [https://www.jsae.or.jp/jaaic/en/index.php](https://www.jsae.or.jp/jaaic/en/index.php)
-
-
-<br> -->
-<p> Participants will drive an automated vehicle using the automated driving software they have developed, and compete in terms of <code>distance points</code> calculated from the results.<br>
-For details of the competition and course specifications, please refer to the following.</p>
-<h2 id="detail-of-rule">Detail of Rule</h2>
-<h3 id="ranking-system">Ranking System</h3>
+<p>This page explains the rules and ranking system for the competition. Please note that the contents of this page may change during the tournament period.</p>
+<h2 id="ranking-system">Ranking System</h2>
+<p>The ranking of participants is determined based on the following two metrics:</p>
+<ol>
+<li>Distance Points:
+<ol>
+<li>For participants who could not reach the goal within the time limit, their ranking is determined by the <code>distance points (0-100)</code> corresponding to the distance they could travel from the starting point within the time limit.</li>
+<li>If the participant's vehicle completed a lap within the time limit, the <code>distance points</code> are 100.</li>
+<li>In the case of disqualification, the <code>distance points</code> are 0.</li>
+<li>If the distance points are the same, the person with less time added due to penalties will rank higher.</li>
+</ol>
+</li>
+<li>Total Time:
+<ol>
+<li>For participants who reached the goal within the time limit, their ranking is determined by the <code>total time</code>, which is the sum of the time elapsed from start to finish and penalty time. The penalty time will be calculated based on violations during the race.</li>
+</ol>
+</li>
+</ol>
+<p><em><strong>Ranking Example</strong></em></p>
+<table>
+<thead>
+<tr>
+<th>Distance Points</th>
+<th>Time from Start to Goal</th>
+<th>Time Added Due to Penalties</th>
+<th>Total Time</th>
+<th>Rank</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>01:10</td>
+<td>00:00</td>
+<td>01:10</td>
+<td>1</td>
+</tr>
+<tr>
+<td>100</td>
+<td>01:30</td>
+<td>00:10</td>
+<td>01:40</td>
+<td>2</td>
+</tr>
+<tr>
+<td>100</td>
+<td>01:20</td>
+<td>00:30</td>
+<td>01:50</td>
+<td>3</td>
+</tr>
+<tr>
+<td>50</td>
+<td>N/A</td>
+<td>00:00</td>
+<td>N/A</td>
+<td>4</td>
+</tr>
+<tr>
+<td>50</td>
+<td>N/A</td>
+<td>00:10</td>
+<td>N/A</td>
+<td>5</td>
+</tr>
+<tr>
+<td>10</td>
+<td>N/A</td>
+<td>00:00</td>
+<td>N/A</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penalty">Penalty</h3>
+<p>Deviation from the course and collisions with other vehicles running alongside are considered violations. There are 3 types of penalty for violations:</p>
+<ol>
+<li>Disqualification</li>
+<li>10-second addition to the driving time</li>
+<li>5-second addition to the driving time</li>
+</ol>
+<p>The following lists each violation and the corresponding penalty.</p>
+<p><strong>Critical Violation (Disqualification)</strong></p>
 <ul>
-<li>Rankings are determined by distance points.<br>
-<code>Distance points: min(overall distance from the starting point (m), distance of the entire course) * (1.0 - assignment 1 penalty - assignment 2 penalty - assignment 3 penalty)</code>.</li>
-<li>If the distance points are the same, the Competitor with the shortest running time in the Task 3 area will be placed higher (if he/she runs to the end of the task).</li>
+<li>Deviating from the course (for more than 2 seconds)</li>
+<li>Deviating from the course (more than 5m from the course boundary)</li>
+<li>Driving in the wrong direction on the course</li>
 </ul>
-<h3 id="regulation">Regulation</h3>
+<p><strong>Sevior Violation (Penalty: 10 seconds per occurrence):</strong></p>
 <ul>
-<li>Travel speed is 0~5km/h</li>
-<li>If the speed limit is exceeded by more than 2km/h, the competitor will be disqualified = 0 points.</li>
-<li>Time limit is 5 minutes (to accommodate the case where the vehicle stops in the middle of the route).</li>
-<li>Time from when the vehicle starts is measured.</li>
-<li>Placement and route may be somewhat random</li>
-<li>Need to add a handling of collision after reaching the goal.</li>
-<li>Please do not use an algorithm that sets up a route in advance and runs in a deterministic manner, as this may be dangerous when running in the finals.</li>
-<li>The contents of the submitted code may be checked during the judging.</li>
-<li>Any code that affects the scoring process or any other intentional irregularity that is discovered will be disqualified.</li>
+<li>Colliding with another vehicle (if the difference in relative speed with the other vehicle is more than 5[m/s] <strong>OR</strong> the collision state lasts for more than 2 seconds)</li>
 </ul>
-<h2 id="vehicle">Vehicle</h2>
-<p>The vehicle to be used is the golf cart shown here.
-<img src="../../images/rule/vehicle.png" width="70%"></p>
-<h2 id="course">Course</h2>
-<p>You will be challenged with 3 tasks in this course.
-<img src="../../images/rule/course.png" width="70%"></p>
-<h3 id="task-1--obstacle-detection-stop-cardboard">Task 1 : Obstacle detection stop (cardboard)</h3>
-<p>Clear condition:<br>
- ・Obstacle detection stop (cardboard)<br>
- ・The vehicle head must stop at a position between 3m and 6m from the obstacle.<br>
-Penalty:<br>
- ・the vehicle head must be between 3m and 6m from the obstacle.<br>
- ・If the vehicle fails to stop, 5% points will be deducted from the distance points.<br>
-<img src="../../images/rule/kadai1.png" width="70%"></p>
-<h3 id="task-2-driving-in-the-presence-of-smoke">Task 2: Driving in the presence of smoke</h3>
-<p>Clear condition:<br>
-  ・Do not stop within the section of Task 2.<br>
-Penalty:<br>
- ・Do not stop within the section of Task 2.<br>
- ・If you stop, 5% points will be deducted from the distance points.<br>
-<img src="../../images/rule/kadai2.png" width="70%"></p>
-<h3 id="task-3-1-narrow-road-driving-slalom">Task 3-1: Narrow road driving (slalom)</h3>
-<p>Clear condition:<br>
- ・Do not collide with a cardboard box.<br>
- ・Do not stray from the designated route.<br>
-Penalty:<br>
- ・If the vehicle collides with a cardboard box or strays from the designated path, the driving will be terminated.<br>
-<img src="../../images/rule/kadai3.png" width="70%"></p>
-<h3 id="task-3-2-narrow-road-driving-l-shaped-crank">Task 3-2: Narrow road driving (L-shaped crank)</h3>
-<p>Clear condition:<br>
- ・Do not stray from the designated route.<br>
-Penalty:<br>
- ・If you run out of the designated path, the race will be terminated.<br>
-<img src="../../images/rule/kadai3-2.png" width="70%"></p>
-<h3 id="task-3-3-stop-after-reaching-the-goal">Task 3-3: Stop after reaching the goal</h3>
-<p>Clear condition:<br>
- ・Stop when you reach the goal at blue-framed area.<br>
-Penalty:<br>
- ・Going out of the path(Couldn't stop at the goal) after finishing the race, 5% point deduction will be given.<br>
-<img src="../../images/rule/task3-goal.png" width="70%"></p>
+<p><strong>Minor Fouls (Penalty: 5 seconds per occurrence):</strong></p>
+<ul>
+<li>Deviating from the course (for less than 2 seconds <strong>AND</strong> less than 5m from the course boundary)</li>
+<li>Colliding with another vehicle (if the difference in relative speed with the other vehicle is less than 5[m/s] <strong>AND</strong> the collision state is resolved within 2 seconds)</li>
+<li>Overtaking while off course</li>
+</ul>
+<p><strong>Note</strong></p>
+<ul>
+<li>In cases where another vehicle collides with the rear of your vehicle (e.g., being rear-ended by another vehicle), it is not considered the fault of your vehicle and no penalty will be applied.</li>
+<li>If overtaking occurs while off course, both the deviation from the course (a minor foul) and overtaking while off course (a minor foul) will apply.</li>
+</ul>
+<h2 id="submission">Submission</h2>
+<p>Participants are requested to upload the software they developed to the evaluation system via the submission page. Three simulations will be conducted for each upload, and distance points and total time will be calculated for each simulation. The best score out of the three simulation results will be reflected in the ranking.</p>
 <h3 id="how-to-check-results">How to check results</h3>
-<p>  When the run is completed, <code>result.json</code> will be output based on <code>/aichallenge/score topic</code> and <code>/aichallenge/collision topic</code>. See below to check the results.</p>
-<pre><code>{
-  &quot;rawDistanceScore&quot;: float32, // distance points without penalty
-  &quot;distanceScore&quot;: float32, // distance points reflected in the ranking
-  &quot;task3Duration&quot;: float32, // time spent on task 3
-  &quot;isOutsideLane&quot;: bool, // lane outside lane
-  &quot;isTimeout&quot;: bool, // timeout
-  &quot;hasCollided&quot;: bool, // collision
-  &quot;hasExceededSpeedLimit&quot;: bool, // speed limit exceeded
-  &quot;hasFinishedTask1&quot;: bool, // has Task 1 been completed successfully
-  &quot;hasFinishedTask2&quot;: bool, // has Task 2 been completed successfully
-  &quot;hasFinishedTask3&quot;: bool // has Task 3 been completed successfully?
-}
-</code></pre>
+<p>The details and results of the simulations are planned to be available for confirmation through a json file output by the evaluation system and videos of the simulations. Please wait for further announcements.</p>
 
 </article>
 

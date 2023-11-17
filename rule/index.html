@@ -82,84 +82,113 @@
         <article data-uid="">
 <h1 id="rule">Rule</h1>
 
-<br>
-<!-- > [!REGISTER]
-> こちらから参加登録!
-> [https://www.jsae.or.jp/jaaic/en/index.php](https://www.jsae.or.jp/jaaic/en/index.php)
-
-<br> -->
-<p> 参加者の皆様が開発した自動運転ソフトウェアを用いて自動運転車両を走行させ、その結果から算出される<code>距離点</code>で競い合っていただきます。<br>
- 競技の詳細やコースの仕様などについては、下記をご参照ください。</p>
-<h2 id="detail-of-rule">Detail of Rule</h2>
-<h3 id="ranking-system">Ranking System</h3>
+<p> このページでは本大会のルール・順位付けについて解説します。なお、このページの内容は大会期間中に変更される場合があります。</p>
+<h2 id="ranking-system">Ranking System</h2>
+<p> 参加者の順位は以下の2つの指標に基づいて決定されます。</p>
+<ol>
+<li>距離点:
+<ol>
+<li>制限時間内にゴールまで到達できなかった参加者の順位は、制限時間以内に進むことができたスタート地点からの距離に応じた<code>距離点(0-100)</code>により決定されます。</li>
+<li>制限時間内にゴールまで到達した場合、<code>距離点</code>は100点です。</li>
+<li>失格の場合、<code>距離点</code>は0点です。</li>
+<li>距離点が同一の場合、ペナルティによるタイム加算が少ない方が上位にランクインします。</li>
+</ol>
+</li>
+<li>総合タイム:
+<ol>
+<li>制限時間以内にゴールに到達した参加者の順位は、スタートからゴールまでの所要時間にペナルティを加えた、<code>総合タイム</code>により決定されます。</li>
+</ol>
+</li>
+</ol>
+<p><em><strong>ランキング例</strong></em></p>
+<table>
+<thead>
+<tr>
+<th>距離点</th>
+<th>スタートからゴールまでの時間</th>
+<th>ペナルティによるタイム加算</th>
+<th>総合タイム</th>
+<th>順位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>01:10</td>
+<td>00:00</td>
+<td>01:10</td>
+<td>1</td>
+</tr>
+<tr>
+<td>100</td>
+<td>01:30</td>
+<td>00:10</td>
+<td>01:40</td>
+<td>2</td>
+</tr>
+<tr>
+<td>100</td>
+<td>01:20</td>
+<td>00:30</td>
+<td>01:50</td>
+<td>3</td>
+</tr>
+<tr>
+<td>50</td>
+<td>N/A</td>
+<td>00:00</td>
+<td>N/A</td>
+<td>4</td>
+</tr>
+<tr>
+<td>50</td>
+<td>N/A</td>
+<td>00:10</td>
+<td>N/A</td>
+<td>5</td>
+</tr>
+<tr>
+<td>10</td>
+<td>N/A</td>
+<td>00:00</td>
+<td>N/A</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<h3 id="penalty">Penalty</h3>
+<p> 走行コースからの逸脱、並走する他車に衝突は反則と判定されます。反則に対する罰則は</p>
+<ol>
+<li>失格</li>
+<li>走行タイムへ10秒の加算</li>
+<li>走行タイムへ5秒の加算</li>
+</ol>
+<p>の3通りです。以下に、各反則とそれに対応する罰則を記します。</p>
+<p><strong>致命的な反則 (失格)</strong></p>
 <ul>
-<li>順位は距離点によって決定されます。<br>
-<code>距離点: min(スタート地点からの全体の走行距離 (m), コース全体の距離) * (1.0 - 課題1ペナルティ - 課題2ペナルティ - 課題3ペナルティ)</code></li>
-<li>距離点が同じ場合、課題3エリアでの走行時間が最も短い競技者を上位とします（課題の最後まで走行した場合）。</li>
+<li>コースから逸脱する (2秒間以上)</li>
+<li>コースから逸脱する(コース境界から5m以上)</li>
+<li>コースを逆走する</li>
 </ul>
-<h3 id="regulation">Regulation</h3>
+<p><strong>重度な反則(ペナルティ: 10秒/回):</strong></p>
 <ul>
-<li>走行速度は0~5km/h</li>
-<li>制限速度を2km/h以上超えた場合失格＝０点</li>
-<li>制限時間は5分（ルートの途中で走行停止してしまった場合に対応するため）</li>
-<li>車両が発進してからの時間を計測</li>
-<li>配置・経路は多少ランダムになる可能性あり</li>
-<li>ゴールした後に衝突した際の処理の追記が必要</li>
-<li>決勝大会での走行時に危険が伴うため、あらかじめ経路を設定して決め打ちで走行するようなアルゴリズムにはしないでください。</li>
-<li>提出されたコード内容は審査時に確認する可能性があります。</li>
-<li>採点処理に影響するコード等、意図的な不正が発覚した場合失格とみなします。</li>
+<li>他車と衝突する(衝突した他車との相対速度の差が 5[m/s] 以上 <strong>または</strong> 衝突状態が2秒以上継続)</li>
 </ul>
-<h2 id="vehicle">Vehicle</h2>
-<p>使用する車両はこちらのゴルフカートです。
-<img src="../images/rule/vehicle.png" width="70%"></p>
-<h2 id="course">Course</h2>
-<p>3つの課題が用意されたこちらのコースに挑戦していただきます。
-<img src="../images/rule/course.png" width="70%"></p>
-<h3 id="task-1--obstacle-detection-stop-cardboard">Task 1 : Obstacle detection stop (cardboard)</h3>
-<p>クリア条件:<br>
- ・車頭が障害物から3mから6mの間の位置で停車すること<br>
-ペナルティ:<br>
- ・停車できなかった場合、距離点から5%減点<br>
-<img src="../images/rule/kadai1.png" width="70%"></p>
-<h3 id="task-2-driving-in-the-presence-of-smoke">Task 2: Driving in the presence of smoke</h3>
-<p>クリア条件:<br>
- ・課題2の区間内で停車しないこと<br>
-ペナルティ:<br>
- ・停車した場合、距離点から5%減点<br>
-<img src="../images/rule/kadai2.png" width="70%"></p>
-<h3 id="task-3-1-narrow-road-driving-slalom">Task 3-1: Narrow road driving (slalom）</h3>
-<p>クリア条件：<br>
- ・ダンボールに衝突しないこと<br>
- ・指定の経路からはみ出さないこと<br>
-ペナルティ：<br>
- ・ダンボールに衝突、または指定の経路からはみ出すと走行終了
-<img src="../images/rule/kadai3.png" width="70%"></p>
-<h3 id="task-3-2-narrow-road-driving-l-shaped-crank">Task 3-2: Narrow road driving (L-shaped crank)</h3>
-<p>クリア条件：<br>
- ・指定の経路からはみ出さないこと<br>
-ペナルティ：<br>
- ・指定の経路からはみ出すと走行終了<br>
-<img src="../images/rule/kadai3-2.png" width="70%"></p>
-<h3 id="task-3-3-stop-after-reaching-the-goal">Task 3-3 Stop after reaching the goal</h3>
-<p>クリア条件：<br>
- ・ゴール地点の青い枠まで完走後、停止すること。
- ・完走した後で経路からはみ出した場合、5%減点<br>
-<img src="../images/rule/task3-goal.png" width="70%"></p>
+<p><strong>軽微な反則(ペナルティ: 5秒/回):</strong></p>
+<ul>
+<li>コースから逸脱する(2秒未満 <strong>かつ</strong> コース境界から5m未満)</li>
+<li>他車と衝突する (衝突した他車との相対速度の差が 5[m/s] 未満　<strong>かつ</strong>　衝突状態を2秒以内に解消する)</li>
+<li>コース逸脱中の追い越し</li>
+</ul>
+<p><strong>注意</strong></p>
+<ul>
+<li>自車の後部に他車が衝突するケース(例: 他車による追突)は自車の責任ではないとしペナルティは適用されません。</li>
+<li>コース逸脱中に追い越した場合は、コースからの逸脱判定(軽微な反則) と コース逸脱中の追い越し(軽微な反則)の両方が適用されます。</li>
+</ul>
+<h2 id="submission">Submission</h2>
+<p> 参加者の皆様には、開発したソフトウェアを提出用のページから評価システムにアップロードしていただきます。1回のアップロードにつき3回のシミュレーションが行われ、各シミュレーションに対して距離点、総合タイムの計算が行われます。3回のシミュレーション結果のうち、最も高いスコアを記録した結果がランキングに反映されます。</p>
 <h3 id="how-to-check-results">How to check results</h3>
-<p> 走行が完了すると、<code>/aichallenge/scoreトピック</code>と<code>/aichallenge/collisionトピック</code>に基づき<code>result.json</code>が出力されます。下記を参照のうえ、結果をご確認ください。</p>
-<pre><code>{
-  &quot;rawDistanceScore&quot;: float32, // ペナルティ入っていない距離点
-  &quot;distanceScore&quot;: float32, // ランキングに反映される距離点
-  &quot;task3Duration&quot;: float32, // タスク3にかかった時間
-  &quot;isOutsideLane&quot;: bool, // レーンはみだし
-  &quot;isTimeout&quot;: bool, // 時間切れ
-  &quot;hasCollided&quot;: bool, // 衝突
-  &quot;hasExceededSpeedLimit&quot;: bool, // 制限速度超過
-  &quot;hasFinishedTask1&quot;: bool, // タスク1を成功したか
-  &quot;hasFinishedTask2&quot;: bool, // タスク2を成功したか
-  &quot;hasFinishedTask3&quot;: bool // タスク3を成功したか
-}
-</code></pre>
+<p> シミュレーションの内容と結果は、評価システムから出力されるjsonファイル及びシミュレーションの動画から確認可能とする予定です。追加のアナウンスをお待ちください。</p>
 
 </article>
 
