@@ -16,14 +16,6 @@
   <!-- System -->
   <arg name="system_run_mode" default="online" description="run mode in system"/>
 
-  <!-- Global parameters -->
-  <group scoped="false">
-    <include file="$(find-pkg-share global_parameter_loader)/launch/global_params.launch.py">
-      <arg name="use_sim_time" value="$(var use_sim_time)"/>
-      <arg name="vehicle_model" value="$(var vehicle_model)"/>
-    </include>
-  </group>
-
   <arg name="model_file" default="$(find-pkg-share dallara_description)/urdf/dallara.xacro" description="path to the file of model settings (*.xacro)"/>
   <node name="robot_state_publisher" pkg="robot_state_publisher" exec="robot_state_publisher">
       <param name="robot_description" value="$(command 'xacro $(var model_file)' 'warn')"/>
@@ -239,7 +231,7 @@
 
   <node pkg="simple_pure_pursuit" exec="simple_pure_pursuit" name="simple_pure_pursuit_node" output="screen">
     <param name="use_external_target_vel" value="true"/>
-    <param name="external_target_vel" value="10.0"/>
+    <param name="external_target_vel" value="30.0"/>
     <param name="lateral_deviation" value="0.0"/>
 
     <remap from="input/kinematics" to="/localization/kinematic_state"/>
