@@ -6,18 +6,18 @@
   href: setup/index.html
 - name: Rule
   href: rule/index.html
-#- name: LocalEnvironment
-#  href: local/index.html
-#- name: OnlineEnvironment
-#  href: online/index.html
-#- name: Teams
-#  href: teams/index.html
-#- name: Customizing Autoware
-#  href: customize/index.html
-#- name: FAQ
-#  href: FAQ/index.html
-#- name: Other
-#  href: other/index.html
+- name: LocalEnvironment
+  href: local/index.html
+- name: OnlineEnvironment
+  href: online/index.html
+- name: Teams
+  href: teams/index.html
+- name: Customizing Autoware
+  href: customize/index.html
+- name: FAQ
+  href: FAQ/index.html
+- name: Other
+  href: other/index.html
 - name: To English Page
   href: en/index.html
 
