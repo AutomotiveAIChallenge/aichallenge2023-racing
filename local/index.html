@@ -92,17 +92,17 @@
 <li>大元のlaunchファイルaichallenge.launch.xmlを含んでいます。すべてのROS2ノードはこのlaunchファイルから起動されます。</li>
 </ul>
 </li>
-<li>aichallenge_scoring
+<li>aichallenge_scoring WIP
 <ul>
 <li>AI チャレンジの参加者のスコアリングとランキングに必要なタスクを担当します。</li>
 </ul>
 </li>
-<li>aichallenge_scoring_msgs
+<li>aichallenge_scoring_msgs WIP
 <ul>
 <li>スコアリング用のmsg</li>
 </ul>
 </li>
-<li>aichallenge_scoring_result
+<li>aichallenge_scoring_result WIP
 <ul>
 <li>/aichallenge/scoreと/aichallenge/collisionからスコアを算出します。</li>
 </ul>
@@ -111,21 +111,6 @@
 <ul>
 <li>提出時にはこのディレクトリの内容のみ提出していただきますので、参加者の皆さまが実装されたROS2パッケージはすべてこのディレクトリ内に配置してください。</li>
 <li>aichallenge_submit_launch.launch.xmlが大元のlaunchファイルaichallenge.launch.xmlから呼び出されますので、このlaunchファイルを適宜改修して皆様が実装されたROS2ノードが起動されるように設定してください。</li>
-<li>initialpose_publisher
-<ul>
-<li>デフォルトの初期位置推定では初期位置がずれてしまう場合があるため、予め設定された初期位置で車両位置を設定する機能を提供します。</li>
-</ul>
-</li>
-<li>pose_initializer_custom
-<ul>
-<li>autoware.universeのpose_initializerパッケージを改変し、Monte-CarloとNDT Matchingによって算出された姿勢を破棄して<code>initialpose_publisher</code>から送られた姿勢で設定するように変更しています。</li>
-</ul>
-</li>
-<li>self_driving_controller
-<ul>
-<li>自動運転の開始に必要なGoal Poseの設定とengageを行う機能を提供します。</li>
-</ul>
-</li>
 <li>autoware_launch, autoware_universe_launch
 <ul>
 <li>Autowareのlaunch, config関連のパッケージをコピーして一部編集しています。Dockerイメージ内のAutowareにはここに含まれているパッケージが削除されています。こちらを編集することでAutowareの動作の変更を行うことが出来ます。</li>
@@ -144,33 +129,32 @@ cd docker/train
 bash build_docker.sh
 </code></pre>
 <ol start="2">
-<li>Docker Container Run</li>
+<li>Docker Container Run
+GPU環境がある方は</li>
 </ol>
 <pre><code>#aichallenge2023-racingディレクトリで
 cd docker/train
 bash run_container.sh
 </code></pre>
-<ol start="3">
+<p>CPUのみの環境の方は</p>
+<pre><code>#aichallenge2023-racingディレクトリで
+cd docker/train
+bash run_container_cpu.sh
+</code></pre>
+<ol>
 <li>Code Build</li>
 </ol>
 <pre><code># Rockerコンテナ内で
 cd /aichallenge
 bash build_autoware.sh
 </code></pre>
-<ol start="4">
-<li><p>AWSIMの起動<br>
-<a href="../setup/index.html">Setupページ</a>を参考に起動。</p>
-</li>
-<li><p>Sample Code Run</p>
-</li>
+<ol>
+<li>AWSIMとAutowareの起動<br>
+<a href="../setup/index.html">Setupページ</a>を参考に起動。</li>
 </ol>
-<pre><code># Rockerコンテナ内で
-cd /aichallenge
-bash run_autoware.sh
-</code></pre>
-<p> セットアップが正常に行われていれば、rvizには点群地図が表示され、自動運転が開始されます。</p>
+<p> セットアップが正常に行われていれば、rvizには地図が表示され、自動運転が開始されます。</p>
 <h3 id="customizing-autoware">Customizing Autoware</h3>
-<p>既存のAutowareをカスタマイズし、新しくパッケージを追加する方法等は「<a href="../customize/index.html">Customizing Autoware</a>」のページで紹介しています．</p>
+<p>既存のAutowareをカスタマイズし、新しくパッケージを追加する方法等は夏の大会で使用した「<a href="../customize/index.html">Customizing Autoware</a>」のページが参考になります．</p>
 
 </article>
 
