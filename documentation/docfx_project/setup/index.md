@@ -215,3 +215,11 @@ aichallenge2023-racing
     cd /aichallenge
     bash run_awsim.sh 
    ```
+### 画面録画の方法
+
+デフォルトのrockerではディスプレイドライバを自分のPCに設定できていないため以下のオプションを追加する必要があります。
+```
+#!/bin/bash
+rocker --device /dev/dri --x11 --user ... # CPU版
+rocker --device /dev/dri --nvidia --x11 --user ... # GPU版
+```
