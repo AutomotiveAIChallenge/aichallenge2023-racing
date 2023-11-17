@@ -2,8 +2,8 @@
   href: index.html
 - name: Introduction
   href: intro/index.html
-#- name: Setup
-#  href: setup/index.html
+- name: Setup
+  href: setup/index.html
 - name: Rule
   href: rule/index.html
 #- name: LocalEnvironment
