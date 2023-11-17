@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="odom2tf" exec="odom2tf_node" name="odom2tf" output="screen">
+    <remap from="in_odom" to="/localization/kinematic_state"/>
+  </node>
+</launch>
