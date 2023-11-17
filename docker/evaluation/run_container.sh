@@ -1,2 +1,2 @@
 #!/bin/bash
-rocker --nvidia --x11 --user --net host --privileged --volume output:/output -- aichallenge-eval
+rocker  --device /dev/dri --nvidia --x11 --user --net host --privileged --volume output:/output -- aichallenge-eval
