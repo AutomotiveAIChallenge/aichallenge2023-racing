@@ -213,7 +213,7 @@ aichallenge2023-racing
    3. コンテナ内部でAutowareの起動
    ```
     cd /aichallenge
-    bash run_awsim.sh 
+    bash run_autoware.sh
    ```
 ### 画面録画の方法
 
