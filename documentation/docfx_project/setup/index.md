@@ -158,9 +158,9 @@ aichallenge-train                                                               
 
 ### 地図データ(pcd, osm)のコピー WIP
 
-![mapfiles](../images/setup/mapfiles.png)
+![mapfiles](../images/setup/dallara_mapfile.png)
 
-地図データはAWSIMの圧縮ファイル内に格納されています。`AWSIM_Data/StreamingAssets/*`に配置されているosmファイルを`aichallenge2023-racing/docker/aichallenge/mapfile`にコピーして、ファイル構成が以下になるように配置してください。
+`/aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/dallara_interface/dallara_launch/dallara_launch/*`に配置されているosmファイルを`aichallenge2023-racing/docker/aichallenge/mapfile`にコピーして、ファイル構成が以下になるように配置してください。
 ```
 aichallenge2023-racing
 └ docker
