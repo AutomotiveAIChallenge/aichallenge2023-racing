@@ -280,6 +280,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/setup/dallara_mapfile.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/setup/dallara_mapfile.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/setup/mapfiles.png",
       "output": {
         "resource": {
