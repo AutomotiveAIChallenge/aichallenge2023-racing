@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="dallara_interface" exec="dallara_interface_node" name="dallara_interface" output="screen">
+  </node>
+</launch>

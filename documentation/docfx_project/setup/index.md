@@ -1,8 +1,8 @@
 # SetUp
 
-<br>
+<!--br>
 
-<!-- > [!REGISTER]
+> [!REGISTER]
 > こちらから参加登録!
 > [https://www.jsae.or.jp/jaaic/en/index.php](https://www.jsae.or.jp/jaaic/en/index.php)
 
@@ -13,7 +13,7 @@
 
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (8 cores) or higher
-* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
+* GPU: NVIDIA Geforce RTX 1060 or higher
 * Memory: 32 GB or more
 * Storage: SSD 30 GB or higher
 
@@ -21,26 +21,35 @@
 #### 2台のPCを使用する方向け
 #### Autoware PC
 * OS: Ubuntu 22.04
-* CPU: Intel Corei7 (8 cores) or higher
-* GPU: NVIDIA Geforce GTX 1080 or higher
+* CPU: Intel Corei7 (4 cores) or higher
+* GPU: NVIDIA Geforce GTX 1060 or higher
 * Memory: 16 GB or higher
 * Storage: SSD 10 GB or higher
 * 詳細は[こちら](https://autowarefoundation.github.io/autoware-documentation/main/installation/)
 
 #### AWSIM PC
-* OS: Ubuntu 22.04 or Windows 10/11
-* CPU: Intel Corei7 (6 cores and 12 threads) or higher
-* GPU: NVIDIA Geforce RTX 3060 Mobile (VRAM 6 GB) or higher
-* 詳細は[こちら](https://tier4.github.io/AWSIM/)
+* OS: Ubuntu 22.04
+* CPU: Intel Corei7 (4 cores and 8 threads) or higher
+* GPU: NVIDIA Geforce RTX 1060 or higher
 
 ※Autoware動作PCとAWSIM動作PCは、同じネットワーク内に配置してください。
 配置できていれば、基本的には追加設定をすることなく、PC間のトピック通信は可能です。万が一、トピック通信ができなかった場合はファイアーウォールの解除、もしくはルールの見直しをお願いします。
   
+
+## Minimum Hardware Requirements (Experimental)
+本大会で使用していただくPCの動作環境としてサポートを十分に提供できない可能性がありますが、試験的に以下の構成のPCのみでも参加可能にしてく予定です。
+
+* OS: Ubuntu 22.04
+* CPU: Intel Corei7 (4 cores) or higher
+* GPU: Intel HD Graphics (no NVIDIA GPUs)
+* Memory: 16 GB or more
+* Storage: SSD 30 GB or higher
+
     
 ## Environment Setup
 ### AWSIM(Ubuntu)
 #### 事前準備
-* Nvidiaドライバのインストール
+* (CPU onlyの方はskip) Nvidiaドライバのインストール
   1. リポジトリの追加
   ```
   sudo add-apt-repository ppa:graphics-drivers/ppa
@@ -69,11 +78,12 @@
     sudo apt install libvulkan1
     ```
  * コースの準備
-   1. [GoogleDrive](https://drive.google.com/drive/folders/1zONmvBjqMzveemkZmNdd4icbpwnDYvTq?usp=sharing)から最新の`AWSIM_AIChallenge_Ubuntu_v*.*.zip`をダウンロードし、解凍
+   1. [GoogleDrive](https://drive.google.com/drive/folders/1EjgBxB_x0_xRla7_FdPaeEkiOU3vxW7e)から最新の`AWSIM.zip`をダウンロードし、`aichallenge2023-racing/docker/aichallenge`内に大会用AWSIM実行ファイルを展開
    2. パーミッションを図のように変更    
    ![パーミッション変更の様子](../images/setup/permmision.png)  
    3. ファイルをダブルクリックで起動
-   4. 下記のような画面が表示されることを確認
+   4. GPU版のAWSIMは下記のような画面が表示されることを確認
+      (CPU版のAWSIMは画面の描画なし)
       ![awsim](../images/setup/awsim.png)
 
 ### Dockerの事前準備  
@@ -81,20 +91,16 @@
   * [docker](https://docs.docker.com/engine/install/ubuntu/)
   * [rocker](https://github.com/osrf/rocker) 
      * Dockerコンテナ内のRviz、rqtなどのGUIを使用するために用います。
-  * [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
+  * (CPU onlyの方はskip)[Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) 
   * [git lfs](https://packagecloud.io/github/git-lfs/install)
-  * [ROS2](https://docs.ros.org/en/humble/index.html) (動画確認済バージョン: Humble)
   
 * Dockerイメージの準備・起動 〜 Autowareの準備
    1. Dockerイメージを入手
     ```
-   docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda:latest
+    REPOSITORY                                                                       TAG                                 IMAGE ID       CREATED          SIZE
+    ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda   latest                              9601fc85f1bd   3 weeks ago      7.31GB    
     ```
-    ※上記の方法では長時間かかってしまう方・タイムアウトしてしまう方↓  
-　[こちら](https://drive.google.com/file/d/1mOEpiN36UPe70NqiibloDcd_ewgMr_5P/view?usp=sharing)に、イメージをtarにまとめたものを置きましたので、下記コマンドよりご利用ください
-   ```
-   docker load < autoware-universe-cuda_v1.tar.gz
-   ```
+
     2. 大会用データのダウンロード
     ```
     sudo apt install -y git-lfs
@@ -104,33 +110,39 @@
     ```
     3. 大会用dockerイメージのビルド
     ```
-    cd ./aichallenge2023-racing/docker/train
+    cd aichallenge2023-racing/docker/train
     bash build_docker.sh
     ```
     4. 大会用dockerコンテナの起動
+    
+    GPU環境の方は以下
     ```
     bash run_container.sh
     ```
-
+    CPUのみの環境の方は以下
+    ```
+    bash run_container_cpu.sh
+    ```
 #### Dockerコンテナ内でのAWSIM起動
 DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの準備手順(前述)に従ってDockerイメージを導入した後、以下の手順で行ってください。
   1. `aichallenge2023-racing/docker/aichallenge`内に大会用AWSIM実行ファイルを展開(以下、`aichallenge2023-racing/docker/aichallenge/AWSIM/AWSIM.x86_64`に配置されているものとします。)
   2. rockerを起動
    新たにterminalを開いて`docker image ls`で以下のようなimageが存在していることを確認してください。
    ```
-   aichallenge-train        latest                            f5f05f758f55   2 weeks ago      14.9GB
+REPOSITORY                                                                      TAG                                 IMAGE ID       CREATED          SIZE
+aichallenge-train                                                               latest                              67a4d45d119d   16 minutes ago   7.37GB
    ```
    確認ができたら以下のコマンドでrockerを起動してください。
    ```
     cd ./aichallenge2023-racing/docker/train
     bash run_container.sh
    ```
-   新たに開いたterminalで`docker container ls` で以下のようにdocker が存在していることを確認してください。
+   新たに開いたterminalで`docker images` で以下のようにdocker が存在していることを確認してください。
    ```
-   CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS          PORTS     NAMES
-   fdbe7cb05782   1f3d763bc501   "/bin/bash"   15 minutes ago   Up 15 minutes             elegant_hellman
-   ```
-  3. コンテナ内で以下を実行
+REPOSITORY                                                                      TAG                                 IMAGE ID       CREATED          SIZE
+aichallenge-train                                                               latest                              67a4d45d119d   16 minutes ago   7.37GB   
+```
+  1. コンテナ内で以下を実行
    ```
     cd /aichallenge
     bash run_awsim.sh 
@@ -144,25 +156,19 @@ DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの
 > source /aichallenge/aichallenge_ws/install/setup.bash 
 > ```
 
-### AWSIM(Windows)
-  1. [GoogleDrive](https://drive.google.com/drive/folders/1p-_rZLDVncssgYTwjBmLKMyGQxOKHV5Q?usp=sharing)から最新の`AWSIM_AIChallenge_Windows_v*.*.zip`をダウンロードし解凍
-  2. ファイルをダブルクリックで起動
-  3. 下記のような画面が表示されることを確認
-    ![awsim](../images/setup/awsim.png)
+### 地図データ(pcd, osm)のコピー WIP
 
-### 地図データ(pcd, osm)のコピー
+![mapfiles](../images/setup/dallara_mapfile.png)
 
-![mapfiles](../images/setup/mapfiles.png)
-
-地図データはAWSIMの圧縮ファイル内に格納されています。`AWSIM_Data/StreamingAssets/kashiwanoha2023_integ`に配置されているosmファイルとpcdファイルを`aichallenge2023-racing/docker/aichallenge/mapfile`にコピーして、ファイル構成が以下になるように配置してください。
+`/aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/dallara_interface/dallara_launch/dallara_launch/*`に配置されているosmファイルを`aichallenge2023-racing/docker/aichallenge/mapfile`にコピーして、ファイル構成が以下になるように配置してください。
 ```
 aichallenge2023-racing
 └ docker
  └ aichallenge
+  └ AWSIM
   └ mapfile
    ├ .gitkeep
    ├ lanelet2_map.osm
-   └ pointcloud_map.pcd
 ```
 
 ### Autoware      
@@ -172,21 +178,48 @@ aichallenge2023-racing
    2. Autowareを起動
    ```
    # Rockerコンテナ内で
-   sudo ip link set multicast on lo
    cd /aichallenge
    bash build_autoware.sh
-   source aichallenge_ws/install/setup.bash
-   ros2 launch autoware_launch e2e_simulator.launch.xml vehicle_model:=golfcart sensor_model:=awsim_sensor_kit map_path:=/aichallenge/mapfile
    ```
    3. 下記のような画面(Rviz2)が表示されることを確認  
    ![autoware1](../images/setup/autoware1.png)   
-     
-   4. 自己位置推定ができていることを確認。正しく推定できていなければ、タブにある2D Pose Estimateを選択し、実際の車両の位置をドラッグで指定  
-    ![autoware2](../images/setup/autoware2.png)   
             
-   5. タブにある2D Goal Poseを選択し、ゴールポジションをドラッグで指定。画像のように、ルートが表示されている かつ `Routing`が`UNSET`から`SET`に変わっていることを確認（指定してから少し時間がかかります）  
-     ![autoware3](../images/setup/autoware3.png)         
-       
-   6. `OperationMode`の`AUTO`ボタンを押下し、自動運転が開始されることを確認  
-     ![autoware4](../images/setup/autoware4.png)   
-        
+   4. タブにある2D Goal Poseを選択し、ゴールポジションをドラッグで指定。画像のように、ルートが表示されている かつ `Routing`が`UNSET`から`SET`に変わっていることを確認（指定してから少し時間がかかります）  
+     ![autoware3](../images/setup/autoware3.png)
+
+### 2回目以降の起動
+1. AWSIMの起動
+   1. コンテナの起動
+   ```
+    cd ./aichallenge2023-racing/docker/train
+    bash run_container.sh または bash run_container_cpu.sh
+   ```
+   2. コンテナ内部でAWSIMの起動
+   ```
+    cd /aichallenge
+    bash run_awsim.sh 
+   ```
+2. Autowareの起動
+   1. コンテナの起動
+   ```
+    cd ./aichallenge2023-racing/docker/train
+    bash run_container.sh または bash run_container_cpu.sh
+   ```
+   2. 必要に応じてコンテナ内部でAutowareのbuild
+   ```
+    cd /aichallenge
+    bash build_autoware.sh 
+   ```
+   3. コンテナ内部でAutowareの起動
+   ```
+    cd /aichallenge
+    bash run_awsim.sh 
+   ```
+### 画面録画の方法
+
+デフォルトのrockerではディスプレイドライバを自分のPCに設定できていないため以下のオプションを追加する必要があります。
+```
+#!/bin/bash
+rocker --device /dev/dri --x11 --user ... # CPU版
+rocker --device /dev/dri --nvidia --x11 --user ... # GPU版
+```

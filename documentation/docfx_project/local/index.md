@@ -6,21 +6,15 @@
  &emsp;aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src配下の構成を一部示します。
 * aichallenge_launch
   * 大元のlaunchファイルaichallenge.launch.xmlを含んでいます。すべてのROS2ノードはこのlaunchファイルから起動されます。
-* aichallenge_scoring
+* aichallenge_scoring WIP
   * AI チャレンジの参加者のスコアリングとランキングに必要なタスクを担当します。
-* aichallenge_scoring_msgs
+* aichallenge_scoring_msgs WIP
   * スコアリング用のmsg
-* aichallenge_scoring_result
+* aichallenge_scoring_result WIP
   * /aichallenge/scoreと/aichallenge/collisionからスコアを算出します。
 * aichallenge_submit
   * 提出時にはこのディレクトリの内容のみ提出していただきますので、参加者の皆さまが実装されたROS2パッケージはすべてこのディレクトリ内に配置してください。
   * aichallenge_submit_launch.launch.xmlが大元のlaunchファイルaichallenge.launch.xmlから呼び出されますので、このlaunchファイルを適宜改修して皆様が実装されたROS2ノードが起動されるように設定してください。
-  * initialpose_publisher
-    * デフォルトの初期位置推定では初期位置がずれてしまう場合があるため、予め設定された初期位置で車両位置を設定する機能を提供します。
-  * pose_initializer_custom
-    * autoware.universeのpose_initializerパッケージを改変し、Monte-CarloとNDT Matchingによって算出された姿勢を破棄して`initialpose_publisher`から送られた姿勢で設定するように変更しています。
-  * self_driving_controller
-    * 自動運転の開始に必要なGoal Poseの設定とengageを行う機能を提供します。
   * autoware_launch, autoware_universe_launch
     * Autowareのlaunch, config関連のパッケージをコピーして一部編集しています。Dockerイメージ内のAutowareにはここに含まれているパッケージが削除されています。こちらを編集することでAutowareの動作の変更を行うことが出来ます。
     * 改変前のファイルを利用したい場合は、[autoware_launch](https://github.com/autowarefoundation/autoware_launch/tree/awsim-stable), [autoware_universeのlaunchディレクトリ](https://github.com/autowarefoundation/autoware.universe/tree/awsim-stable/launch)をご利用ください。
@@ -34,29 +28,29 @@ bash build_docker.sh
 ```
 
 2. Docker Container Run
+GPU環境がある方は
 ```
 #aichallenge2023-racingディレクトリで
 cd docker/train
 bash run_container.sh
 ```
-
-3. Code Build
+CPUのみの環境の方は
+```
+#aichallenge2023-racingディレクトリで
+cd docker/train
+bash run_container_cpu.sh
+```
+1. Code Build
 ```
 # Rockerコンテナ内で
 cd /aichallenge
 bash build_autoware.sh
 ```
-4. AWSIMの起動  
+1. AWSIMとAutowareの起動  
 [Setupページ](../setup/index.html)を参考に起動。
 
-5. Sample Code Run
-```
-# Rockerコンテナ内で
-cd /aichallenge
-bash run_autoware.sh
-```
- &emsp;セットアップが正常に行われていれば、rvizには点群地図が表示され、自動運転が開始されます。
+ &emsp;セットアップが正常に行われていれば、rvizには地図が表示され、自動運転が開始されます。
  
  ### Customizing Autoware
 
- 既存のAutowareをカスタマイズし、新しくパッケージを追加する方法等は「[Customizing Autoware](../customize/index.html)」のページで紹介しています．
+ 既存のAutowareをカスタマイズし、新しくパッケージを追加する方法等は夏の大会で使用した「[Customizing Autoware](../customize/index.html)」のページが参考になります．
