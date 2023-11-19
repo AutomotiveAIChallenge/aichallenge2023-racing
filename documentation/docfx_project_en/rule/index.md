@@ -7,7 +7,7 @@ This page explains the rules and ranking system for the competition. Please note
 The ranking of participants is determined based on the following two metrics:
 
 1. Distance Points:
-   1. For participants who could not reach the goal within the time limit, their ranking is determined by the `distance points (0-100)` corresponding to the distance they could travel from the starting point within the time limit.
+   1. For participants who could not reach the goal within the time limit (10 minutes), their ranking is determined by the `distance points (0-100)` corresponding to the distance they could travel from the starting point within the time limit.
    2. If the participant's vehicle completed a lap within the time limit, the `distance points` are 100.
    3. In the case of disqualification, the `distance points` are 0.
    4. If the distance points are the same, the person with less time added due to penalties will rank higher.
@@ -43,18 +43,16 @@ The following lists each violation and the corresponding penalty.
 
 **Sevior Violation (Penalty: 10 seconds per occurrence):**
 
-- Colliding with another vehicle (if the difference in relative speed with the other vehicle is more than 5[m/s] **OR** the collision state lasts for more than 2 seconds)
+- Colliding with another vehicle (the collision state lasts for more than 2 seconds)
 
 **Minor Fouls (Penalty: 5 seconds per occurrence):**
 
 - Deviating from the course (for less than 2 seconds **AND** less than 5m from the course boundary)
-- Colliding with another vehicle (if the difference in relative speed with the other vehicle is less than 5[m/s] **AND** the collision state is resolved within 2 seconds)
-- Overtaking while off course
+- Colliding with another vehicle (the collision state is resolved within 2 seconds)
 
 **Note**
 
 - In cases where another vehicle collides with the rear of your vehicle (e.g., being rear-ended by another vehicle), it is not considered the fault of your vehicle and no penalty will be applied.
-- If overtaking occurs while off course, both the deviation from the course (a minor foul) and overtaking while off course (a minor foul) will apply.
 
 ## Submission
 
