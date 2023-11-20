@@ -231,7 +231,7 @@
 
   <node pkg="simple_pure_pursuit" exec="simple_pure_pursuit" name="simple_pure_pursuit_node" output="screen">
     <param name="use_external_target_vel" value="true"/>
-    <param name="external_target_vel" value="30.0"/>
+    <param name="external_target_vel" value="100.0"/>
     <param name="lateral_deviation" value="0.0"/>
 
     <remap from="input/kinematics" to="/localization/kinematic_state"/>
