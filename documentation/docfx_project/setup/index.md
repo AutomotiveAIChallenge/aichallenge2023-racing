@@ -132,10 +132,17 @@ DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの
 REPOSITORY                                                                      TAG                                 IMAGE ID       CREATED          SIZE
 aichallenge-train                                                               latest                              67a4d45d119d   16 minutes ago   7.37GB
    ```
-   確認ができたら以下のコマンドでrockerを起動してください。
+   確認ができたら以下のコマンドでrockerを起動してください。  
+   
+   GPU環境の方は以下
    ```
     cd ./aichallenge2023-racing/docker/train
     bash run_container.sh
+   ```
+   CPUのみの環境の方は以下
+   ```
+    cd ./aichallenge2023-racing/docker/train
+    bash run_container_cpu.sh
    ```
    新たに開いたterminalで`docker images` で以下のようにdocker が存在していることを確認してください。
    ```
@@ -180,6 +187,7 @@ aichallenge2023-racing
    # Rockerコンテナ内で
    cd /aichallenge
    bash build_autoware.sh
+   bash run_autoware.sh
    ```
    3. 下記のような画面(Rviz2)が表示されることを確認  
    ![autoware1](../images/setup/autoware1.png)   
