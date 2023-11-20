@@ -234,8 +234,13 @@ bash build_docker.sh
 aichallenge-train                                                               latest                              67a4d45d119d   16 minutes ago   7.37GB
 </code></pre>
 <p>確認ができたら以下のコマンドでrockerを起動してください。</p>
+<p>GPU環境の方は以下</p>
 <pre><code> cd ./aichallenge2023-racing/docker/train
  bash run_container.sh
+</code></pre>
+<p>CPUのみの環境の方は以下</p>
+<pre><code> cd ./aichallenge2023-racing/docker/train
+ bash run_container_cpu.sh
 </code></pre>
 <p>新たに開いたterminalで<code>docker images</code> で以下のようにdocker が存在していることを確認してください。</p>
 <pre><code>REPOSITORY                                                                      TAG                                 IMAGE ID       CREATED          SIZE
@@ -277,6 +282,7 @@ AWSIMを用いて、Autowareの動作確認を行う方法を記します。
 <pre><code># Rockerコンテナ内で
 cd /aichallenge
 bash build_autoware.sh
+bash run_autoware.sh
 </code></pre>
 <ol start="3">
 <li><p>下記のような画面(Rviz2)が表示されることを確認<br>
