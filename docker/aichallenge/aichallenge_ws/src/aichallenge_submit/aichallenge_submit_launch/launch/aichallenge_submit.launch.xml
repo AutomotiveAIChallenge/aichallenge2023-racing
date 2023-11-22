@@ -6,6 +6,7 @@
     <arg name="map_path" value="$(find-pkg-share aichallenge_submit_launch)/map"/>
   </include>
 
-  <!-- <node pkg="goal_pose_setter" exec="goal_pose_setter_node" name="goal_pose_setter" output="screen"/> -->
+  <!-- place a goal pose anywhere you like-->
+  <node pkg="goal_pose_setter" exec="goal_pose_setter_node" name="goal_pose_setter" output="screen"/>
 
 </launch>
