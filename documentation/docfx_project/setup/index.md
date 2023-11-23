@@ -18,7 +18,7 @@
 * Storage: SSD 30 GB or higher
 
 上記のスペックを満たすPCをご用意できない方は、下記の「PC2台で参加する方向け」のスペックをご参照ください。
-#### 2台のPCを使用する方向け
+### 2台のPCを使用する方向け
 #### Autoware PC
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (4 cores) or higher
@@ -36,15 +36,28 @@
 配置できていれば、基本的には追加設定をすることなく、PC間のトピック通信は可能です。万が一、トピック通信ができなかった場合はファイアーウォールの解除、もしくはルールの見直しをお願いします。
   
 
-## Minimum Hardware Requirements (Experimental)
-本大会で使用していただくPCの動作環境としてサポートを十分に提供できない可能性がありますが、試験的に以下の構成のPCのみでも参加可能にしてく予定です。
+### CPU only のNotePCを使用される方向け
+#### Minimum Hardware Requirements for Headless mode
+本大会で使用していただくPCの動作環境としてサポートを十分に提供できない可能性がありますが、
+今後より多くの方にコンテストに参加し、活発なディスカッションを行っていただくために、
+試験的に以下のCPUのみの構成のPCのみでも参加可能になるようにしました。
 
 * OS: Ubuntu 22.04
-* CPU: Intel Corei7 (4 cores) or higher
-* GPU: Intel HD Graphics (no NVIDIA GPUs)
+* CPU: Intel Core i7-8650U (4 cores) with Intel HD Graphics (no NVIDIA GPUs)
 * Memory: 16 GB or more
-* Storage: SSD 30 GB or higher
+* Storage: SSD 16 GB or higher
 
+- other CPU only cases
+
+* CPU : AMD Ryzen 5 5600G with Radeon Graphics
+* Memory : 32GB
+
+* CPU AMD® Ryzen 7 pro 4750u with radeon graphics × 16
+* Memory 32.0 GiB
+
+* DELL XPS 13 9300
+* CPU: Intel(R) Core(TM) i7-1065G7
+* Memory: 16GB
     
 ## Environment Setup
 ### AWSIM(Ubuntu)
@@ -173,7 +186,6 @@ sudo docker run --rm --runtime=nvidia --gpus all nvidia/cuda:11.6.2-base-ubuntu2
     sudo apt install -y git-lfs
     git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
     cd aichallenge2023-racing
-    git submodule update --init --recursive
     ```
     3. 大会用dockerイメージのビルド
     ```
@@ -230,20 +242,21 @@ aichallenge-train                                                               
 > source /aichallenge/aichallenge_ws/install/setup.bash 
 > ```
 
-### 地図データ(pcd, osm)のコピー WIP
+### 地図データosmの配置 WIP
 
-![mapfiles](../images/setup/dallara_mapfile.png)
-
-`/aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/dallara_interface/dallara_launch/dallara_launch/*`に配置されているosmファイルを`aichallenge2023-racing/docker/aichallenge/mapfile`にコピーして、ファイル構成が以下になるように配置してください。
+本大会ではlanelet2_mapファイルの改変を可としました。
+`/aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/map/*`に配置して、ファイル構成が以下になるように配置してください。
 ```
 aichallenge2023-racing
 └ docker
  └ aichallenge
   └ AWSIM
-  └ mapfile
-   ├ .gitkeep
-   ├ lanelet2_map.osm
+  └ aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch
+     └map
+      └lanelet2_map.osm
 ```
+※ 経路計画を行う際にlanelet2_map参照して行わないといけないなどの制約もございません。（csvファイルを参照し経路を生成することも可とします。）
+※ PCDファイルは入れていますが、今回提出していただく必要はございません。Mapの編集に必要な場合のみご使用ください。
 
 ### Autoware      
  * Autowareの動作確認  
