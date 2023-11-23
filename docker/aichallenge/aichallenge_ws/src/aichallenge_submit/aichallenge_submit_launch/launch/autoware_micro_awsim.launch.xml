@@ -230,9 +230,10 @@
   </group>
 
   <node pkg="simple_pure_pursuit" exec="simple_pure_pursuit" name="simple_pure_pursuit_node" output="screen">
-    <param name="use_external_target_vel" value="true"/>
+    <param name="use_external_target_vel" value="false"/>
     <param name="external_target_vel" value="100.0"/>
     <param name="lateral_deviation" value="0.0"/>
+    <param name="lookahead_gain" value="0.5"/>
 
     <remap from="input/kinematics" to="/localization/kinematic_state"/>
     <remap from="input/trajectory" to="/planning/scenario_planning/trajectory"/>
