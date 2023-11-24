@@ -8,6 +8,7 @@ export ROS_LOCALHOST_ONLY=1
 
 # Launch AWSIM
 echo "Launch AWSIM"
+sudo ip link set multicast on lo
 source /aichallenge/aichallenge_ws/install/setup.bash
 /aichallenge/AWSIM/AWSIM.x86_64 &
 
