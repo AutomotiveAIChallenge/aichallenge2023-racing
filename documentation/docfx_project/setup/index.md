@@ -173,9 +173,9 @@ sudo docker run --rm --runtime=nvidia --gpus all nvidia/cuda:11.6.2-base-ubuntu2
 
 * Dockerイメージの準備・起動 〜 Autowareの準備
    1. Dockerイメージを入手
-   `docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda`
+   `sudo docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda`
    
-   docker imagesで以下のような表示が見えていることを確認
+   sudo docker imagesで以下のような表示が見えていることを確認
    ```
     REPOSITORY                                                                       TAG                                 IMAGE ID       CREATED          SIZE
     ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda   latest                              9601fc85f1bd   3 weeks ago      7.31GB    
@@ -190,23 +190,23 @@ sudo docker run --rm --runtime=nvidia --gpus all nvidia/cuda:11.6.2-base-ubuntu2
     3. 大会用dockerイメージのビルド
     ```
     cd aichallenge2023-racing/docker/train
-    bash build_docker.sh
+    sudo bash build_docker.sh
     ```
     4. 大会用dockerコンテナの起動
     
     GPU環境の方は以下
     ```
-    bash run_container.sh
+    sudo bash run_container.sh
     ```
     CPUのみの環境の方は以下
     ```
-    bash run_container_cpu.sh
+    sudo bash run_container_cpu.sh
     ```
 #### Dockerコンテナ内でのAWSIM起動
 DockerコンテナからAWSIMを起動したい場合は、Dockerイメージの準備手順(前述)に従ってDockerイメージを導入した後、以下の手順で行ってください。
   1. `aichallenge2023-racing/docker/aichallenge`内に大会用AWSIM実行ファイルを展開(以下、`aichallenge2023-racing/docker/aichallenge/AWSIM/AWSIM.x86_64`に配置されているものとします。)
   2. rockerを起動
-   新たにterminalを開いて`docker image ls`で以下のようなimageが存在していることを確認してください。
+   新たにterminalを開いて`sudo docker image ls`で以下のようなimageが存在していることを確認してください。
    ```
 REPOSITORY                                                                      TAG                                 IMAGE ID       CREATED          SIZE
 aichallenge-train                                                               latest                              67a4d45d119d   16 minutes ago   7.37GB
@@ -216,14 +216,14 @@ aichallenge-train                                                               
    GPU環境の方は以下
    ```
     cd ./aichallenge2023-racing/docker/train
-    bash run_container.sh
+    sudo bash run_container.sh
    ```
    CPUのみの環境の方は以下
    ```
     cd ./aichallenge2023-racing/docker/train
-    bash run_container_cpu.sh
+    sudo bash run_container_cpu.sh
    ```
-   新たに開いたterminalで`docker images` で以下のようにdocker が存在していることを確認してください。
+   新たに開いたterminalで`sudo docker images` で以下のようにdocker が存在していることを確認してください。
    ```
 REPOSITORY                                                                      TAG                                 IMAGE ID       CREATED          SIZE
 aichallenge-train                                                               latest                              67a4d45d119d   16 minutes ago   7.37GB   
@@ -280,7 +280,7 @@ aichallenge2023-racing
    1. コンテナの起動
    ```
     cd ./aichallenge2023-racing/docker/train
-    bash run_container.sh または bash run_container_cpu.sh
+    sudo bash run_container.sh または sudo bash run_container_cpu.sh
    ```
    2. コンテナ内部でAWSIMの起動
    ```
@@ -291,7 +291,7 @@ aichallenge2023-racing
    1. コンテナの起動
    ```
     cd ./aichallenge2023-racing/docker/train
-    bash run_container.sh または bash run_container_cpu.sh
+    sudo bash run_container.sh または sudo bash run_container_cpu.sh
    ```
    2. 必要に応じてコンテナ内部でAutowareのbuild
    ```
