@@ -48,6 +48,7 @@ namespace dallara_interface {
 
   private:
     int gear_cmd_dallara_;
+    double current_speed_;
 
     // Publishers
     rclcpp::Publisher<VehicleInputs>::SharedPtr vehicle_inputs_pub_;
