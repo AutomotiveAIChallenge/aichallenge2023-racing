@@ -18,7 +18,7 @@
 * Storage: SSD 30 GB or higher
 
 上記のスペックを満たすPCをご用意できない方は、下記の「PC2台で参加する方向け」のスペックをご参照ください。
-#### 2台のPCを使用する方向け
+### 2台のPCを使用する方向け
 #### Autoware PC
 * OS: Ubuntu 22.04
 * CPU: Intel Corei7 (4 cores) or higher
@@ -36,33 +36,40 @@
 配置できていれば、基本的には追加設定をすることなく、PC間のトピック通信は可能です。万が一、トピック通信ができなかった場合はファイアーウォールの解除、もしくはルールの見直しをお願いします。
   
 
-## Minimum Hardware Requirements (Experimental)
-本大会で使用していただくPCの動作環境としてサポートを十分に提供できない可能性がありますが、試験的に以下の構成のPCのみでも参加可能にしてく予定です。
+### CPU only のNotePCを使用される方向け
+#### Minimum Hardware Requirements for Headless mode
+本大会で使用していただくPCの動作環境としてサポートを十分に提供できない可能性がありますが、
+今後より多くの方にコンテストに参加し、活発なディスカッションを行っていただくために、
+試験的に以下のCPUのみの構成のPCのみでも参加可能になるようにしました。
 
 * OS: Ubuntu 22.04
-* CPU: Intel Corei7 (4 cores) or higher
-* GPU: Intel HD Graphics (no NVIDIA GPUs)
+* CPU: Intel Core i7-8650U (4 cores) with Intel HD Graphics (no NVIDIA GPUs)
 * Memory: 16 GB or more
-* Storage: SSD 30 GB or higher
+* Storage: SSD 16 GB or higher
 
+- other CPU only cases
+
+* CPU : AMD Ryzen 5 5600G with Radeon Graphics
+* Memory : 32GB
+
+* CPU AMD® Ryzen 7 pro 4750u with radeon graphics × 16
+* Memory 32.0 GiB
+
+* DELL XPS 13 9300
+* CPU: Intel(R) Core(TM) i7-1065G7
+* Memory: 16GB
     
 ## Environment Setup
 ### AWSIM(Ubuntu)
 #### 事前準備
-* (CPU onlyの方はskip) Nvidiaドライバのインストール
-  1. リポジトリの追加
-  ```
+* (CPU onlyの方またはすでにNVIDIA Driverがはいっている方はskip) Nvidiaドライバのインストール
+  1. リポジトリの追加、update、install
+  ```sh
   sudo add-apt-repository ppa:graphics-drivers/ppa
-  ```
-  2. パッケージリストの更新
-  ```
   sudo apt update
-  ```
-  3. インストール
-  ```
   sudo ubuntu-drivers autoinstall
   ```
-  4. 再起動の後、下記コマンドを実行し、インストールできていることを確認
+  2. 再起動の後、下記コマンドを実行し、インストールできていることを確認
   ```
   nvidia-smi
   ```
@@ -70,11 +77,8 @@
  
  * Vulkunのインストール
     1. パッケージリストの更新
-    ```
+    ```sh
     sudo apt update
-    ```
-    2. libvulkan1をインストール
-    ```
     sudo apt install libvulkan1
     ```
  * コースの準備
@@ -91,12 +95,88 @@
   * [docker](https://docs.docker.com/engine/install/ubuntu/)
   * [rocker](https://github.com/osrf/rocker) 
      * Dockerコンテナ内のRviz、rqtなどのGUIを使用するために用います。
-  * (CPU onlyの方はskip)[Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) 
   * [git lfs](https://packagecloud.io/github/git-lfs/install)
-  
+
+以下のコマンドでdocker rocker gitlfsがinstallされます
+```sh
+# docker インストールの下準備
+sudo apt-get update
+sudo apt-get install ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+# 最新のDockerをインストール
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+# インストールできているかをテスト
+sudo docker run hello-world
+
+# rocker install
+sudo apt-get install python3-rocker
+
+# gitlfs install
+curl -s https://packagecloud.io/install/repositories/githugit-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+git lfs install
+```
+
+  * (CPU onlyの方はskip)[Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
+  下記でinstallお願いします。
+```sh
+# インストールの下準備
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
+      && curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+      && curl -s -L https://nvidia.github.io/libnvidia-container/$distribution/libnvidia-container.list | \
+            sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g' | \
+            sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+
+# インストール
+sudo apt-get update
+sudo apt-get install -y nvidia-container-toolkit
+sudo nvidia-ctk runtime configure --runtime=docker
+sudo systemctl restart docker
+
+#インストールできているかをテスト
+sudo docker run --rm --runtime=nvidia --gpus all nvidia/cuda:11.6.2-base-ubuntu20.04 nvidia-smi
+
+#最後のコマンドで以下のような出力が出れば成功です。
+#（下記はNVIDIAウェブサイトからのコピペです）
+
+
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.06    Driver Version: 450.51.06    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla T4            On   | 00000000:00:1E.0 Off |                    0 |
+| N/A   34C    P8     9W /  70W |      0MiB / 15109MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+
+```
+
+
+
 * Dockerイメージの準備・起動 〜 Autowareの準備
    1. Dockerイメージを入手
-    ```
+   `docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda`
+   
+   docker imagesで以下のような表示が見えていることを確認
+   ```
     REPOSITORY                                                                       TAG                                 IMAGE ID       CREATED          SIZE
     ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda   latest                              9601fc85f1bd   3 weeks ago      7.31GB    
     ```
@@ -106,7 +186,6 @@
     sudo apt install -y git-lfs
     git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
     cd aichallenge2023-racing
-    git submodule update --init --recursive
     ```
     3. 大会用dockerイメージのビルド
     ```
@@ -163,20 +242,21 @@ aichallenge-train                                                               
 > source /aichallenge/aichallenge_ws/install/setup.bash 
 > ```
 
-### 地図データ(pcd, osm)のコピー WIP
+### 地図データosmの配置 WIP
 
-![mapfiles](../images/setup/dallara_mapfile.png)
-
-`/aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/dallara_interface/dallara_launch/dallara_launch/*`に配置されているosmファイルを`aichallenge2023-racing/docker/aichallenge/mapfile`にコピーして、ファイル構成が以下になるように配置してください。
+本大会ではlanelet2_mapファイルの改変を可としました。
+`/aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/map/*`に配置して、ファイル構成が以下になるように配置してください。
 ```
 aichallenge2023-racing
 └ docker
  └ aichallenge
   └ AWSIM
-  └ mapfile
-   ├ .gitkeep
-   ├ lanelet2_map.osm
+  └ aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch
+     └map
+      └lanelet2_map.osm
 ```
+※ 経路計画を行う際にlanelet2_map参照して行わないといけないなどの制約もございません。（csvファイルを参照し経路を生成することも可とします。）
+※ PCDファイルは入れていますが、今回提出していただく必要はございません。Mapの編集に必要な場合のみご使用ください。
 
 ### Autoware      
  * Autowareの動作確認  

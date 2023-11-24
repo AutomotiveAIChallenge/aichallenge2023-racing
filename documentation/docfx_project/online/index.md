@@ -25,8 +25,8 @@
 	#aichallenge2023-racing/docker/evaluationディレクトリで
 	bash build_docker.sh
 	```	
-	3. AWSIMの起動
-	4. dockerコンテナの起動（起動後、自動でautowareが立ち上がり、自動運転が開始されます）
+
+	3. dockerコンテナの起動（起動後、自動でautowareが立ち上がり、自動運転が開始されます）
 
 	GPU版のAWSIMを使っている方は
 	```
@@ -39,8 +39,13 @@
 	bash run_container_cpu.sh
 	```	
 
-	5. result.jsonの確認  
-		評価完了後、outputフォルダにresult.jsonが格納されます。
+	4. result.jsonの確認  
+		評価完了後、outputフォルダに以下のファイルが格納されます。
+		- result.json
+		- rosbag.db3
+		- rviz_capture.mp4
+		- autoware.log
+
 2.  オンライン環境にアップロード    
 	<img src="../images/online/siteImage.png" width="100%">  
 	 &emsp;[オンライン環境](https://aichallenge.synesthesias.jp)にアクセスし、手順1で作成した`aichallenge_submit.tar.gz`を「ファイルを選択」からアップロードしてください。アップロードが完了すると、ソースコードのビルド・シミュレーションの順番で実施されます。
