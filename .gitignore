@@ -9,6 +9,8 @@ install
 log
 AWSIM
 mapfile
+capture
 
 *.gz
+*.mp4
 result.json

@@ -31,7 +31,9 @@ namespace dallara_interface {
     velocity_report_pub_ = this->create_publisher<VelocityReport>("/vehicle/status/velocity_status", 1);
     steering_report_pub_ = this->create_publisher<SteeringReport>("/vehicle/status/steering_status", 1);
     gear_report_pub_ = this->create_publisher<GearReport>("/vehicle/status/gear_status", 1);
-    
+
+    gear_cmd_dallara_ = 0;
+    current_speed_ = 0.0;
     // Subscribers
 
     actuation_cmd_sub_ = this->create_subscription<ActuationCommandStamped>(
@@ -54,7 +56,6 @@ namespace dallara_interface {
       std::bind(&DallaraInterface::vehicle_data_callback, this, std::placeholders::_1)
     );
 
-    gear_cmd_dallara_ = 0;
   }
 
   void DallaraInterface::actuation_callback(const ActuationCommandStamped::SharedPtr msg) {
@@ -65,27 +66,30 @@ namespace dallara_interface {
     vehicle_inputs_msg.throttle_cmd = msg->actuation.accel_cmd * 100.0; // to 0~100%
     vehicle_inputs_msg.brake_cmd = msg->actuation.brake_cmd * 1000; // to Pascal
     vehicle_inputs_msg.steering_cmd = msg->actuation.steer_cmd * 180.0 / M_PI * 19.5;
+    const double speed_kmph = current_speed_ * 3.6;
+    const double gear_thresholds[] = { -1.0, 30.0, 60.0, 90.0, 120.0, 150.0 };
+    const int num_gears = sizeof(gear_thresholds) / sizeof(gear_thresholds[0]);
+    int gear_cmd_dallara_ = 1;
+    for (int i = 1; i < num_gears; ++i) {
+        if (speed_kmph < gear_thresholds[i]) {
+            break;
+        }
+        gear_cmd_dallara_ = i + 1;
+    }
     vehicle_inputs_msg.gear_cmd = gear_cmd_dallara_;
     vehicle_inputs_pub_->publish(vehicle_inputs_msg);
-
   }
 
   void DallaraInterface::gear_cmd_callback(GearCommand::SharedPtr msg) {
     int command = msg->command;
-    if (command == 0 || command == 1) {
-      // if gear_cmd is none or neutral
-      gear_cmd_dallara_ = 0;
-      return;
-    } else {
-      gear_cmd_dallara_ = command - 1;
-    }
   }
 
   void DallaraInterface::powertrain_data_callback(PowertrainData::SharedPtr msg) {
     VelocityReport velocity_report_msg;
     velocity_report_msg.header.stamp = get_clock()->now();
     velocity_report_msg.lateral_velocity = 0.0;
-    velocity_report_msg.longitudinal_velocity = msg->vehicle_speed_kmph / 3.6; //km/h to m/s
+    current_speed_ = msg->vehicle_speed_kmph / 3.6; //km/h to m/s
+    velocity_report_msg.longitudinal_velocity = current_speed_;
     velocity_report_pub_->publish(velocity_report_msg);
 
     GearReport gear_report_msg;
