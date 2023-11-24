@@ -13,7 +13,6 @@ RUN sudo apt install -y git-lfs
 RUN git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing /ws/aichallenge2023-racing
 
 # Copy into Container
-COPY mapfile /ws/mapfile
 COPY AWSIM /ws/AWSIM
 COPY aichallenge_submit.tar.gz /ws
 COPY main.bash /ws
@@ -24,8 +23,6 @@ RUN cp -r /ws/AWSIM /aichallenge
 RUN chmod 757 /aichallenge
 RUN rm -rf /aichallenge/aichallenge_ws/src/aichallenge_submit
 RUN tar zxf /ws/aichallenge_submit.tar.gz -C /aichallenge/aichallenge_ws/src
-RUN cp -r /ws/mapfile /aichallenge
-
 
 # Build
 RUN apt-get update
