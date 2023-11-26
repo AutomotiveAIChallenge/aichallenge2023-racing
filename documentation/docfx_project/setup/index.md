@@ -196,7 +196,6 @@ sudo docker run --rm --runtime=nvidia --gpus all nvidia/cuda:11.6.2-base-ubuntu2
     ```
     sudo apt install -y git-lfs
     git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
-    cd aichallenge2023-racing
     ```
     3. 大会用dockerイメージのビルド
     ```
