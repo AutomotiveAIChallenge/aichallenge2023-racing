@@ -98,8 +98,6 @@ Please install the following.
     ```
     sudo apt install -y git-lfs
     git lfs clone https://github.com/AutomotiveAIChallenge/aichallenge2023-racing
-    cd aichallenge2023-racing
-    git submodule update --init --recursive
     ```
     3. build docker image for competition
     ```
