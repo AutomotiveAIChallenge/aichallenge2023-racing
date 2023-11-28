@@ -1,23 +1,19 @@
 # Customizing Autoware
 
-本ページでは、既存のAutowareをカスタマイズし、自作のパッケージなどを追加する方法を紹介します．
+本大会では、自動運転ソフトウェアAutowareをベースとした実装を用意しております．
 
-また、デフォルトのAutowareから機能を絞り、最小構成のAutoware「Autoware Mini」の紹介もしています．
+本ページでは、その背景と説明に加えて、どのように本実装を活用できるかの紹介を行います．
+
+前回の[インテグレーション大会](https://www.jsae.or.jp/jaaic/2023_contest.php)では、デフォルトのAutowareから機能を絞り、ノード数を減らした[縮小構成のAutoware「Autoware-Mini」を起動できるLaunchファイルを提供](https://github.com/AutomotiveAIChallenge/aichallenge2023-integ/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml)しました．その際の、背景や用意した意図については、[前大会のドキュメント](https://automotiveaichallenge.github.io/aichallenge2023-integ/customize/index.html#autoware-mini)をご覧ください．
+
+今回のシミュレーション大会では、Autowareの部分的な活用や自由自在な取り込みを可能にするため、[AWSIMとの利用を想定した最小構成の「Autoware-Micro」を用意](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_micro_awsim.launch.xml)しました．
  
-## How to customize and use Autoware packages
-
-1. 元のパッケージをコピーして、下記を変更
-     * パッケージ名
-     * フォルダ名
-     * コード
-    *  package.xml
-    * CMakeLists.txt
-2. aichallenge_submitの中に配置
-3. autoware_universe_launchから呼び出されるlaunchファイルを変更  
-    * 参考例：pose_initializer_custom（ autoware_universe_launch/tier4_localization_launch/launch/util/util.launch.xmlから呼び出しております）
 
 
-## Autoware-Mini
+
+## Autoware-Microの背景
+
+### Autowareを利用する時の課題
 
 デフォルトのAutowareでは様々な走行環境に対応するため、たくさんのノードから構成されています．
 
@@ -29,7 +25,9 @@ Autowareの公式ドキュメンテーションでは、[Autowareを構成する
 
 一方、その複雑な構成を理解し、各パラメータの意味や調整の仕方、モジュールの切り替え・入れ替えなどを行うことが必ずしも容易ではなくなっています．
 
-そのため、今回は、デフォルトのAutowareから機能を絞り、ノード数を減らした[最小構成のAutoware「Autoware-Mini」を起動できるLaunchファイル](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml)を用意しました．
+### Autoware-Miniの用意
+
+そのため、前回のインテグレーション大会では、デフォルトのAutowareから機能を絞り、ノード数を減らした[縮小構成のAutoware「Autoware-Mini」を起動できるLaunchファイル](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml)を用意しました．
 
 Autoware-Miniのノード図を以下に示します．ノード数が格段と減り、基本的な自動走行を可能とする機能のみが揃っていることが分かります．
 
@@ -48,187 +46,61 @@ Autoware-Miniの特徴としては、以下が挙げられます．
 - パラメータを変更した場合のシステム全体の動作への影響が分かりやすい
 - 今回のAutoware-Miniには含まれていない既存のAutowareのノードを追加することもできる
 
-### Using Autoware-Mini
+## Autoware-Microの用意
 
-Autoware-Miniのセットアップと使い方を説明します．
+今回のシミュレーション大会では、高速での自動運転レーシングを競技としており、既存のAutowareをそのまま使うというよりは、Autowareを実装例のベースとして、参加者の皆様に拡張・カスタマイズして頂く想定でいます．
 
-#### Pulling newest changes from GitHub
+また、より多くの参加者に挑戦して頂けるよう、参加に必要なPCのスペックを広めに取れるよう配慮しております．
 
-既に`aichallenge2023-racing`をセットアップしていた方は、以下を実行し、最新のソースをmainブランチからPullしてください．
+そのような背景の下、Autoware-Miniを改変し、「Autoware-Micro」として以下を実現しようとしています．
 
-```
-cd aichallenge2023-racing/
-git pull
-```
+- Autoware-Miniから更にノード数を絞り、カスタマイズしやすいシンプルな構成とする．
+- LocalizationやPerceptionでAWSIMから直接Ground Truthを出すことにより計算負荷の高い処理を省略し、本大会の競技内容にフォーカスできるようにし、より多くのPCスペックに対応できるようにする．
+- AWSIMでのレーシング車両に対応できるよう新しくVehicle Interfaceを追加する．
 
-Autoware-MiniのLaunchファイルは`aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml` ([GitHubリンク](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml)) にあります．
+このように、Autowareの部分的な活用や自由自在な取り込みを可能にするため、[AWSIMとの利用を想定した最小構成の「Autoware-Micro」を用意](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_micro_awsim.launch.xml)しました．
+
+Autoware-Microのノード図は以下の通りとなっています．
+
+![micro-node-diagram](../images/customize/autoware-micro-node-diagram.png)
+
+Autoware-MicroのAutoware-Miniに比べての各コンポーネントの変更点・特徴としては、以下が挙げられます．
+
+- Localization：AWSIMから自己位置のGround Truthを出力することにより、自己位置推定処理を一部省略．
+- Perception：AWSIMから物体認識結果のGround Truthを出力することにより、センシングや物体認識処理を省略する一方、物体の行動予測などにフォーカスできるようにした．
+- Planning：behavior_velocity_plannerやobstacle_stop_plannerなどを省略し、出力経路から走行trajectoryを直接出力するように変更．
+- Control：制御の1つの実装例としてsimple_pure_pursuitを用意．
+- Vehicle：raw_vehicle_cmd_converterでControl出力を車両制御信号に変換し、AWSIMのレーシング車両とは車両インターフェイス「dallara_interface」を用いて接続．
 
 
-#### Updating aichallenge_submit.launch.xml
+## Autoware-Microの活用方法
 
-`autoware_mini_awsim.launch.xml`を起動するためには、`aichallenge_submit.launch.xml`をまず修正する必要があります．
+Autoware-Microを活用することにより、本大会での課題となる：
 
-このファイルのコメントアウトしている箇所を有効にし、上の`e2e_simulator.launch.xml`を起動している箇所をコメントアウトしてください．
+1. NPC車両の行動予測
+2. 追い抜きやカーブなどの戦略的な経路計画
+3. 高速での車両制御
 
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<launch>
-    <!-- Autoware -->
-    <!-- <include file="$(find-pkg-share autoware_launch)/launch/e2e_simulator.launch.xml">
-        <arg name="vehicle_model" value="golfcart"/>
-        <arg name="sensor_model" value="awsim_sensor_kit"/>
-        <arg name="map_path" value="/aichallenge/mapfile"/>
-        <arg name="rviz" value="false"/>
-    </include> -->
+に集中して取り組むことができるようになります．
 
-    <!-- Uncomment the following lines to try Autoware-Mini -->
-    <include file="$(find-pkg-share aichallenge_submit_launch)/launch/autoware_mini_awsim.launch.xml" >
-      <arg name="vehicle_model" value="golfcart"/>
-      <arg name="sensor_model" value="awsim_sensor_kit"/>
-      <arg name="map_path" value="/aichallenge/mapfile"/>
-      <arg name="rviz" value="false"/>
-    </include>
+また、Autoware-Microの実装例を参考にしながら、Autowareのアーキテクチャとは少し異なる実装方法を試したり、新しくカスタムのノードを作成・導入したりすることができます．
 
-    <include file="$(find-pkg-share initialpose_publisher)/launch/initialpose_publisher.launch.xml" />
+独自のノードの実装を取り入れることにより、走行性能を向上させ点数を伸ばすことができます．
 
-    <include file="$(find-pkg-share self_driving_controller)/launch/self_driving_controller.launch.xml" />
-</launch>
-```
+例えば、以下のような構成を考え、「Planning」と「Control」をそれぞれ実装して取り組んだり、「Planning & Control」を両方担うノードを実装できます．
 
-#### Updating aichallenge.launch.xml 
+ルートの入力と車両インターフェイス出力のROSトピックさえ合っていれば自由にカスタマイズして頂けます．
 
-次に、Autowareを起動した際のGUIツールRviz2の見た目を変えるため、Rviz2コンフィグファイルをAutoware-Mini用のものに設定します．
+![racing-diagram](../images/customize/racing_simple.png)
 
-`aichallenge.launch.xml`を以下のように変えます．
+## How to customize and use Autoware packages
 
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<launch>
-    <!-- RViz parameters -->
-    <arg name="rviz2" default="true" description="launch rviz"/>
-    <!-- <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/> -->
-
-    <!-- Below is a more suitable RViz2 config for trying out Autoware-Mini -->
-    <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware-mini.rviz" description="rviz config"/>
-
-    <!-- Scoring -->
-    <include file="$(find-pkg-share aichallenge_scoring)/launch/aichallenge_scoring.launch.xml">
-        <arg name="result_score_topic" value="/aichallenge/score" />
-    </include>
-
-    <node pkg="aichallenge_scoring_result" exec="scoring_result" name="scoring_result" output="screen" />
-
-    <!-- Submitted Package -->
-    <include file="$(find-pkg-share aichallenge_submit_launch)/launch/aichallenge_submit.launch.xml" />
-
-    <!-- RViz -->
-    <group>
-        <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" args="-d $(var rviz_config) -s $(find-pkg-share autoware_launch)/rviz/image/autoware.png" if="$(var rviz2)"/>
-    </group>
-</launch>
-```
-
-#### Updating behavior_path_planner.param.yaml
-
-次に、Planningコンポーネントの`behavior_path_planner`と`behavior_velocity_planner`においては、設定を以下のコンフィグファイルで行う必要があります．
-
-- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
-- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
-
-デフォルトのAutowareでは、`behavior_path_planner`ノードでは、以下のモジュールを有効化しています．
-
-- lane_change
-- pull_out
-- side_shift
-- pull_over
-- avoidance
-
-今回のAutoware-Miniでは、一旦ここ全てをOFFにするよう変更を加えます．
-
-```
-...
-
-lane_change:
-  enable_module: false
-  enable_simultaneous_execution: false
-  priority: 4
-  max_module_size: 1
-
-pull_out:
-  enable_module: false
-  enable_simultaneous_execution: false
-  priority: 0
-  max_module_size: 1
-
-side_shift:
-  enable_module: false
-  enable_simultaneous_execution: false
-  priority: 2
-  max_module_size: 1
-
-pull_over:
-  enable_module: false
-  enable_simultaneous_execution: false
-  priority: 1
-  max_module_size: 1
-
-avoidance:
-  enable_module: false
-  enable_simultaneous_execution: false
-  priority: 3
-  max_module_size: 1
-
-```
-
-#### Updating behavior_velocity_planner.param.yaml
-
-次に、Planningコンポーネントの`behavior_path_planner`と`behavior_velocity_planner`においては、設定を以下のコンフィグファイルで行う必要があります．
-
-- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
-- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
-
-デフォルトのAutowareでは、`behavior_velocity_planner`ノードでは、以下のモジュールを有効化しています．
-
-```
-...
-launch_stop_line: true
-launch_crosswalk: true
-launch_traffic_light: true
-launch_intersection: true
-launch_blind_spot: true
-launch_detection_area: true
-launch_virtual_traffic_light: true
-launch_occlusion_spot: false
-launch_no_stopping_area: true
-launch_run_out: false
-launch_speed_bump: false
-```
-
-今回のAutoware-Miniでは、一旦「stop-line」以外を全てOFFにするよう変更を加えます．
-
-```
-...
-# Autoware-Mini (Uncomment the lines below to try Autoware-Mini)
-launch_stop_line: true
-launch_crosswalk: false
-launch_traffic_light: false
-launch_intersection: false
-launch_blind_spot: false
-launch_detection_area: false
-launch_virtual_traffic_light: false
-launch_occlusion_spot: false
-launch_no_stopping_area: false
-launch_run_out: false
-launch_speed_bump: false
-```
-
-#### Run Autoware-Mini
-
-これでAutoware-Miniを動かす準備はできました．AWSIMを起動し、以下でAutoware-Miniを実行します．
-
-```
-# Rockerコンテナ内で
-cd /aichallenge
-bash build_autoware.sh
-bash run.sh
-```
+1. 元のパッケージをコピーして、下記を変更
+     * パッケージ名
+     * フォルダ名
+     * コード
+    *  package.xml
+    * CMakeLists.txt
+2. aichallenge_submitの中に配置
+3. autoware_micro_awsim_launchから呼び出されるlaunchファイルを変更  
+    * 参考例：pose_initializer_custom（ autoware_universe_launch/tier4_localization_launch/launch/util/util.launch.xmlから呼び出しております）
