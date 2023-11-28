@@ -47,6 +47,16 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "images/customize/autoware-micro-node-diagram.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/customize/autoware-micro-node-diagram.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "images/customize/autoware-mini-node-diagram.png",
       "output": {
         "resource": {
@@ -61,6 +71,16 @@
       "output": {
         "resource": {
           "relative_path": "images/customize/autoware-node-diagram.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/customize/racing_simple.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/customize/racing_simple.png"
         }
       },
       "version": ""
