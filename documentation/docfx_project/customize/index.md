@@ -102,5 +102,5 @@ Autoware-Microを活用することにより、本大会での課題となる：
     *  package.xml
     * CMakeLists.txt
 2. aichallenge_submitの中に配置
-3. autoware_universe_launchから呼び出されるlaunchファイルを変更  
+3. autoware_micro_awsim_launchから呼び出されるlaunchファイルを変更  
     * 参考例：pose_initializer_custom（ autoware_universe_launch/tier4_localization_launch/launch/util/util.launch.xmlから呼び出しております）
