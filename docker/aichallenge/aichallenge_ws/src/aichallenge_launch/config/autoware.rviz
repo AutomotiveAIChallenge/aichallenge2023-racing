@@ -109,7 +109,7 @@ Visualization Manager:
                 Reliability Policy: Reliable
                 Value: /vehicle/status/velocity_status
               Value: true
-            - Alpha: 0.30000001192092896
+            - Alpha: 0.5
               Class: rviz_default_plugins/RobotModel
               Collision Enabled: false
               Description File: ""
