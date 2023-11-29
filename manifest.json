@@ -247,40 +247,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "images/setup/autoware1.png",
+      "source_relative_path": "images/setup/autoware.png",
       "output": {
         "resource": {
-          "relative_path": "images/setup/autoware1.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/setup/autoware2.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/setup/autoware2.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/setup/autoware3.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/setup/autoware3.png"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Resource",
-      "source_relative_path": "images/setup/autoware4.png",
-      "output": {
-        "resource": {
-          "relative_path": "images/setup/autoware4.png"
+          "relative_path": "images/setup/autoware.png"
         }
       },
       "version": ""
