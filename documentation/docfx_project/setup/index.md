@@ -279,11 +279,8 @@ aichallenge2023-racing
    bash build_autoware.sh
    bash run_autoware.sh
    ```
-   3. 下記のような画面(Rviz2)が表示されることを確認  
-   ![autoware1](../images/setup/autoware1.png)   
-            
-   4. タブにある2D Goal Poseを選択し、ゴールポジションをドラッグで指定。画像のように、ルートが表示されている かつ `Routing`が`UNSET`から`SET`に変わっていることを確認（指定してから少し時間がかかります）  
-     ![autoware3](../images/setup/autoware3.png)
+   3. 下記のような画面(Rviz2)が表示され，車両の自動走行が開始されることを確認．
+   ![autoware](../images/setup/autoware.png)
 
 ### 2回目以降の起動
 1. AWSIMの起動
