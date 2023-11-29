@@ -321,3 +321,16 @@ aichallenge2023-racing
 rocker --device /dev/dri --x11 --user ... # CPU版
 rocker --device /dev/dri --nvidia --x11 --user ... # GPU版
 ```
+
+### 変更点の取り込み
+
+#### dockerのupdate
+```sh
+docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda
+```
+
+#### repositoryのupdate
+```sh
+cd aichallenge2023-racing # path to aichallenge2023-racing
+git pull origin/main
+```
