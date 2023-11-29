@@ -11,20 +11,19 @@
  &emsp; Participants will be asked to create a ROS2 package to carry out the scenario, and the following ROS2 package is provided in aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src as sample code to serve as a base for this in this repository The following ROS2 package is provided.  
  &emsp; aichallenge_launch, sim_msgs change is not applied at submission
 
-## Sample Code (Help Wanted)
+## Sample Code
  &emsp;aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src directory structure is below
 * aichallenge_launch
-  * 大元のlaunchファイルaichallenge.launch.xmlを含んでいます。すべてのROS2ノードはこのlaunchファイルから起動されます。
+  * Contains the main launch file aichallenge.launch.xml. All ROS2 nodes are launched from this launch file.
 * aichallenge_submit
-  * 提出時にはこのディレクトリの内容のみ提出していただきますので、参加者の皆さまが実装されたROS2パッケージはすべてこのディレクトリ内に配置してください。
-  * aichallenge_submit_launch.launch.xmlが大元のlaunchファイルaichallenge.launch.xmlから呼び出されますので、このlaunchファイルを適宜改修して皆様が実装されたROS2ノードが起動されるように設定してください。
+  * All ROS2 packages implemented by participants should be placed in this directory, as only the contents of this directory will be submitted at the time of submission.
+  * Please modify this launch file accordingly to configure it to launch the ROS2 node you have implemented. Please modify this launch file accordingly to configure your ROS2 node to be launched.
   * autoware_launch, autoware_universe_launch
-    * Autowareのlaunch, config関連のパッケージをコピーして一部編集しています。Dockerイメージ内のAutowareにはここに含まれているパッケージが削除されています。こちらを編集することでAutowareの動作の変更を行うことが出来ます。
-    * 改変前のファイルを利用したい場合は、[autoware_launch](https://github.com/autowarefoundation/autoware_launch/tree/awsim-stable), [autoware_universeのlaunchディレクトリ](https://github.com/autowarefoundation/autoware.universe/tree/awsim-stable/launch)をご利用ください。
-  * autoware_micro 最小構成のautowareを作成するためのフォルダです。
-  * dallara_interface Autonomaで使用している車両に適合するためのパッケージ群です。
-  * sample_pakcages カスタムパッケージ作成のためのsampleのパッケージ群です。  
-
+    * The Autoware packages included here have been removed from the Docker image of Autoware. You can modify the behavior of Autoware by editing here.
+    * If you want to use the files before the modification, please copy the files from [autoware_launch](https://github.com/autowarefoundation/autoware_launch/tree/awsim-stable), [autoware_universe's launch directory](https://github.com/autowarefoundation/autoware.universe/tree/awsim-stable/launch).
+  * autoware_micro Folder for creating a minimum configuration of autoware.
+  * dallara_interface A set of packages to adapt the vehicle used in Autonoma.
+  * sample_pakcages Sample packages for creating custom packages.
 ### Steps for Execution
 
 1. Docker Image Build
