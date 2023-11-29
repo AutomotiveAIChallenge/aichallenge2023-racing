@@ -1,12 +1,12 @@
 # SetUp
 
-<!--br>
+<br>
 
 > [!REGISTER]
 > こちらから参加登録!
 > [https://www.jsae.or.jp/jaaic/en/index.php](https://www.jsae.or.jp/jaaic/en/index.php)
 
-<br> -->
+<br>
 
 ## Minimum Hardware Requirements
 
