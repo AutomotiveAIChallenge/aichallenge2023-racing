@@ -1,12 +1,12 @@
 # SetUp
 
-<!--br>
+<br>
 
 > [!REGISTER]
 > こちらから参加登録!
 > [https://www.jsae.or.jp/jaaic/en/index.php](https://www.jsae.or.jp/jaaic/en/index.php)
 
-<br> -->
+<br>
 
 ## Minimum Hardware Requirements
 本大会で使用していただくPCの動作環境として以下を推奨しております。
@@ -279,11 +279,8 @@ aichallenge2023-racing
    bash build_autoware.sh
    bash run_autoware.sh
    ```
-   3. 下記のような画面(Rviz2)が表示されることを確認  
-   ![autoware1](../images/setup/autoware1.png)   
-            
-   4. タブにある2D Goal Poseを選択し、ゴールポジションをドラッグで指定。画像のように、ルートが表示されている かつ `Routing`が`UNSET`から`SET`に変わっていることを確認（指定してから少し時間がかかります）  
-     ![autoware3](../images/setup/autoware3.png)
+   3. 下記のような画面(Rviz2)が表示され，車両の自動走行が開始されることを確認．
+   ![autoware](../images/setup/autoware.png)
 
 ### 2回目以降の起動
 1. AWSIMの起動
@@ -320,4 +317,17 @@ aichallenge2023-racing
 #!/bin/bash
 rocker --device /dev/dri --x11 --user ... # CPU版
 rocker --device /dev/dri --nvidia --x11 --user ... # GPU版
+```
+
+### 変更点の取り込み
+
+#### dockerのupdate
+```sh
+docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda
+```
+
+#### repositoryのupdate
+```sh
+cd aichallenge2023-racing # path to aichallenge2023-racing
+git pull origin/main
 ```

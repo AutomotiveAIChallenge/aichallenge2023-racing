@@ -102,3 +102,10 @@ GPUのメモリは11GB以上を推奨しています。
 tier4:AWSIMのトラブルシューティングも参照できます。
 
 https://github.com/tier4/AWSIM/blob/main/docs/DeveloperGuide/TroubleShooting/index.md
+
+## 質問方法  
+&emsp;競技内容、リポジトリ内容物等に関するお問い合わせについては、github上のissueをご利用ください。質問は日本語、英語どちらでも構いません。   
+&emsp;質問が解決した際には、issueのcloseをお願いします。
+
+※各issueでの質問については、基本的に2営業日以内に回答いたします。
+ただし、検討に時間を要する質問や質問数が多い場合等については、2営業日以上いただく可能性があります。ご了承ください。
