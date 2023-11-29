@@ -32,8 +32,40 @@
   href: customize/index.html
 - name: FAQ
   href: FAQ/index.html
-- name: Other
-  href: other/index.html
+- name: Blog Posts
+  dropdown: true
+  items:
+  - name: Advent Calender
+    href: https://qiita.com/advent-calendar/2023/jidounten-ai
+- name: Past Event Blog Posts
+  dropdown: true
+  items:
+  - name: "(1) Autowareを動かしてみる"
+    href: https://qiita.com/h_bog/items/86fba5b94b2148c4d9da
+  - name: "(2) 1つ目の障害物の回避成功"
+    href: https://qiita.com/h_bog/items/a36df3042a342bd2a0c5
+  - name: "(3) 2つ目の障害物の回避成功"
+    href: https://qiita.com/h_bog/items/849a4241cdef257f3b3a
+  - name: "(4) 全障害物回避達成！（全パラメータ公開）"
+    href: https://qiita.com/h_bog/items/8bce776fef0a39676c46
+  - name: "(5) 開発環境の再構築（番外編）"
+    href: https://qiita.com/h_bog/items/4ed94ef6256ac5ae9c03
+  - name: "(6) Autoware-Miniを使ってみる"
+    href: https://qiita.com/h_bog/items/075543f30f9b3432fa1d
+  - name: "(7) 外部モジュール導入（失敗）"
+    href: https://qiita.com/h_bog/items/bcfd5648afa8b6dee5b3
+  - name: "(8) 自作パッケージの導入"
+    href: https://qiita.com/h_bog/items/368543a4b10b356db0e5
+  - name: "(9) 障害物回避モジュールの作成①"
+    href: https://qiita.com/h_bog/items/c84c4886c0ba0e6c1724
+  - name: "(10) 障害物回避モジュールの作成②（成功？）"
+    href: https://qiita.com/h_bog/items/a2c2cbdcec6a852bfcd5
+  - name: "(11) 障害物回避モジュールの改良①"
+    href: https://qiita.com/h_bog/items/4160e396fc5def3c8383
+  - name: "(12) 障害物回避モジュールの改良②"
+    href: https://qiita.com/h_bog/items/c7ffd9d51e01adf8e021
+  - name: "(13) 障害物回避モジュールの改良③"
+    href: https://qiita.com/h_bog/items/770e4e2437a963082b12
 - name: To English Page
   href: en/index.html
 
