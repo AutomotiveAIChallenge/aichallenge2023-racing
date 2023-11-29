@@ -39,7 +39,7 @@
 - コース境界から100秒以上離れた場合
 - 走行完了は以下のゴール地点を超えた場合になります。
   sampleは`docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_micro/goal_pose_setter/config/default_goal_pose.param.yaml`にあります。（※launch fileでのyaml fileの指定はされていません）
-  ```
+  ```yaml
     goal.position.x: 21912.0
     goal.position.y: 52267.5
   ```
@@ -67,4 +67,60 @@
 
 ### How to check results
 
-&emsp;シミュレーションの内容と結果は、評価システムから出力されるjsonファイル及びシミュレーションの動画から確認可能とする予定です。追加のアナウンスをお待ちください。
+&emsp; 結果のスコアは`result.json`に送られます。
+#### 結果のログ形式
+&emsp; 結果は`~/awsim-logs/result.json` に以下のフォーマットで出力されます。
+
+```json
+{
+  "rawLapTime": 72.77926,
+  "distanceScore": 457.0,
+  "lapTime": 302.779266,
+  "isLapCompleted": false,
+  "isTimeout": false,
+  "trackLimitsViolation": [
+    19, # out of track less than 2 sec
+    19, # out of track more than 2 sec
+    2,  # out of track less than 5m
+    2,  # out of track more than 5m
+    0   # not used
+  ],
+  "collisionViolation": [
+    0, # collision less than 2 sec
+    0, # collision more than 2 sec
+    0, # not used
+    0  # not used
+  ]
+}
+```
+
+&emsp; また、その他のログとして`~/awsim-logs/verbose_result.json`も以下の形式で出力されます。
+
+```json
+{
+  "rawLapTime": 0.0,
+  "distanceScore": 0.0,
+  "lapTime": 0.0,
+  "isLapCompleted": false,
+  "isTimeout": false,
+  "boundsViolations": [
+    {
+      "distance": 0.3017645,
+      "distanceFromBound": 2.26600266,
+      "duration": 0.0160293132
+    },
+    {
+      "distance": 2.776487,
+      "distanceFromBound": 1.01412094,
+      "duration": 0.0801174641
+    },
+    {
+      "distance": 2.91162729,
+      "distanceFromBound": 1.1498549,
+      "duration": 0.08674298
+    },
+    ....
+  ]
+  "collisionViolations": []
+}
+```
