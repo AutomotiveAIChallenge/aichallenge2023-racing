@@ -1,6 +1,6 @@
 # aichallenge2023-for-racing
 
-[![.github/workflows/document.yml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/actions/workflows/document.yml/badge.svg?branch=feature%2Fen)](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/actions/workflows/document.yml)
+[![.github/workflows/document.yml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/actions/workflows/document.yml/badge.svg?branch=main)](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/actions/workflows/document.yml)
 
 &emsp; 本リポジトリでは、2023年度の11月から1月にかけて実施される自動運転AIチャレンジRacing大会(仮称)でご利用いただくドキュメント・ファイルを提供しています。
 
