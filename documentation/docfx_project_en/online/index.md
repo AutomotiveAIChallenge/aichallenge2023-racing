@@ -21,18 +21,31 @@
 	bash advance_preparations.sh
 	```
 	2. Build the Docker image
-	```
+	```sh
 	# In the aichallenge2023-racing/docker/evaluation directory
 	bash build_docker.sh
 	```	
 	3. Launch AWSIM
-	4. Start the Docker container (After launch, autoware will start automatically, and autonomous driving will begin)
-	```
-	#In the aichallenge2023-racing/docker/evaluation directory
+   	Start the Docker container (After launch, autoware will start automatically, and autonomous driving will begin)
+
+	GPU version
+	```sh
+	# In the aichallenge2023-racing/docker/evaluation directory
 	bash run_container.sh
+	```
+
+	CPU version
+	```sh
+	# In the aichallenge2023-racing/docker/evaluation directory
+	bash run_container_cpu.sh
 	```	
-	5. Verify result.json  
-		Once the evaluation is complete, result.json will be stored in the `output` folder.
+
+	4. Verify result.json
+		after evaluation、output folder has below
+		- result.json
+		- rosbag.db3
+		- rviz_capture.mp4
+		- autoware.log
 		
 2.  Upload to the Online Environment
 	<img src="../images/online/siteImage.png" width="100%">  
@@ -45,10 +58,10 @@
 	* You cannot upload new sources while the scoring process is ongoing.
 	* You can upload up to three times per day, and the count will reset at 0:00 Japan time.
    
-4.  Check the Results  
+3.  Check the Results  
 	&emsp; After the evaluation is completed in the online environment, you can download the result.json file and review the results.
    
-5.  If no results are found:
+4.  If no results are found:
 	1. Check for issues in the package dependencies:
    	If implemented in Python, please verify there are no missing dependencies in the `package.xml`, and ensure that `setup.py` or `CMakeLists.txt` are correctly written. If implemented in C++, please ensure that both `package.xml` and `CMakeLists.txt` are accurately described.
    
