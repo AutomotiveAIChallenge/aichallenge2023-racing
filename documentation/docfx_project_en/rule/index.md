@@ -1,63 +1,130 @@
+Certainly! Here's the translation of the provided text in the same format:
+
 # Rule
 
-This page explains the rules and ranking system for the competition. Please note that the contents of this page may change during the tournament period.
+&emsp;This page explains the rules and ranking system of the competition. Please note that the contents of this page may change during the competition period.
 
 ## Ranking System
 
-The ranking of participants is determined based on the following two metrics:
+&emsp;Participants' rankings are determined based on the following two criteria:
 
 1. Distance Points:
-   1. For participants who could not reach the goal within the time limit (10 minutes), their ranking is determined by the `distance points (0-100)` corresponding to the distance they could travel from the starting point within the time limit.
-   2. If the participant's vehicle completed a lap within the time limit, the `distance points` are 100.
-   3. In the case of disqualification, the `distance points` are 0.
-   4. If the distance points are the same, the person with less time added due to penalties will rank higher.
+   1. For participants who cannot reach the goal within the time limit (10 minutes), the ranking is determined by `Distance Points (0-5700)`, based on the distance traveled from the start point within the time limit.
+   2. If the goal is reached within the time limit, the `Distance Points` are approximately 5700 points. (Details of the exact distance are omitted for brevity.)
 2. Total Time:
-   1. For participants who reached the goal within the time limit, their ranking is determined by the `total time`, which is the sum of the time elapsed from start to finish and penalty time. The penalty time will be calculated based on violations during the race.  
+   1. For participants who reach the goal within the time limit, the ranking is determined by the `Total Time`, which includes the time taken from start to goal plus any penalties.
 
-***Ranking Example***
+***Example of Ranking***
 
-| Distance Points | Time from Start to Goal | Time Added Due to Penalties | Total Time | Rank | 
-| --------------- | ----------------------- | --------------------------- | ---------- | ---- |
-| 100             | 01:10                   | 00:00                       | 01:10      | 1    |
-| 100             | 01:30                   | 00:10                       | 01:40      | 2    |
-| 100             | 01:20                   | 00:30                       | 01:50      | 3    |
-| 50              | N/A                     | 00:00                       | N/A        | 4    |
-| 50              | N/A                     | 00:10                       | N/A        | 5    |
-| 10              | N/A                     | 00:00                       | N/A        | 6    |
+| Distance Points | Time from Start to Goal | Time Addition due to Penalty | Total Time | Rank | 
+| --------------- | ----------------------- | ---------------------------- | ---------- | ---- |
+| 5700            | 01:10                   | 00:00                        | 01:10      | 1    |
+| 5700            | 01:30                   | 00:10                        | 01:40      | 2    |
+| 5700            | 01:20                   | 00:30                        | 01:50      | 3    |
+| 60              | N/A                     | 00:00                        | N/A        | 4    |
+| 50              | N/A                     | 00:10                        | N/A        | 5    |
+| 10              | N/A                     | 00:00                        | N/A        | 6    |
 
 ### Penalty
 
-Deviation from the course and collisions with other vehicles running alongside are considered violations. There are 3 types of penalty for violations:
+&emsp;Violations such as deviating from the course or colliding with other vehicles are penalized. The penalties for violations are:
 
-1. Disqualification
-2. 10-second addition to the driving time
-3. 5-second addition to the driving time
+1. End of run
+2. Addition of 10 seconds to the running time
+3. Addition of 5 seconds to the running time
 
-The following lists each violation and the corresponding penalty.
+Below are the violations and their corresponding penalties:
 
-**Critical Violation (Disqualification)**
+**End of Run**
 
-- Deviating from the course (for more than 2 seconds)
-- Deviating from the course (more than 5m from the course boundary)
-- Driving in the wrong direction on the course
+- Deviating more than 5m from the course boundary for more than 10 seconds
+- Being more than 100 seconds away from the course boundary
+- Completion of the run is considered when crossing the following goal point.
+  Sample can be found at `docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_micro/goal_pose_setter/config/default_goal_pose.param.yaml` (Note: yaml file is not specified in the launch file)
+  ```yaml
+    goal.position.x: 21912.0
+    goal.position.y: 52267.5
+  ```
 
-**Sevior Violation (Penalty: 10 seconds per occurrence):**
+**Major Violation (Penalty: 10 seconds/occurrence):**
 
-- Colliding with another vehicle (the collision state lasts for more than 2 seconds)
+- Collision with another vehicle that lasts more than 2 seconds
+- Deviating more than 5m from the course boundary
+- Deviating more than 2 seconds from the course boundary
 
-**Minor Fouls (Penalty: 5 seconds per occurrence):**
+**Minor Violation (Penalty: 5 seconds/occurrence):**
 
-- Deviating from the course (for less than 2 seconds **AND** less than 5m from the course boundary)
-- Colliding with another vehicle (the collision state is resolved within 2 seconds)
+- Deviating from the course (less than 2 seconds **and** less than 5m from the course boundary)
+- Collision with another vehicle (resolved within 2 seconds)
 
 **Note**
 
-- In cases where another vehicle collides with the rear of your vehicle (e.g., being rear-ended by another vehicle), it is not considered the fault of your vehicle and no penalty will be applied.
+- In cases where another vehicle collides with the rear of your vehicle (e.g., rear-end collision by another vehicle), it is not considered your fault, and no penalty is applied.
+- Do not drive in the wrong direction.
+- Do not cut corners.
 
 ## Submission
 
-Participants are requested to upload the software they developed to the evaluation system via the submission page. Three simulations will be conducted for each upload, and distance points and total time will be calculated for each simulation. The best score out of the three simulation results will be reflected in the ranking.
+&emsp;Participants are required to upload their developed software to the evaluation system via the submission page. Three simulations will be conducted for each upload, and distance points and total time calculations will be performed for each simulation. The highest score among the three simulation results will be reflected in the rankings.
 
-### How to check results
+### How to Check Results
 
-The details and results of the simulations are planned to be available for confirmation through a json file output by the evaluation system and videos of the simulations. Please wait for further announcements.
+&emsp;The score of the results will be sent to `result.json`.
+#### Log Format for Results
+&emsp;The results will be output in the following format in `~/awsim-logs/result.json`.
+
+```json
+{
+  "rawLapTime": 72.77926,
+  "distanceScore": 457.0,
+  "lapTime": 302.779266,
+  "isLapCompleted": false,
+  "isTimeout": false,
+  "trackLimitsViolation": [
+    19, # out of track less than 2 sec
+    19, # out of track more than 2 sec
+    2,  # out of track less than 5m
+    2,  # out of track more than 5m
+    0   # not used
+  ],
+  "collisionViolation": [
+    0, # collision less than 2 sec
+    0, #
+
+ collision more than 2 sec
+    0, # not used
+    0  # not used
+  ]
+}
+```
+
+&emsp;Additionally, `~/awsim-logs/verbose_result.json` will also be output in the following format.
+
+```json
+{
+  "rawLapTime": 0.0,
+  "distanceScore": 0.0,
+  "lapTime": 0.0,
+  "isLapCompleted": false,
+  "isTimeout": false,
+  "boundsViolations": [
+    {
+      "distance": 0.3017645,
+      "distanceFromBound": 2.26600266,
+      "duration": 0.0160293132
+    },
+    {
+      "distance": 2.776487,
+      "distanceFromBound": 1.01412094,
+      "duration": 0.0801174641
+    },
+    {
+      "distance": 2.91162729,
+      "distanceFromBound": 1.1498549,
+      "duration": 0.08674298
+    },
+    ....
+  ]
+  "collisionViolations": []
+}
+```
