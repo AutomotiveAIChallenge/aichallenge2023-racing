@@ -68,7 +68,7 @@
   ```
   nvidia-smi
   ```
-  ![nvidia-smi](../images/setup/nvidia-smi.png)
+  ![nvidia-smi](../../images/setup/nvidia-smi.png)
  
  * install Vulkun
     1. update package list
@@ -79,11 +79,11 @@
  * prepare curse
    1. [GoogleDrive Download Link](https://drive.google.com/drive/folders/1EjgBxB_x0_xRla7_FdPaeEkiOU3vxW7e) place `AWSIM.zip` to　`aichallenge2023-racing/docker/aichallenge`
    2. permission change    
-   ![scene](../images/setup/permmision.png)  
+   ![scene](../../images/setup/permmision.png)  
    3. double click file to run simulator
    4. Ensure that the GPU version of AWSIM displays a screen like the one shown below.
       (CPU version of AWSIM does not displays anything)
-      ![awsim](../images/setup/awsim.png)
+      ![awsim](../../images/setup/awsim.png)
 
 ### Docker Preparation  
 Install below
@@ -154,10 +154,6 @@ sudo docker run --rm --runtime=nvidia --gpus all nvidia/cuda:11.6.2-base-ubuntu2
 
 ```
 
-
-
-Certainly, here's the translation of the provided text in the requested format:
-
 * Preparing & Starting the Docker Image - Setting up Autoware
    1. Obtaining the Docker Image
    ```
@@ -201,8 +197,6 @@ Certainly, here's the translation of the provided text in the requested format:
     bash run_container_cpu.sh
     ```
 
-Certainly! Here is the translation of your text in the same format:
-
 #### Starting AWSIM in a Docker Container
 If you want to start AWSIM from a Docker container, follow the Docker image preparation steps (described previously) to install the Docker image, and then proceed with the following steps:
   1. Extract the competition's AWSIM executable file into `aichallenge2023-racing/docker/aichallenge` (for the purposes of this guide, we will assume it's located at `aichallenge2023-racing/docker/aichallenge/AWSIM/AWSIM.x86_64`).
@@ -243,8 +237,6 @@ aichallenge-train                                                               
 > source /aichallenge/aichallenge_ws/install/setup.bash 
 > ```
 
-Certainly! Here's the translation of the provided text in the same format:
-
 ### Placement of Map Data OSM Work in Progress (WIP)
 
 For this competition, we have allowed modifications to the lanelet2_map file. Please place it in `/aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/map/*`, ensuring the file structure is as follows:
@@ -271,12 +263,9 @@ aichallenge2023-racing
    bash build_autoware.sh
    bash run_autoware.sh
    ```
-   3. Ensure that a screen like Rviz2 is displayed as shown below  
-   ![autoware1](../images/setup/autoware1.png)   
+   3. Ensure that a screen like Rviz2 is displayed as shown below. And Confirm that the route is displayed as in the image and that `Routing` changes from `UNSET` to `SET`
+   ![autoware1](../../images/setup/autoware.png)   
             
-   4. Select 2D Goal Pose in the tab, specify the goal position by dragging. Confirm that the route is displayed as in the image and that `Routing` changes from `UNSET` to `SET` (it takes a little time after specifying)  
-     ![autoware3](../images/setup/autoware3.png)
-
 ### Starting from the Second Time Onwards
 1. Starting AWSIM
    1. Start the container
