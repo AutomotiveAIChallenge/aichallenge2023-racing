@@ -424,6 +424,14 @@ bash run_autoware.sh
 rocker --device /dev/dri --x11 --user ... # CPU版
 rocker --device /dev/dri --nvidia --x11 --user ... # GPU版
 </code></pre>
+<h3 id="変更点の取り込み">変更点の取り込み</h3>
+<h4 id="dockerのupdate">dockerのupdate</h4>
+<pre><code class="lang-sh">docker pull ghcr.io/automotiveaichallenge/aichallenge2023-racing/autoware-universe-no-cuda
+</code></pre>
+<h4 id="repositoryのupdate">repositoryのupdate</h4>
+<pre><code class="lang-sh">cd aichallenge2023-racing # path to aichallenge2023-racing
+git pull origin/main
+</code></pre>
 
 </article>
 
