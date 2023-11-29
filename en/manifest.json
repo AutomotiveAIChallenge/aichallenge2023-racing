@@ -194,29 +194,6 @@
       "version": ""
     },
     {
-      "type": "Conceptual",
-      "source_relative_path": "teams/index.md",
-      "output": {
-        ".html": {
-          "relative_path": "teams/index.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "teams/toc.yml",
-      "output": {
-        ".json": {
-          "relative_path": "teams/toc.json"
-        },
-        ".html": {
-          "relative_path": "teams/toc.html"
-        }
-      },
-      "version": ""
-    },
-    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {

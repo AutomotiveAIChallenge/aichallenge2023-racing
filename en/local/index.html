@@ -89,55 +89,28 @@
 
 <br> -->
 <p>  Participants will be asked to create a ROS2 package to carry out the scenario, and the following ROS2 package is provided in aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src as sample code to serve as a base for this in this repository The following ROS2 package is provided.<br>
-  Please place the ROS2 package you created under aichallenge_ws/src/aichallenge_submit and follow the steps below to build and run it.</p>
+  aichallenge_launch, sim_msgs change is not applied at submission</p>
 <h2 id="sample-code">Sample Code</h2>
-<p>The following is a partial configuration under  aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src.</p>
+<p> aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src directory structure is below</p>
 <ul>
 <li>aichallenge_launch
 <ul>
 <li>Contains the main launch file aichallenge.launch.xml. All ROS2 nodes are launched from this launch file.</li>
 </ul>
 </li>
-<li>aichallenge_scoring
-<ul>
-<li>aichallenge_scoring is responsible for the tasks required for scoring and ranking the AI Challenge participants.</li>
-</ul>
-</li>
-<li>aichallenge_scoring_msgs
-<ul>
-<li>msgs for scoring</li>
-</ul>
-</li>
-<li>aichallenge_scoring_result
-<ul>
-<li>Calculate scores from /aichallenge/score and /aichallenge/collision.</li>
-</ul>
-</li>
 <li>aichallenge_submit
 <ul>
 <li>All ROS2 packages implemented by participants should be placed in this directory, as only the contents of this directory will be submitted at the time of submission.</li>
-<li>Please modify this launch file accordingly to configure the ROS2 nodes you have implemented to be launched. Please modify this launch file accordingly and configure it so that your ROS2 node will be activated.</li>
-<li>initialpose_publisher
+<li>Please modify this launch file accordingly to configure it to launch the ROS2 node you have implemented. Please modify this launch file accordingly to configure your ROS2 node to be launched.</li>
+<li>autoware_launch, autoware_universe_launch
 <ul>
-<li>Since the default initial position estimation may result in initial position deviations, this function provides the ability to set the vehicle position at a pre-defined initial position.</li>
-</ul>
-</li>
-<li>pose_initializer_custom
-<ul>
-<li>The pose_initializer package in autoware.universe has been modified to discard the posture calculated by Monte-Carlo and NDT Matching and set it with the posture sent by the <code>initialpose_publisher</code>.</li>
-</ul>
-</li>
-<li>self_driving_controlloer
-<ul>
-<li>Provides the ability to set GoalPose and engage required to start automatic operation.</li>
-</ul>
-</li>
-<li>autoware_launch
-<ul>
-<li>We have copied and partially edited the launch, config-related packages of Autoware; Autoware in the Docker image has removed the packages included here. You can modify the behavior of Autoware by editing here.</li>
+<li>The Autoware packages included here have been removed from the Docker image of Autoware. You can modify the behavior of Autoware by editing here.</li>
 <li>If you want to use the files before the modification, please copy the files from <a href="https://github.com/autowarefoundation/autoware_launch/tree/awsim-stable">autoware_launch</a>, <a href="https://github.com/autowarefoundation/autoware.universe/tree/awsim-stable/launch">autoware_universe's launch directory</a>.</li>
 </ul>
 </li>
+<li>autoware_micro Folder for creating a minimum configuration of autoware.</li>
+<li>dallara_interface A set of packages to adapt the vehicle used in Autonoma.</li>
+<li>sample_pakcages Sample packages for creating custom packages.</li>
 </ul>
 </li>
 </ul>
