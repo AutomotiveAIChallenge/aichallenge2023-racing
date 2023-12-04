@@ -19,8 +19,8 @@ public:
             std::chrono::milliseconds(300),
             std::bind(&GoalPosePublisher::publish_goal_pose, this));
 
-        this->declare_parameter("goal.position.x", 21912.0);
-        this->declare_parameter("goal.position.y", 51653.2);
+        this->declare_parameter("goal.position.x", 21920.2);
+        this->declare_parameter("goal.position.y", 51741.1);
         this->declare_parameter("goal.position.z", 0.0);
         this->declare_parameter("goal.orientation.x", 0.0);
         this->declare_parameter("goal.orientation.y", 0.0);
