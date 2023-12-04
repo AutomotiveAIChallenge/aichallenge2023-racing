@@ -247,8 +247,8 @@
     <arg name="max_brake" value="1.0"/>
     <arg name="max_steer" value="300.0"/>
     <arg name="min_steer" value="-300.0"/>    
-    <arg name="csv_path_accel_map" value="$(find-pkg-share raw_vehicle_cmd_converter)/data/default/accel_map.csv"/>
-    <arg name="csv_path_brake_map" value="$(find-pkg-share raw_vehicle_cmd_converter)/data/default/brake_map.csv"/>
+    <arg name="csv_path_accel_map" value="$(find-pkg-share dallara_launch)/config/accel_map.csv"/>
+    <arg name="csv_path_brake_map" value="$(find-pkg-share dallara_launch)/config/brake_map.csv"/>
     <arg name="convert_accel_cmd" value="true" />
     <arg name="convert_brake_cmd" value="true" />
     <arg name="convert_steer_cmd" value="false" />
