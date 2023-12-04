@@ -7,6 +7,8 @@
   </include>
 
   <!-- place a goal pose anywhere you like-->
-  <node pkg="goal_pose_setter" exec="goal_pose_setter_node" name="goal_pose_setter" output="screen"/>
-
+  <!-- place a goal pose anywhere you like -->
+  <node pkg="goal_pose_setter" exec="goal_pose_setter_node" name="goal_pose_setter" output="screen">
+    <param name="goal_pose_param" value="$(find-pkg-share goal_pose_setter)/config/default_goal_pose.yaml" />
+  </node>
 </launch>
