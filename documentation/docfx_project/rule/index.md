@@ -26,11 +26,12 @@
 ## Goal Position
 
 - 走行完了(ゴール到達)は以下のゴール地点を超えた場合になります。
-  sampleは`docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_micro/goal_pose_setter/config/default_goal_pose.param.yaml`にあります。（※launch fileでのyaml fileの指定はされていません）
+
   ```yaml
-    goal.position.x: 21912.0
-    goal.position.y: 52267.5
+    goal.position.x: 21921.96875
+    goal.position.y: 51756.328125
   ```
+- `goal_pose_setter`を使うことにより、ゴールを設定できます．
 
 ## Violations and Penalties
 
