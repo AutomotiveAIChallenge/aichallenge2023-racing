@@ -15,4 +15,4 @@ capture
 *.mp4
 result.json
 
-!documentation/docfx_project/images/top/racing_sample.mp4
+!documentation/docfx_project/images/*.mp4
