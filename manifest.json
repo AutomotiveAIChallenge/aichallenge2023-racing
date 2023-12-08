@@ -366,6 +366,86 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "images/top/indy_car.jpg",
+      "output": {
+        "resource": {
+          "relative_path": "images/top/indy_car.jpg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/top/racing_sample.mp4",
+      "output": {
+        "resource": {
+          "relative_path": "images/top/racing_sample.mp4"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/top/sim_car.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/top/sim_car.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/top/sim_control.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/top/sim_control.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/top/sim_monza.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/top/sim_monza.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/top/sim_perception.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/top/sim_perception.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/top/sim_routing.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/top/sim_routing.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/top/vector_map_monza.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/top/vector_map_monza.png"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
