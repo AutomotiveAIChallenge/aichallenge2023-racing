@@ -14,3 +14,5 @@ capture
 *.gz
 *.mp4
 result.json
+
+!documentation/docfx_project/images/*.mp4
