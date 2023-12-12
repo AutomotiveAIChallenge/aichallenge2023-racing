@@ -1,8 +1,4 @@
-# Japan Automotive AI Challenge 2023 (Simulation)
-
-![AIchallenge2023-Simulation](../images/top/aichallenge-racing-top.jpeg)
-
-We are hosting the Japan Automotive AI Challenge 2023 (Simulation), a motorsport-themed software development competition. Participants will develop autonomous driving software based on [Autoware.Universe](https://github.com/autowarefoundation/autoware.universe), and integrate it into a racing car that runs in the End to End simulation space (AWSIM). The goal is simple, win the race while driving safely!
+## Japan Automotive AI Challenge 2023 (Simulation)
 
 ## Competition Concept
 
@@ -12,48 +8,102 @@ As a new initiative to discover and develop engineers who will lead the automoti
 
 We aim to build a framework that contributes to the further development of the automobile industry, starting from this competition, which is conducted through industry-government-academia cooperation.
 
-## Overview
+![AIchallenge2023-Simulation](../images/top/aichallenge-racing-top.jpeg)
+
+## Japan Automotive AI Challenge 2023 (Simulation) Goals
+
+Motorsports, which test the driving performance of automobiles in extreme conditions, have contributed to the improvement and development of automobile performance by creating technical challenges. The 2023 Autonomous Driving AI Challenge (Simulation) is aimed at contributing to the development of autonomous driving technology that can safely and quickly operate in an end-to-end (E2E) simulation environment.
+
+Autonomous driving in racing involves a variety of technical elements, such as control technology that takes into account lateral slip, air resistance, and vehicle response characteristics, as well as tracking and behavior prediction of other vehicles. This tournament provides participants with an opportunity to develop autonomous driving software with strategic driving planning and advanced vehicle control functions that incorporate these elements, and to share their knowledge. We expect that engineers who have acquired new technologies through this Challenge will contribute to technological innovation in the automotive industry.
+
+## Japan Automotive AI Challenge 2023 (Simulation) Summary
+
+<video width="1040" height="585" controls>
+  <source src="../images/top/racing_sample.mp4" type="video/mp4">
+  Your browser does not support video tags.
+</video>
+
+In this tournament, it is possible to run in the video mentioned above using the software that is distributed in advance. Using this software, please make improvements in line with the challenges described below.
+
+### Automated Driving Technology Competition and Special Awards
+
+Participants will aim to win the race while safely driving with autonomous driving software based on [Autoware.Universe](https://github.com/autowarefoundation/autoware.universe). In addition, to promote the growth of the community of this tournament and to share knowledge that is useful for participants, the following special awards will be established. Please see [the overview page](https://www.jsae.or.jp/jaaic/2023_simulation.php) for more details.
+
+1. The Community Contribution Award, which honors those who have contributed to the OSS as volunteers or to the expansion of the community.
+
+2. The Sponsor Award, which is voted on by platinum sponsors to encourage active initiatives through AIChallenge.
 
 ![Start](../images/top/aichallenge-racing-start.jpeg)
 
-The race in the End to End simulation environment is themed, aiming to contribute to the development of safe and robust autonomous driving technology for high-speed driving.
 
-Autonomous driving in races involves various technical elements such as skidding, air resistance, vehicle response characteristics, tracking other vehicles, and behavior prediction. This competition offers participants an opportunity to work on developing autonomous driving software that incorporates these elements, featuring strategic driving planning and advanced vehicle control functions. We hope that engineers who learn new technologies through this "challenge" will contribute to technological innovation in the automotive industry.
+### Driving Course and Rivals
+
+| <img src="../images/top/sim_monza.png" width="640"/> | <img src="../images/top/vector_map_monza.png" width="640"/> |
+| :-------------------------------------------------: | :--------------------------------------------------------: |
+|                 MonzaTrack at AWSIM                 |                  MonzaTrack at vector map                  |
+
+The race course for this tournament will be the [MonzaTrack](https://www.google.com/maps/search/MonzaTrack). It is about 5.8 kilometers long and has a complex shape, including long straights and hairpin turns. Participants will race on this circuit-themed course along with multiple rival vehicles. As rival vehicles will accelerate, brake, and change course in response to your autonomous vehicle, strategic path planning is required.
+
+### Vehicle to be used
+
+In this competition, we are using vehicles that will be used in the Indy Autonomous Challenge.
+
+| <img src="../images/top/sim_car.png" width="640"/> | <img src="../images/top/indy_car.jpg" width="640"/> |
+| :-----------------------------------------------: | :------------------------------------------------: |
+|                  simulation car                   |                      indy car                      |
+
 
 ## The 3 Challenges
-### Challenge 1: Perception
+### Challenge 1: Robust Perception
 
-![Challenge 1: Robust Perception](../images/top/aichallenge-racing-perception.jpeg)
+In the first challenge, participants are required to predict the future behavior of other vehicles based on the vehicle recognition data provided by the simulator. Autonomous vehicles require a high level of safety, and it is essential to detect and predict the movements of other vehicles that exist in the surrounding 360 degrees through sensor data in order to avoid collisions. In this competition, we provide accurate data (ground truth) as vehicle recognition information so that participants can focus on behavior prediction.
 
-Safety posits always highest priority in autonomous driving. The first step to avoid collisions is to recognize other vehicles from sensor data and predict their movements. The first challenge is the development of fast and robust recognition functions.
+| <img src="../images/top/aichallenge-racing-perception.jpeg" width="640"/> | <img src="../images/top/sim_routing.png" width="640"/> |
+| :----------------------------------------------------------------------: | :---------------------------------------------------: |
+|                          sensing and perception                          |               perception at simulation                |
+
+Specifically, the following points can be improved
+
+- Other vehicle tracking: Participants use sensor data to track the location and movement of other vehicles. This process includes analyzing information from the sensors and accurately identifying vehicles in the vicinity.
+- Behavior prediction: Based on the data from tracked vehicles, the future behavior is predicted. This prediction is essential for collision avoidance and the development of safe driving strategies.
+
 
 ### Challenge 2: Strategic Route Planning
 
-![Challenge 2: Strategic Route Planning](../images/top/aichallenge-racing-planning.jpeg)
 
-The second challenge is strategic route planning. To drive faster than others, it is necessary to process the ever-changing surrounding environment and constantly pursue the optimal route.
+The second challenge is strategic path planning. In order to drive faster than other vehicles, it is necessary to process the constantly changing surrounding environment using the recognition results and always pursue the optimal route.
+
+| <img src="../images/top/aichallenge-racing-planning.jpeg" width="640"/> | <img src="../images/top/sim_routing.png" width="640"/> |
+| :--------------------------------------------------------------------: | :---------------------------------------------------: |
+|                       real environment planning                        |                    route planning                     |
+
+
+Specifically, the following points can be improved
+
+- Dynamic situation response: The situation during a race is constantly changing. It is required to respond to these factors quickly and effectively, such as how other cars move and how the road surface changes.
+- Pursuit of the optimal route: In order to drive faster than other vehicles, it is necessary to find and pursue the optimal route based on this information. This includes things like how to take curves, the timing of acceleration and deceleration, and judging the chance of overtaking.
 
 ### Challenge 3: Control in High-Speed Driving
 
-![AIchallenge2023-Racing](../images/top/aichallenge-racing-control.jpeg)
 
-To win a race, control technology that realizes the optimal route planning is essential. The third challenge is the development of control modules that enable driving along strategic and complex routes while driving in high-speed.
+The third challenge is the development of a control module that can handle high speeds and allow driving along strategic and complex routes. In order to win a race, it is essential to have control technology that can realize the optimal path planning. In this competition, accurate data (true values) are provided as self-localization results so that participants can focus on vehicle control.
 
-## Competition Description
+| <img src="../images/top/aichallenge-racing-control.jpeg" width="640"/> | <img src="../images/top/sim_control.png" width="640"/> |
+| :-------------------------------------------------------------------: | :---------------------------------------------------: |
+|                          high speed control                           |           high speed control at simulation            |
 
-### Racing Course and Rivals
+Specifically, the following points can be improved
 
-![Start/Finish Straight](../images/top/aichallenge-racing-course.jpeg)
-
-The course of this competition is approximately 5.8km long and has a complex shape including long straights and hairpin curves. You will drive on this circuit-themed course with several rival cars. The rival cars will accelerate and decelerate or change courses according to your autonomous driving car, so strategic route planning is required.
+- High-speed control: During a race, especially when driving at high speeds of around 200 km/h, vehicle control, including gear shifting, is very important. Driving at high speeds is very different from driving at low speeds, so more precise control is required.
+- Vehicle interface development: In this challenge, a specialized control module is required to be developed to enable driving at high speeds. This module must properly control the vehicle's accelerator, brake, and steering using a simulator that accurately simulates actual vehicle behavior.
 
 ### Evaluation Criteria
 
-The goal of this competition is to win the race while driving safely. Therefore, the performance of your autonomous driving software will be evaluated from the following three perspectives. Details on scoring and rules are due to be published in this documentation later.
+This tournament aims to quickly and safely reach the goal. Therefore, the driving of the participants' autonomous driving software will be evaluated based on the following three aspects. For details on scoring and rules, please visit the rules page.
 
-1. Driving Distance - Reaching the goal of the course
-2. Safety - Driving without collisions or deviations from the route
-3. Speed - The time to the finish line
+1. Distance - Reach the goal of the course.
+2. Safety - Drive without collision or route deviation.
+3. Speed - Drive to the goal in a short time.
 
 ### Development Environment
 
