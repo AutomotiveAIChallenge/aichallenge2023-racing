@@ -28,14 +28,43 @@
     href: online/index.html
 - name: Teams
   href: ../teams/index.html
-#- name: Customizing Autoware
-#  href: customize/index.html
+- name: Customizing Autoware
+  href: customize/index.html
+- name: FAQ
+  href: FAQ/index.html
 - name: Blog Posts
   dropdown: true
   items:
   - name: Advent Calender
     href: https://qiita.com/advent-calendar/2023/jidounten-ai
-- name: FAQ
-  href: FAQ/index.html
+- name: Past Event Blog Posts
+  dropdown: true
+  items:
+  - name: "(1) Try to run Autoware"
+    href: https://qiita.com/h_bog/items/86fba5b94b2148c4d9da
+  - name: "(2) Successfully avoiding the first obstacle"
+    href: https://qiita.com/h_bog/items/a36df3042a342bd2a0c5
+  - name: "(3) Success in avoiding the second obstacle"
+    href: https://qiita.com/h_bog/items/849a4241cdef257f3b3a
+  - name: "(4) All obstacle avoidance achieved! (All parameters disclosed)"
+    href: https://qiita.com/h_bog/items/8bce776fef0a39676c46
+  - name: "(5) Restructuring of development environment (extra)"
+    href: https://qiita.com/h_bog/items/4ed94ef6256ac5ae9c03
+  - name: "(6) Using Autoware-Mini"
+    href: https://qiita.com/h_bog/items/075543f30f9b3432fa1d
+  - name: "(7) External module introduction (failure)"
+    href: https://qiita.com/h_bog/items/bcfd5648afa8b6dee5b3
+  - name: "(8) Introduction of home-grown packages"
+    href: https://qiita.com/h_bog/items/368543a4b10b356db0e5
+  - name: "(9) Creation of Obstacle Avoidance Module①"
+    href: https://qiita.com/h_bog/items/c84c4886c0ba0e6c1724
+  - name: "(10) Creation of Obstacle Avoidance Module②（Success？）"
+    href: https://qiita.com/h_bog/items/a2c2cbdcec6a852bfcd5
+  - name: "(11) Improved obstacle avoidance module①"
+    href: https://qiita.com/h_bog/items/4160e396fc5def3c8383
+  - name: "(12) Improved obstacle avoidance module②"
+    href: https://qiita.com/h_bog/items/c7ffd9d51e01adf8e021
+  - name: "(13) Improved obstacle avoidance module③"
+    href: https://qiita.com/h_bog/items/770e4e2437a963082b12
 - name: To Japanese Page
   href: ../index.html
