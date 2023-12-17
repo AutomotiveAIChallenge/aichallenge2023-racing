@@ -48,8 +48,8 @@
 		- autoware.log
 		
 2.  Upload to the Online Environment
-	<img src="../images/online/siteImage.png" width="100%">  
-	 &emsp; Access the [online environment](https://aichallenge.synesthesias.jp) and upload the aichallenge_submit.tar.gz file you created in step 1 by clicking "Choose File." Once the upload is complete, the source code will be built, and the simulation will be run in that order.
+	<img src="../../images/online/siteImage.png" width="100%">  
+	 &emsp; Access the [online environment](https://aichallenge.synesthesias.jp) and upload the ```aichallenge_submit.tar.gz``` file you created in step 1 by clicking "Choose File." Once the upload is complete, the source code will be built, and the simulation will be run in that order.
 	
 	* If the process finishes successfully, "Scoring complete" will be displayed, and you can download the result.json file. The distance points and time will be displayed on the ranking.
 	* When a scenario finishes running but no scores are output due to launch failure, etc., the result will be "No Result" and will not be used as the final time. If you see "No Result" even though the local run is working properly, there may be an internal error on the server side, so please upload the file again. Please contact us if the message is displayed repeatedly.
