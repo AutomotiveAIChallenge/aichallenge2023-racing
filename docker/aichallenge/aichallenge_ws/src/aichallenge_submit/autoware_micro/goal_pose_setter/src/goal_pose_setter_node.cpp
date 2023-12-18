@@ -26,11 +26,18 @@ public:
         this->declare_parameter("goal.orientation.y", 0.0);
         this->declare_parameter("goal.orientation.z", 0.645336);
         this->declare_parameter("goal.orientation.w", 0.763899);
+
+        delay_count_ = 0;
     }
 
 private:
     void publish_goal_pose()
     {
+        if (delay_count_ <= 10) {
+          ++delay_count_;
+          return;
+        }
+
         if (!stop_streaming_goal_pose_)
         {
             auto msg = std::make_shared<geometry_msgs::msg::PoseStamped>();
@@ -62,6 +69,7 @@ private:
     // subscribe route state
     rclcpp::Subscription<autoware_adapi_v1_msgs::msg::RouteState>::SharedPtr route_state_subscriber_;
     rclcpp::TimerBase::SharedPtr timer_;
+    int delay_count_;
 };
 
 int main(int argc, char const *argv[])
