@@ -155,6 +155,16 @@
 </tr>
 </tbody>
 </table>
+<h3 id="goal-position">Goal Position</h3>
+<ul>
+<li>The completion of the run (reaching the goal) is when the following goal points are crossed.</li>
+</ul>
+<pre><code class="lang-yaml">  goal.position.x: 21912.0
+  goal.position.y: 52267.5
+</code></pre>
+<ul>
+<li>A goal can be set by using goal_pose_setter.</li>
+</ul>
 <h3 id="penalty">Penalty</h3>
 <p> Violations such as deviating from the course or colliding with other vehicles are penalized. The penalties for violations are:</p>
 <ol>
@@ -167,12 +177,6 @@
 <ul>
 <li>Deviating more than 5m from the course boundary for more than 10 seconds</li>
 <li>Being more than 100 seconds away from the course boundary</li>
-<li>Completion of the run is considered when crossing the following goal point.
-Sample can be found at <code>docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_micro/goal_pose_setter/config/default_goal_pose.param.yaml</code> (Note: yaml file is not specified in the launch file)
-<pre><code class="lang-yaml">  goal.position.x: 21912.0
-  goal.position.y: 52267.5
-</code></pre>
-</li>
 </ul>
 <p><strong>Major Violation (Penalty: 10 seconds/occurrence):</strong></p>
 <ul>
