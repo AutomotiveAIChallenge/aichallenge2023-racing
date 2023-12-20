@@ -1,225 +1,103 @@
 # Customizing Autoware
 
-In this page, we explain how Autoware can be customized, including how new packages can be added into Autoware.
+For this conference, we have prepared an implementation based on the Autoware automated driving software.
 
-We also introduce "Autoware-Mini", which is a smaller version of Autoware that has fewer features than Autoware but is easier to understand and customize.
- 
-## How to customize and use Autoware packages  
+This page provides background and explanation of the implementation, as well as an introduction of how this implementation can be utilized.
 
-1. Copy the original package and change the following  
-     * package name
-     * Folder name
-     * code 
-     * package.xml
-    * CMakeLists.txt
-2. place in aichallenge_submit    
-3. modify launch file called from autoware_universe_launch    
-    * Reference example: pose_initializer_custom (called from autoware_universe_launch/tier4_localization_launch/launch/util/util.launch.xml)
+At the last [Integration Conference](https://www.jsae.or.jp/jaaic/2023_contest.php), we provided [a launch file for Autoware-Mini](https://github.com/AutomotiveAIChallenge/aichallenge2023-integ/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml), a reduced version of Autoware with fewer nodes and fewer functions than the default Autoware. Please refer to the document of [the previous conference](https://automotiveaichallenge.github.io/aichallenge2023-integ/en/customize/index.html#autoware-mini) for the background and the intention behind the preparation of the launch file.
+
+For this simulation conference, we have prepared ["Autoware-Micro,"](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_micro_awsim.launch.xml) the smallest configuration of Autoware, which is designed for use with AWSIM, in order to enable partial use of Autoware and flexible incorporation of Autoware.
 
 
-## Autoware-Mini
 
-Although the default Autoware is feature-rich and includes many components, the extra layer of complexity and the multiply nested launch files can be confusing for beginners or users who have simpler and more relaxed use cases.
+## Background on Autoware-Micro
+### Challenges when using Autoware
 
-A node diagram of the original Autoware is depicted below. This can also be found on the [Autoware Official Documentation](https://autowarefoundation.github.io/autoware-documentation/main/design/autoware-architecture/node-diagram/).
+The default Autoware consists of many nodes to support various driving environments.
+
+The official documentation of [Autoware includes a diagram of the ROS nodes that make up Autoware](https://autowarefoundation.github.io/autoware-documentation/main/design/autoware-architecture/node-diagram/). The current diagram is shown below.
 
 ![node-diagram](../../images/customize/autoware-node-diagram.png)
 
-In Autoware-Mini, we tried to design a launch file that launches only the most basic nodes that are crucial for a simple lane-following scenario. By limiting the features, we aim to create a simpler version of Autoware: one that is easier to understand for users first trying out Autoware. Most nodes are launched directly from this "Autoware-Mini" launch file, so there is no need to traverse through layers of launch files to reach the actual part of the code where a node is actually created. Furthermore, instead of using arguments and variables to define parameters in different launch files, we specify the parameters necessary for a specific node when launching the node. So, there is less work to change parameters or "find" where they are actually defined.
+A wide variety of functions are available in each component involved in automated driving, and they are designed to cope with challenging driving environments.
 
-Participants of this competition can use this Autoware-Mini to:
+On the other hand, it is not always easy to understand the complex configuration, to understand the meaning of each parameter and how to adjust it, and to switch and replace modules.
 
-- Better understand the workings of Autoware with a simpler design
-- Use a different implementation to replace certain modules (simply by removing the part from the launch file and adding in yours!)
-- More clearly see the effects of changing a parameter
-- Plug-in other Autoware nodes to enhance performance
 
-The below is a node diagram of Autoware-Mini
+## Preparing Autoware-Mini
+
+For this reason, at the last Integration Conference, we prepared [a launch file to start Autoware-Mini](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml), which is a reduced version of Autoware with fewer nodes and fewer functions than the default Autoware.
+
+The node diagram of Autoware-Mini is shown below. You can see that the number of nodes has been dramatically reduced, and only the functions that enable basic automatic driving are available.
 
 ![mini-node-diagram](../../images/customize/autoware-mini-node-diagram.png)
 
+Autoware-Mini has the following features:
 
-### Using Autoware-Mini
+- Almost all nodes are started directly from a single Launch file. In the existing Autoware, the Launch file is divided into multiple files, and it is necessary to go through several Launch files to get to the point where the node is actually started.
+- Since parameters are written directly at node startup, it is easy to follow which parameters are needed for which node.
+- The ROS topic name, which is the input/output of each node, is also directly remapped at node startup, so the topic name can be easily changed.
 
-Here we describe how to set up Autoware-Mini and use it.
+By writing automated software based on this Autoware-Mini, the following can be done.
 
-#### Pulling newest changes from GitHub
+- Understand the contents of Autoware more deeply because of its simple structure.
+- Easily replace your own modules with Autoware's and work on improving functionality
+- Easy to understand the impact of changing parameters on the overall system behavior
+- You can also add existing Autoware nodes that are not included in this version of Autoware-Mini.
 
-For participants who have already set up `aichallenge2023-racing`, run the below to pull the newest changes from GitHub.
+## Preparing Autoware-Micro
 
-```
-cd aichallenge2023-racing/
-git pull
-```
+The simulation competition will be a high-speed automated racing competition, and rather than using Autoware as-is, we will use Autoware as a base for example implementations, which will be extended and customized by participants.
 
-The launch file for Autoware-Mini is placed in `aichallenge2023-racing/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml` ([GitHub Link](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_mini_awsim.launch.xml))
+In addition, in order to allow as many participants as possible to participate in the competition, we have made sure that the PC specifications required for participation are broad enough.
+
+Against this background, we are modifying Autoware-Mini and trying to realize the following as "Autoware-Micro".
+
+- The number of nodes is further reduced from Autoware-Mini to a simple configuration that can be easily customized.
+- The number of nodes will be further reduced from Autoware-Mini to a simpler configuration that is easy to customize.
+- Add a new Vehicle Interface to support racing vehicles in AWSIM.
+
+Thus, in order to enable partial use and flexible incorporation of Autoware, we have prepared ["Autoware-Micro,"](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/aichallenge_submit_launch/launch/autoware_micro_awsim.launch.xml) the smallest configuration designed for use with AWSIM.
+
+The node diagram of Autoware-Micro is as follows.
+
+![micro-node-diagram](../../images/customize/autoware-micro-node-diagram.png)
+
+Changes and features of each component of Autoware-Micro compared to Autoware-Mini are as follows.
+
+- Localization: By outputting the Ground Truth of the self-position from AWSIM, the self-position estimation process is partially omitted.
+- Perception: By outputting the ground truth of object recognition results from AWSIM, sensing and object recognition processing can be omitted, while focusing on object behavior prediction.
+- Planning: Omit behavior_velocity_planner, obstacle_stop_planner, etc., and directly output the travel trajectory from the output path.
+- Control: Simple_pure_pursuit is provided as an example of control implementation.
+- Vehicle: Convert Control output to vehicle control signals using raw_vehicle_cmd_converter, and connect to the AWSIM racing vehicle using the vehicle interface "dallara_interface".
 
 
-#### Updating aichallenge_submit.launch.xml
+## How to use Autoware-Micro
 
-In order to launch `autoware_mini_awsim.launch.xml`, `aichallenge_submit.launch.xml` must first be edited.
+By utilizing Autoware-Micro, the issues to be addressed in this competition will be:
 
-Uncomment the sections in this file that are commented out, and comment out the section that launches `e2e_simulator.launch.xml`.
+1. prediction of NPC vehicle behavior
+2. strategic route planning for overtaking, curves, etc.
+3. vehicle control at high speed
 
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<launch>
-    <!-- Autoware -->
-    <!-- <include file="$(find-pkg-share autoware_launch)/launch/e2e_simulator.launch.xml">
-        <arg name="vehicle_model" value="golfcart"/>
-        <arg name="sensor_model" value="awsim_sensor_kit"/>
-        <arg name="map_path" value="/aichallenge/mapfile"/>
-        <arg name="rviz" value="false"/>
-    </include> -->
+You can also experiment with slightly different implementations from Autoware's architecture, or create and introduce new custom nodes, using the example implementation of Autoware-Micro as a guide.
 
-    <!-- Uncomment the following lines to try Autoware-Mini -->
-    <include file="$(find-pkg-share aichallenge_submit_launch)/launch/autoware_mini_awsim.launch.xml" >
-      <arg name="vehicle_model" value="golfcart"/>
-      <arg name="sensor_model" value="awsim_sensor_kit"/>
-      <arg name="map_path" value="/aichallenge/mapfile"/>
-      <arg name="rviz" value="false"/>
-    </include>
+By incorporating your own node implementations, you can improve driving performance and increase the number of points.
 
-    <include file="$(find-pkg-share initialpose_publisher)/launch/initialpose_publisher.launch.xml" />
+For example, consider the following configuration, where "Planning" and "Control" are implemented and worked on respectively, or a node responsible for both "Planning & Control" can be implemented.
 
-    <include file="$(find-pkg-share self_driving_controller)/launch/self_driving_controller.launch.xml" />
-</launch>
-```
+As long as the ROS topics of the route inputs and vehicle interface outputs match, you are free to customize it as you wish.
 
-#### Updating aichallenge.launch.xml 
+![racing-diagram](../../images/customize/racing_simple.png)
 
-In order to change how the GUI tool "Rviz2" looks when launching Autoware-Mini, we will change the Rviz2 config file to one that is more suitable for Autoware-Mini.
+## How to customize and use Autoware packages
 
-Change `aichallenge.launch.xml` like the following.
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<launch>
-    <!-- RViz parameters -->
-    <arg name="rviz2" default="true" description="launch rviz"/>
-    <!-- <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware.rviz" description="rviz config"/> -->
-
-    <!-- Below is a more suitable RViz2 config for trying out Autoware-Mini -->
-    <arg name="rviz_config" default="$(find-pkg-share autoware_launch)/rviz/autoware-mini.rviz" description="rviz config"/>
-
-    <!-- Scoring -->
-    <include file="$(find-pkg-share aichallenge_scoring)/launch/aichallenge_scoring.launch.xml">
-        <arg name="result_score_topic" value="/aichallenge/score" />
-    </include>
-
-    <node pkg="aichallenge_scoring_result" exec="scoring_result" name="scoring_result" output="screen" />
-
-    <!-- Submitted Package -->
-    <include file="$(find-pkg-share aichallenge_submit_launch)/launch/aichallenge_submit.launch.xml" />
-
-    <!-- RViz -->
-    <group>
-        <node pkg="rviz2" exec="rviz2" name="rviz2" output="screen" args="-d $(var rviz_config) -s $(find-pkg-share autoware_launch)/rviz/image/autoware.png" if="$(var rviz2)"/>
-    </group>
-</launch>
-```
-
-#### Updating behavior_path_planner.param.yaml
-
-Next, for the `behavior_path_planner` node and `behavior_velocity_planner` node in the Planning Component, the following config files must be edited to change what modules are launched within each planner.
-
-- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
-- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
-
-In the original Autoware, the following modules are enabled in the `behavior_path_planner` node.
-
-- lane_change
-- pull_out
-- side_shift
-- pull_over
-- avoidance
-
-For Autoware-Mini, we will turn them all OFF for now.
-
-```
-...
-
-lane_change:
-  enable_module: false
-  enable_simultaneous_execution: false
-  priority: 4
-  max_module_size: 1
-
-pull_out:
-  enable_module: false
-  enable_simultaneous_execution: false
-  priority: 0
-  max_module_size: 1
-
-side_shift:
-  enable_module: false
-  enable_simultaneous_execution: false
-  priority: 2
-  max_module_size: 1
-
-pull_over:
-  enable_module: false
-  enable_simultaneous_execution: false
-  priority: 1
-  max_module_size: 1
-
-avoidance:
-  enable_module: false
-  enable_simultaneous_execution: false
-  priority: 3
-  max_module_size: 1
-
-```
-
-#### Updating behavior_velocity_planner.param.yaml
-
-Next, for the `behavior_path_planner` node and `behavior_velocity_planner` node in the Planning Component, the following config files must be edited to change what modules are launched within each planner.
-
-- [behavior_path_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/behavior_path_planner.param.yaml)
-- [behavior_velocity_planner.param.yaml](https://github.com/AutomotiveAIChallenge/aichallenge2023-racing/blob/main/docker/aichallenge/aichallenge_ws/src/aichallenge_submit/autoware_launch/autoware_launch/config/planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/behavior_velocity_planner.param.yaml)
-
-In the original Autoware, the following modules are enabled in the `behavior_velocity_planner` node.
-
-```
-...
-launch_stop_line: true
-launch_crosswalk: true
-launch_traffic_light: true
-launch_intersection: true
-launch_blind_spot: true
-launch_detection_area: true
-launch_virtual_traffic_light: true
-launch_occlusion_spot: false
-launch_no_stopping_area: true
-launch_run_out: false
-launch_speed_bump: false
-```
-
-For Autoware-Mini, we will turn everything except the "stop_line module" to OFF.
-
-```
-...
-# Autoware-Mini (Uncomment the lines below to try Autoware-Mini)
-launch_stop_line: true
-launch_crosswalk: false
-launch_traffic_light: false
-launch_intersection: false
-launch_blind_spot: false
-launch_detection_area: false
-launch_virtual_traffic_light: false
-launch_occlusion_spot: false
-launch_no_stopping_area: false
-launch_run_out: false
-launch_speed_bump: false
-```
-
-#### Run Autoware-Mini
-
-This concludes the preparation necessary for launching Autoware-Mini. You can now launch AWSIM and launch Autoware-Mini with the following commands.
-
-```
-# Inside the Rocker container
-cd /aichallenge
-bash build_autowares.sh
-bash run.sh
-```
+1. copy the original package and change the following
+     * package name
+     * Folder name
+     * code
+    * package.xml
+    * CMakeLists.txt
+2. place in aichallenge_submit
+3. modify launch file called from autoware_micro_awsim_launch  
+    * Reference example: pose_initializer_custom (called from autoware_universe_launch/tier4_localization_launch/launch/util/util.launch.xml)

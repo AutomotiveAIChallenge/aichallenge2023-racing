@@ -3,7 +3,7 @@
 <br>
 
 > [!REGISTER]
-> こちらから参加登録!
+> Register here!
 > [https://www.jsae.or.jp/jaaic/en/index.php](https://www.jsae.or.jp/jaaic/en/index.php)
 
 <br>
