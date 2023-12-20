@@ -221,8 +221,13 @@
       </group> <!-- lane_driving -->
 
       <!-- Customizable -->
-      <node pkg="path_to_trajectory" exec="path_to_trajectory_node" name="path_to_trajectory" output="screen">
+      <!--<node pkg="path_to_trajectory" exec="path_to_trajectory_node" name="path_to_trajectory" output="screen">
         <remap from="input" to="/planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id"/>
+        <remap from="output" to="/planning/scenario_planning/trajectory"/>
+      </node>-->
+      <node pkg="path_to_trajectory" exec="csv_to_trajectory_node" name="csv_to_trajectory" output="screen">
+        <param name="csv_file_path" value="$(find-pkg-share aichallenge_submit_launch)/map/traj_race_cl.csv"/>
+        <param name="velocity_rate" value="0.6"/>
         <remap from="output" to="/planning/scenario_planning/trajectory"/>
       </node>
 
