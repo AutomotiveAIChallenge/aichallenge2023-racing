@@ -2,7 +2,8 @@
 
 <br>
 
-本ページでは、予選大会に参加したチームの紹介を行います．
+本ページでは、予選大会に参加したチームの紹介を行います.  
+Team introduction post URL：https://forms.gle/d1tRGwNFFqC5fDY1A  
 
 <br>
 
