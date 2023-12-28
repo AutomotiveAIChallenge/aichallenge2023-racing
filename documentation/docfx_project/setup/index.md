@@ -115,8 +115,15 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 # インストールできているかをテスト
 sudo docker run hello-world
 
-# rocker install
-sudo apt-get install python3-rocker
+# rocker install (ros installが初めての方はコメントアウトを外して実行)
+# 以下のinstallが依存関係が最も少ないため推奨
+pip install rocker
+
+# 以下はROS依存があるため非推奨とする
+# sudo sh -c 'echo "deb http://packages.ros.org/ros2/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros2.list'
+# curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+# sudo apt update
+# sudo apt-get install python3-rocker
 
 # gitlfs install
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
