@@ -231,8 +231,8 @@
 
   <node pkg="simple_pure_pursuit" exec="simple_pure_pursuit" name="simple_pure_pursuit_node" output="screen">
     <param name="use_external_target_vel" value="false"/>
-    <param name="external_target_vel" value="100.0"/>
-    <param name="lookahead_gain" value="0.4"/>
+    <param name="external_target_vel" value="6.0"/>
+    <param name="lookahead_gain" value="0.25"/>
     <param name="lookahead_min_distance" value="5.0"/>
     <param name="speed_proportional_gain" value="1.0"/>
     
@@ -253,6 +253,20 @@
     <arg name="convert_brake_cmd" value="true" />
     <arg name="convert_steer_cmd" value="false" />
   </include>
+  
+  
+  <!-- My package-->
+  
+  <node pkg="my_control" exec="sub_cmd" name="sub_cmd" output="screen">
+  	<remap from="input_dallara_cmd" to="/vehicle_inputs_to_my_package"/>
+        <remap from="input_pure_cmd" to="/control/command/control_cmd"/>
+        <remap from="input_velocity_cmd" to="/vehicle/status/velocity_status"/>
+        
+        <remap from="output_pure_cmd" to="/pure_cmd"/>
+        <remap from="output_dallara_cmd" to="/vehicle_inputs"/>
+        <remap from="output_velocity_cmd" to="/vehicle_velocity"/>
+  </node>
+      
 
   <!-- API -->
   <group>

@@ -26,7 +26,8 @@ namespace dallara_interface {
   DallaraInterface::DallaraInterface() : Node("dallara_interface_node") {
     // Publishers
 
-    vehicle_inputs_pub_ = this->create_publisher<VehicleInputs>("/vehicle_inputs", 1);
+    vehicle_inputs_pub_ = this->create_publisher<VehicleInputs>("/vehicle_inputs_to_my_package", 1);
+    // vehicle_inputs_pub_ = this->create_publisher<VehicleInputs>("/vehicle_inputs", 1);
 
     velocity_report_pub_ = this->create_publisher<VelocityReport>("/vehicle/status/velocity_status", 1);
     steering_report_pub_ = this->create_publisher<SteeringReport>("/vehicle/status/steering_status", 1);
@@ -67,7 +68,7 @@ namespace dallara_interface {
     vehicle_inputs_msg.brake_cmd = msg->actuation.brake_cmd * 1000; // to Pascal
     vehicle_inputs_msg.steering_cmd = msg->actuation.steer_cmd * 180.0 / M_PI * 19.5;
     const double speed_kmph = current_speed_ * 3.6;
-    const double gear_thresholds[] = { -1.0, 30.0, 60.0, 90.0, 120.0, 150.0 };
+    const double gear_thresholds[] = { -1.0, 50.0, 100.0, 150.0, 200.0, 250.0 };
     const int num_gears = sizeof(gear_thresholds) / sizeof(gear_thresholds[0]);
     int gear_cmd_dallara_ = 1;
     for (int i = 1; i < num_gears; ++i) {
