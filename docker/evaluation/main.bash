@@ -29,23 +29,41 @@ ros2 bag record -a -o rosbag2_autoware &
 ROSBAG_RECORD_PID=$!
 
 # Waiting for Service Launch
+echo "Waiting for Service Launch"
+COUNT=0
 until (ros2 service type /debug/service/capture_screen) 
 do 
+    if [ $COUNT -ge 36 ]; then
+	echo "timeout count: $COUNT"
+	break
+    fi
     echo "Waiting for Service Launch"
+    ((COUNT+=1))
+    sleep 5
 done
 
 # Start Recording Rviz2
-ros2 service call /debug/service/capture_screen std_srvs/srv/Trigger
+if ros2 service type /debug/service/capture_screen; then
+    ros2 service call /debug/service/capture_screen std_srvs/srv/Trigger
+fi
 
 # Wait result.js
 echo "Wait for result.json"
+COUNT=0
 until [ -f ~/awsim-logs/result.json ]
 do
+  if [ $COUNT -ge 240 ]; then
+     echo "timeout count: $COUNT"
+     break
+  fi
+  ((COUNT+=1))
   sleep 5
 done
 
 # Stop Recording Rviz2
-ros2 service call /debug/service/capture_screen std_srvs/srv/Trigger
+if ros2 service type /debug/service/capture_screen; then
+    ros2 service call /debug/service/capture_screen std_srvs/srv/Trigger
+fi
 
 sleep 10
 
