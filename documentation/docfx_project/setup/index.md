@@ -274,6 +274,7 @@ aichallenge2023-racing
 ```
 ※ 経路計画を行う際にlanelet2_map参照して行わないといけないなどの制約もございません。（csvファイルを参照し経路を生成することも可とします。）
 ※ PCDファイルは入れていますが、今回提出していただく必要はございません。Mapの編集に必要な場合のみご使用ください。
+※ PCDデータはこちらからダウンロードしてください。https://drive.google.com/drive/folders/1j8Q6reCyGwWoB0Uhch2gKB9-QGtYKE1T?usp=drive_link
 
 ### Autoware      
  * Autowareの動作確認  

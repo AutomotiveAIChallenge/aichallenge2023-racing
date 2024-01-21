@@ -251,6 +251,7 @@ aichallenge2023-racing
 ```
 ※ There are no constraints such as having to refer to the lanelet2_map for route planning (referring to a csv file to generate routes is also permissible).
 ※ PCD files are included, but there is no need to submit them this time. Use them only if necessary for editing the map.
+※ please download pcd file from here. https://drive.google.com/drive/folders/1j8Q6reCyGwWoB0Uhch2gKB9-QGtYKE1T?usp=drive_link
 
 ### Autoware      
  * Checking Autoware Operation  
