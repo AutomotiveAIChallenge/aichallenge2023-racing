@@ -208,15 +208,15 @@
   &quot;isLapCompleted&quot;: false,
   &quot;isTimeout&quot;: false,
   &quot;trackLimitsViolation&quot;: [
-    19, # out of track less than 2 sec
-    19, # out of track more than 2 sec
-    2,  # out of track less than 5m
-    2,  # out of track more than 5m
+    19, # Duration of time spent off track is less than 2 seconds. (Minor)
+    19, # Distance from track limit is less than 5 meters. (Minor)
+    2,  # Duration of time spent off track is more than 2 seconds. (Major)
+    2,  # Distance from track limit is more than 5 meters. (Major)
     0   # not used
   ],
   &quot;collisionViolation&quot;: [
-    0, # collision less than 2 sec
-    0, # collision more than 2 sec
+    0, # Duration of collision is less than or equal to 2 seconds. (Minor)
+    0, # Duration of collision is more than 2 seconds. (Major)
     0, # not used
     0  # not used
   ]
