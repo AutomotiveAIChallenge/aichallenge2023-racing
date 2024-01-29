@@ -16,4 +16,5 @@ Team introduction page of the aichallenge2023-racing competition. Please feel fr
 | チーム遊戯王 | ![team_introduction_yugiou_2](https://github.com/seigot/aichallenge2023-racing/assets/46782860/dbd541ed-bae8-417b-9d55-0e40acd74ab6) | 有志団体であるchallenge_club（技術チャレンジ部）に所属する有志メンバーにて構成されたチームです。今回は５回目の参加です。[https://challenge-club.connpass.com](https://challenge-club.connpass.com) | 憎しみの果てに真の勝利などない! |
 | Team NEPPO | | 通称ねっぽちゃんによる一人チームです。 ねこのしっぽのようにしなやかで強く安心感のある、そんな技術屋を目指しています。 | 小さくてもよいので、何かしらオリジナリティーのある成果物を出せれば幸いです |
 | ひでちゅん(44) | ![hidechun44](https://github.com/seigot/aichallenge2023-racing/assets/46782860/50884032-eb63-4ee1-938f-86e48f631088) | 44歳のおじさんです。人海戦術と力技が大好きです。 | 人力1000本ノックでパラメータチューニングを実施していたのですが、ツールを用いた自動選定を実施されている方が多数いるようで素敵です。私も皆さまにあやかりたく、人海戦術を封印しスマートなイケオジを目指します！ |
+| b(oo)ars | ![b(oo)ars](https://github.com/seigot/aichallenge2023-racing/assets/46782860/5d3b73a7-e39d-40ff-af67-90a421278192) | 学生チームのb(oo)arsです！筑波大学院の江口と阪大院の原の二人でやってます。 二人はもともと神戸高専で高専ロボコンの同じチームでロボットを作っていた仲で卒業後も様々なロボットをやっています。（写真はつくばチャレンジ2023で完走した時のもの） | 頑張って優勝します！ また、本シュミレータを使って様々なトライが出来たらと思っています |
 | | | | |
