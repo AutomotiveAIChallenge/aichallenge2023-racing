@@ -36,11 +36,11 @@
       "type": "Toc",
       "source_relative_path": "customize/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "customize/toc.json"
-        },
         ".html": {
           "relative_path": "customize/toc.html"
+        },
+        ".json": {
+          "relative_path": "customize/toc.json"
         }
       },
       "version": ""
@@ -469,11 +469,11 @@
       "type": "Toc",
       "source_relative_path": "intro/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "intro/toc.json"
-        },
         ".html": {
           "relative_path": "intro/toc.html"
+        },
+        ".json": {
+          "relative_path": "intro/toc.json"
         }
       },
       "version": ""
@@ -492,11 +492,11 @@
       "type": "Toc",
       "source_relative_path": "local/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "local/toc.json"
-        },
         ".html": {
           "relative_path": "local/toc.html"
+        },
+        ".json": {
+          "relative_path": "local/toc.json"
         }
       },
       "version": ""
@@ -515,11 +515,11 @@
       "type": "Toc",
       "source_relative_path": "online/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "online/toc.json"
-        },
         ".html": {
           "relative_path": "online/toc.html"
+        },
+        ".json": {
+          "relative_path": "online/toc.json"
         }
       },
       "version": ""
@@ -538,11 +538,11 @@
       "type": "Toc",
       "source_relative_path": "other/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "other/toc.json"
-        },
         ".html": {
           "relative_path": "other/toc.html"
+        },
+        ".json": {
+          "relative_path": "other/toc.json"
         }
       },
       "version": ""
@@ -561,11 +561,11 @@
       "type": "Toc",
       "source_relative_path": "rule/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "rule/toc.json"
-        },
         ".html": {
           "relative_path": "rule/toc.html"
+        },
+        ".json": {
+          "relative_path": "rule/toc.json"
         }
       },
       "version": ""
@@ -584,11 +584,11 @@
       "type": "Toc",
       "source_relative_path": "setup/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "setup/toc.json"
-        },
         ".html": {
           "relative_path": "setup/toc.html"
+        },
+        ".json": {
+          "relative_path": "setup/toc.json"
         }
       },
       "version": ""
@@ -607,11 +607,11 @@
       "type": "Toc",
       "source_relative_path": "teams/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "teams/toc.json"
-        },
         ".html": {
           "relative_path": "teams/toc.html"
+        },
+        ".json": {
+          "relative_path": "teams/toc.json"
         }
       },
       "version": ""
@@ -620,11 +620,11 @@
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "toc.json"
-        },
         ".html": {
           "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
       "version": ""
