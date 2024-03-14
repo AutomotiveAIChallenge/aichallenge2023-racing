@@ -1,5 +1,5 @@
 #!/bin/bash
 
-cd ./aichallenge_ws
+cd ./autoware
 colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 cd ..
