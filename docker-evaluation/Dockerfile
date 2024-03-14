@@ -18,7 +18,7 @@ COPY aichallenge_submit.tar.gz /ws
 COPY main.bash /ws
 
 # Organize Files for Execution (Copy user files and map data to the executable folder)
-RUN cp -r /ws/aichallenge2023-racing/docker/aichallenge /aichallenge
+RUN cp -r /ws/aichallenge2023-racing/aichallenge /aichallenge
 RUN cp -r /ws/AWSIM /aichallenge
 RUN chmod 757 /aichallenge
 RUN rm -rf /aichallenge/autoware/src/aichallenge_submit
