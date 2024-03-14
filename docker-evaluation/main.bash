@@ -9,7 +9,7 @@ export ROS_LOCALHOST_ONLY=1
 # Launch AWSIM
 echo "Launch AWSIM"
 sudo ip link set multicast on lo
-source /aichallenge/aichallenge_ws/install/setup.bash
+source /aichallenge/autoware/install/setup.bash
 /aichallenge/AWSIM/AWSIM.x86_64 &
 
 sleep 20
@@ -18,7 +18,7 @@ cd /output
 
 # Launch Autoware
 echo "Launch user Autoware code"
-source /aichallenge/aichallenge_ws/install/setup.bash
+source /aichallenge/autoware/install/setup.bash
 ros2 launch aichallenge_launch aichallenge.launch.xml > autoware.log 2>&1 &
 ROSLAUNCH_PID=$!
 
